@@ -26,6 +26,7 @@
 \RequirePackage{url}
 \RequirePackage{titlesec}
 \RequirePackage{tocloft}
+\RequirePackage{hyperref}
 
 \geometry{lmargin=30mm, rmargin=20mm, tmargin=25mm, bmargin=25mm, foot=10mm, head=10mm}
 \definecolor{Green}{rgb}{0.1,0.5,0.1}
