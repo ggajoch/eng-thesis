@@ -4,6 +4,15 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 
+\usepackage[backend=bibtex,
+%style=numeric,
+bibencoding=ascii,
+style=alphabetic
+%style=reading
+]{biblatex}
+
+\addbibresource{bibliografia.bib}
+
 % dodatkowe pakiety
 \usepackage{enumerate}
 \usepackage{listings}
@@ -68,6 +77,7 @@
 \clearpage
 
 \include{principles}
+\include{requirements}
 
 
 % 1. Introduction
@@ -181,7 +191,6 @@
 % \include{dodatekB}
 % itd.
 
-\bibliographystyle{alpha}
-\bibliography{bibliografia}
+\printbibliography
 
 \end{document}
