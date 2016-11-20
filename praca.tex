@@ -69,6 +69,7 @@
 
 \include{principles}
 
+
 % 1. Introduction
 % 
 % 2. Terms, definitions and abbreviated terms 
@@ -84,98 +85,90 @@
 % 
 % 
 % 
-% 5. Design requirements
-% 5.1. Sensor requirements
-% 5.1.2. Required sensitivity
-% 5.1.3. Required accuracy
-% 5.2. Applicable standards
-% 
-% 3.3. PW-Sat2 mission
-% 3.3.1. Main purpose
-% 3.3.2. Orbit \& lifetime
-% 3.3.3. Radiation analysis
-% 
-% 5.3. Electrical requirements
-% 5.1.1. Electronics stack
-% 5.1.2. On-Board Computer
-% 5.1.3. Other sensors
-% 5.1.4. Payload board
-% 5.3.1. Power ICD
-% 5.3.2. Data exchange ICD
-% 5.3.3. Radiation immunity
-% 5.3.4. Reliability of components
-% 
-% 5.4. Mechanical requirements
-% 5.4.1. PCB stack \& PCB restrictions
-% 5.4.2. Space available
-% 5.4.3. Vibration
-% 5.4.4. Operation temperature
-% 5.4.5. Thermal cycles
+% 4. Design requirements
+% 4.1. Sensor requirements
+% 4.1.2. Required sensitivity
+% 4.1.3. Required accuracy
+% 4.2. Applicable standards
+%
+% 4.3. PW-Sat2 mission
+% 4.3.1. Main purpose
+% 4.3.2. Orbit \& lifetime
+% 4.3.3. Radiation analysis
+%
+% 4.3. Electrical requirements
+% 4.3.1. Electronics stack
+% 4.3.2. Power
+% 4.3.3. Data interface
+% 4.3.4. Radiation immunity
+% 4.3.5. Reliability of components
+%
+% 4.4. Mechanical requirements
+% 4.4.1. PCB stack \& PCB restrictions
+% 4.4.2. Space available
+% 4.4.3. Vibration
+% 4.4.4. Operation temperature
+% 4.4.5. Thermal cycles
 % 
 % 
+% 5. Sensor design
+% 5.1. TID measurement technique
+% 5.2.1. Accumulating particles in MOSFET
+% 5.2.2. Physical phenomena background
 % 
+% 5.3. Tradeoff analysis
+% 5.3.1. Measurement channels
+% 5.3.2. Measurement accuracy
 % 
+% 5.3. Block diagram
 % 
-% 6. Sensor design
-% 4.2. TID measurement technique
-% 6.1.1. Accumulating particles in MOSFET
-% 4.2.1. Physical phenomena background
+% 5.4. Components selection
+% 5.4.1. MOSFET
+% 5.4.2. ADC
+% 5.4.3. Microcontroller
+% 5.4.4. Passives
 % 
-% 6.2. Block diagram
+% 5.5. Die temperature measurement
+% 5.5.1. Build-in ESD diode
+% 5.5.2. Body diode
+% 5.6. Bias of MOSFET gate
 % 
-% 6.1. Components selection
-% 6.1.1. MOSFET
-% 6.1.2. ADC
-% 6.1.3. Microcontroller
-% 6.1.4. Passives
-% 6.2. Tradeoff analysis
-% 6.2.1. Measurement channels
-% 6.2.2. Measurement accuracy
-% 6.2.3. Die temperature measurement
-% 6.2.3.1. Build-in ESD diode
-% 6.2.3.2. Body diode
-% 6.2.4. Measurement period
-% 6.2.5. Averaging
-% 6.2.6. Bias of MOSFET gate
+% 6. Sensor implementation
+% 6.1. Analog front-end
+% 6.1.1. Current source
+% 6.1.2. Threshold voltage readout
+% 6.1.3. Temperature measurement
+% 6.2. Digital
+% 6.2.1. Microcontroller
+% 6.2.2. ADC
+% 6.2.3. OBC interface
+% 6.3. Software design
+% 6.3.1. Other tasks running on the same processor
+% 6.3.2. AVR-HAL
+% 6.3.3. I2C-slave module
+% 6.3.4. Measurement algorithm
 % 
-% 7. Sensor implementation
-% 7.1. Analog front-end
-% 7.1.1. Current source
-% 7.1.2. Threshold voltage readout
-% 7.1.3. Temperature measurement
-% 7.2. Digital
-% 7.2.1. Microcontroller
-% 7.2.2. ADC
-% 7.2.3. OBC interface
-% 7.3. Software design
-% 7.3.1. Other tasks running on the same processor
-% 7.3.2. AVR-HAL
-% 7.3.3. I2C-slave module
-% 7.3.4. Measurement algorithm
+% 7. Sensor prototypes
+% 7.1. Calibration prototype v0.1
+% 7.2. Calibration prototype v0.2
+% 7.3. TID Sensor prototype board
 % 
-% 8. Sensor prototypes
-% 8.1. Calibration prototype v0.1
-% 8.2. Calibration prototype v0.2
-% 8.3. TID Sensor prototype board
+% 8. Sensor production
+% 8.1. Payload board
+% 8.1.1. PCB layout 
+% 8.1.2. 3D model
+% 8.2. PCB production
+% 8.3. Component soldering
 % 
-% 9. Sensor production
-% 9.1. Payload board
-% 9.1.1. PCB layout 
-% 9.1.2. 3D model
-% 9.2. PCB production
-% 9.3. Component soldering
+% 9. Sensor tests
+% 9.1. Measurement noise
+% 9.2. Temperature stability
+% 9.3. Operational temprature
+% 9.4. Radiation tests
+% 9.5. Estimated lifetime on different orbits
+% 9.6. Digital interfaces
 % 
-% 10. Sensor tests
-% 10.1. Measurement noise
-% 10.2. Temperature stability
-% 10.3. Operational temprature
-% 10.4. Radiation tests
-% 10.5. Estimated lifetime on different orbits
-% 10.6. Digital interfaces
-% 
-% 11. Summary
-% 
-% 12. Bibliography
+% 10. Summary
 % 
 % Figures
 % Tables
