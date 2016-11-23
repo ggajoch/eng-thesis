@@ -41,7 +41,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 	Due to its primary mission PW-Sat2 mission is planned to be 40 days long. After this time deorbit sail will open, possibly causing lack of communication with satellite. Therefore sensor should be able to measure dose absorbed during 40 days on orbit.
 	
 \subsection{Orbit}
-	PW-Sat2 in planned to be launched to sun-synchronous circular orbit of attitude \SI{575}{km}, with LTAN of $10:30$ \cite{PWSAT_MA_CDR}.
+	PW-Sat2 in planned to be launched to sun-synchronous circular orbit of attitude \SI{575}{\kilo\meter}, with LTAN of $10:30$ \cite{PWSAT_MA_CDR}.
 	
 
 \subsection{Radiation analysis}
@@ -54,7 +54,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 		\label{TIDvsSheilding}
 	\end{figure}
 
-	Shielding of PW-Sat2 is about \SI{1}{mm} thick (aluminium sides as well as aluminium base for solar cells - \ref{PW-Sat_render_01}). Therefore predicted dose during PW-Sat2 mission is about $1$~kRad.
+	Shielding of PW-Sat2 is about \SI{1}{\milli\meter} thick (aluminium sides as well as aluminium base for solar cells - \ref{PW-Sat_render_01}). Therefore predicted dose during PW-Sat2 mission is about \SI{1}{\kilo\rad}.
 
 
 
@@ -63,10 +63,10 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 	In this section sensor requirements are presented.
 
 \subsection{Range}
-	Total range of the sensor should be more than predicted dose ($>~\SI{1}{kRad}$). With 300\% reserve: designed sensor should have range of more than \SI{3}{kRad}.
+	Total range of the sensor should be more than predicted dose ($>~\SI{1}{\kilo\rad}$). With 300\percent reserve: designed sensor should have range of more than \SI{3}{\kilo\rad}.
 	
 \subsection{Accuracy \& resolution}
-	Sensor should be able to detect low radiation doses. Its resolution should be lower than \SI{0.1}{kRad}, with accuracy of less than \SI{0.5}{kRad}.
+	Sensor should be able to detect low radiation doses. Its resolution should be lower than \SI{0.1}{\kilo\rad}, with accuracy of less than \SI{0.5}{\kilo\rad}.
 
 
 
@@ -117,12 +117,12 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 	Connector consists of:
 	\begin{itemize}
 		\item $I^2C$ bus, connected directly to MCU on OBC,
-		\item OBC \SI{3.3}{V} line, connected directly to MCU on OBC,
-		\item SENS \SI{5}{V} line, powered when sensor is enabled by OBC.
+		\item OBC \SI{3.3}{\volt} line, connected directly to MCU on OBC,
+		\item SENS \SI{5}{\volt} line, powered when sensor is enabled by OBC.
 	\end{itemize}
 
 \subsection{Power}
-	As mentioned earlier, the power for the sensor is \SI{+5}{V}, activated whenever sensor should be accessed by OBC. 
+	As mentioned earlier, the power for the sensor is \SI{+5}{\volt}, activated whenever sensor should be accessed by OBC. 
 	
 	Power line is controlled and protected by Latchup-Current Limiter FPF2701MX placed on EPS board. Therefore additional latchup protection in not necessary in this design. The sensor is enabled and disabled by EPS on OBC command. Having this in mind forces the design to be immune to immediate shutdowns. 
 	
@@ -130,14 +130,14 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 	The sensor is connected to OBC via $I^2C$ interface. OBC on this bus is master - and sensor should be one of slaves. PLD board can be disabled, therefore it should provide isolation of $I^2C$ bus when it is powered off.
 	
 \subsection{Radiation immunity}
-	Design should be itself immune to radiation. For PW-Sat2 threshold of \SI{10}{kRad} was chosen for all COTS components. Every used semiconductor should have passed appropriate radiation tests as described in \cite{ESCIES_TID_test_method}.
+	Design should be itself immune to radiation. For PW-Sat2 threshold of \SI{10}{\kilo\rad} was chosen for all COTS components. Every used semiconductor should have passed appropriate radiation tests as described in \cite{ESCIES_TID_test_method}.
 
 \subsection{Electromagnetic compatibility}
-	EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{V}, other than on bigger S/C: \SI{+28}{V}.
+	EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{\volt}, other than on bigger S/C: \SI{+28}{\volt}.
 	
 
 	\begin{itemize}
-		\item Conducted susceptibility is shown on figure \ref{EMC_conducted_susceptibility} . It was created by scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{V}/\SI{5}{V} = 5.6$. EMC limit on power line is defined as constant \SI{175}{mV} from \SI{30}{Hz} to \SI{100}{kHz}. Sensor should be able to filter this ripple to produce stable power for analog devices.
+		\item Conducted susceptibility is shown on figure \ref{EMC_conducted_susceptibility} . It was created by scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{\volt}/\SI{5}{\volt} = 5.6$. EMC limit on power line is defined as constant \SI{175}{\milli\volt} from \SI{30}{\hertz} to \SI{100}{\kilo\hertz}. Sensor should be able to filter this ripple to produce stable power for analog devices.
 		
 		\begin{figure}[H]
 			\centering
@@ -158,7 +158,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 
 
 		\item Radiated susceptibility.
-			On board PW-Sat2 is a communication module transmitting \SI{0.5}{W} of power on frequency \SI{435.02}{MHz}. Test should be made proving completing this requirement. It can consist of simple handheld radio placed near sensor radiating $< \SI{1}{W}$ on similar frequencies.
+			On board PW-Sat2 is a communication module transmitting \SI{0.5}{\watt} of power on frequency \SI{435.02}{\mega\hertz}. Test should be made proving completing this requirement. It can consist of simple handheld radio placed near sensor radiating $< \SI{1}{\watt}$ on similar frequencies.
 			
 		\item Radiated emission.
 			Sensor is not predicted to emit any kind of radio waves. In case of detected anomaly further design decisions would have to be made.
@@ -171,7 +171,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 \subsection{Reliability of components}
 	This sensor is not a critical part of the satellite. But, reliable components should be used to ensure proper results. 
 	
-	Every used component should have failure rate of 0.1\% or lower.
+	Every used component should have failure rate of 0.1\percent or lower.
 
 
 \section{Mechanical requirements}
@@ -179,7 +179,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 	
 \subsection{PCB}
 \label{PCB_description}
-	PCB of PLD board is standard 4-layer FR4 board with stack shown on figure \ref{PLD_PCB_stack}. Its dimensions are shown on \ref{PLD_PCB_size}, but design is forced to take much less space. For this sensor limits are \SI{3x3}{cm} double sided.
+	PCB of PLD board is standard 4-layer FR4 board with stack shown on figure \ref{PLD_PCB_stack}. Its dimensions are shown on \ref{PLD_PCB_size}, but design is forced to take much less space. For this sensor limits are \SI{3x3}{\centi\meter} double sided.
 
 	\begin{figure}[H]
 		\centering
@@ -221,7 +221,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 
 
 \subsection{Thermal cycles}
-	Or PW-Sat2 orbit sun illumination is changing every $\approx \SI{90}{min}$. Therefore large number of thermal cycles are applied to On-Board electronics, which can cause joint cracks as well as component failures. 
+	Or PW-Sat2 orbit sun illumination is changing every $\approx \SI{90}{\minute}$. Therefore large number of thermal cycles are applied to On-Board electronics, which can cause joint cracks as well as component failures. 
 	
 	As described in \cite{ECSS_Q_ST_70_04C} the sensor should pass thermal cycle tests: $100$ times from $- (100 \pm 5)$\si{\degreeCelsius} to $(100 \pm 5)$\si{\degreeCelsius} in vacuum environment. Test procedure is shown on \ref{thermal_tests}.
 	
