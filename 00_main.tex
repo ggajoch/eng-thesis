@@ -49,6 +49,10 @@ style=alphabetic
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
+\makeatletter
+\let\ps@plain\ps@fancy
+\makeatother
+
 %---------------------------------------------------------------------------
 
 \author{Grzegorz Gajoch}

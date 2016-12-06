@@ -173,7 +173,7 @@ University of Science and Technology in Krakow}}}
 \renewcommand{\footrulewidth}{0.5pt}
 \fancyhf{}
 \fancyhead{}
-\fancyhead[L]{\slshape{\small \rightmark}}
+\fancyhead[L]{\slshape{\small \leftmark}}
 \fancyhead[R]{\bfseries \thepage}
 
 \thesisheaders
@@ -185,13 +185,13 @@ University of Science and Technology in Krakow}}}
 \flushbottom
 
 %---------------------------------------------------------------------------
-% Ustawienia parametr�w dla tytu��w rozdzia��w, podrozdzia��w, itd.
+% Ustawienia parametrów dla tytułów rozdziałów, podrozdziałów, itd.
 %---------------------------------------------------------------------------
 
 
 \titleformat{\chapter}[block]
 {\bfseries\LARGE}{\filright \LARGE\thechapter. }{0ex}{}
-%odst�py: lewy, g�ra, d��
+%odstępy: lewy, góra, dół
 \titlespacing{\chapter}{0pt}{17mm}{19mm}
 \titleformat{\section}[block]
 {\bfseries\Large}{\filright \Large\thesection. }{0ex}{}
@@ -204,7 +204,7 @@ University of Science and Technology in Krakow}}}
 \titlespacing{\subsubsection}{7mm}{3mm}{1.5mm}
 
 %---------------------------------------------------------------------------
-% Ustawienia parametr�w generowania spisu tre�ci i spisu rysunk�w
+% Ustawienia parametrów generowania spisu treści i spisu rysunków
 %---------------------------------------------------------------------------
 
 \renewcommand{\cfttoctitlefont}{\bfseries\Large}
