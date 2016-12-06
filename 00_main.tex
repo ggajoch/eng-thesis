@@ -86,117 +86,113 @@ style=alphabetic
 \tableofcontents
 \clearpage
 
-\include{principles}
-\include{requirements}
-\include{sensorDesign}
 
+\include{01_introduction}
+% Introduction
 
-% 1. Introduction
-% 
-% 2. Terms, definitions and abbreviated terms 
-% 2.1. Abbreviated terms
-% 2.2. Conventions
-% 
-% 3. Principles
-% 3.1. Ionising radiation
-% 3.2. Radiation effects on electronics
-% 3.2.1. Single Events Effects
-% 3.2.2. Total Ionising Dose
-% 3.3. Need for TID radiation measurements
-% 3.4. Radiation dosimetry 
-% 
-% 
-% 4. Design requirements
-% 4.1. Sensor requirements
-% 4.1.2. Required sensitivity
-% 4.1.3. Required accuracy
-% 4.2. Applicable standards
-% 4.3. PW-Sat2 mission
-% 4.3.1. Main purpose
-% 4.3.2. Orbit \& lifetime
-% 4.3.3. Radiation analysis
-% 4.4. Electrical requirements
-% 4.4.1. Electronics stack
-% 4.4.2. Power
-% 4.4.3. Data interface
-% 4.4.4. Radiation immunity
-% 4.4.5. Reliability of components
-% 4.5. Mechanical requirements
-% 4.5.1. PCB stack \& PCB restrictions
-% 4.5.2. Space available
-% 4.5.3. Vibration
-% 4.5.4. Operation temperature
-% 4.5.5. Thermal cycles
-% 
-% 
-% 5. Sensor design
-% 5.1. Selected measurement method
-% 5.2. Theory
-% 5.3.1. Radiation effects on MOS transistors
-% 5.3.2. Threshold voltage measurement
-% 5.3.3. Temperature dependencies 
-% 5.4. Block diagram
-% 5.5. Components selection
-% 5.5.1. MOSFET
-% 5.5.2. ADC
-% 5.5.3. Microcontroller
-% 5.5.4. Passives
-% 5.6. Tradeoff analysis
-% 5.6.1. Measurement channels
-% 5.6.2. Measurement accuracy
-% 5.7. Die temperature measurement
-% 5.7.1. Build-in ESD diode
-% 5.7.2. Body diode
-% 5.8. Bias of MOSFET gate
-% 
-% 6. Sensor implementation
-% 6.1. Analog front-end
-% 6.1.1. Current source
-% 6.1.2. Threshold voltage readout
-% 6.1.3. Temperature measurement
-% 6.2. Digital
-% 6.2.1. Microcontroller
-% 6.2.2. ADC
-% 6.2.3. OBC interface
-% 6.3. Software design
-% 6.3.1. Other tasks running on the same processor
-% 6.3.2. AVR-HAL
-% 6.3.3. I2C-slave module
-% 6.3.4. Measurement algorithm
-% 
-% 7. Sensor prototypes
-% 7.1. Calibration prototype v0.1
-% 7.2. Calibration prototype v0.2
-% 7.3. TID Sensor prototype board
-% 
-% 8. Sensor production
-% 8.1. Payload board
-% 8.1.1. PCB layout 
-% 8.1.2. 3D model
-% 8.2. PCB production
-% 8.3. Component soldering
-% 
-% 9. Sensor tests
-% 9.1. Measurement noise
-% 9.2. Temperature stability
-% 9.3. Operational temprature
-% 9.4. Radiation tests
-% 9.5. Estimated lifetime on different orbits
-% 9.6. Digital interfaces
-% 
-% 10. Summary
-% 
+\include{02_conventions}
+% Terms, definitions and abbreviated terms
+% - Abbreviated terms
+% - Conventions
+
+\include{03_principles}
+% Principles
+% - Ionising radiation
+% - Radiation effects on electronics
+% -- Single Events Effects
+% -- Total Ionising Dose
+% - Need for TID radiation dosimetry
+% - On-line TID radiation dosimetry
+% - RadFET Theory
+% -- Radiation effects on MOS transistors
+% -- Threshold voltage measurement
+% -- Temperature dependencies
+
+\include{04_requirements}
+% Design requirements
+% - Sensor requirements
+% -- Required sensitivity
+% -- Required accuracy
+% - Applicable standards
+% - PW-Sat Mission
+% -- Main purpose
+% -- Orbit \& lifetime
+% -- Radiation analysis
+% - Electrical requirements
+% -- Electronics stack
+% -- Power
+% -- Data interface
+% -- Radiation immunity
+% -- Reliability of components
+% - Mechanical requirements
+% -- PCB stack \& PCB restrictions
+% -- Space available
+% -- Vibration
+% -- Operation temperature
+% -- Thermal cycles
+
+\include{05_sensorDesign}
+% Sensor design
+% - Commercial RadFETs
+% - MOSFET as RadFET
+% - Chosen MOSFET: CD4007
+% - Conceptual Block diagram
+% - Characteristic curves (MG)
+% - Operating point selection
+
+\include{06_prototypes}
+% Sensor prototypes
+% - Demonstration model
+% - Calibration stand
+
+\include{07_engineeringModel}
+% Engineering model
+% - Block diagram
+% - Low-level requirements
+% - Analog front-end
+% -- Current source
+% -- ADC
+% -- Multiplexer
+% -- LDO
+% -- Shielding
+% - Digital
+% -- Microcontroller
+% -- OBC interface
+% - Software design
+% -- AVR-HAL
+% -- I2C-slave module
+% -- Measurement algorithm
+% - PCB
+% -- PCB stack
+% -- PCB layout
+% -- 3D model
+% -- Manufacturing
+% - Assembly
+% - Finished sensor
+
+\include{08_tests}
+% Sensor tests
+% - Digital
+% -- Interface tests
+% -- Software tests
+% - Analog
+% -- Measurement noise
+% -- Temperature stability
+% -- Ageing stability
+% -- Irradiation tests
+
+\include{09_flightModel}
+% Flight model
+
+\include{10_summary}
+% Summary
+%
 % Figures
 % Tables
 
 
 
-% itd.
-% \appendix
-% \include{dodatekA}
-% \include{dodatekB}
-% itd.
-
+\appendix
 \printbibliography
 
 \end{document}

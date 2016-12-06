@@ -72,7 +72,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 
 
 \section{Applicable standards}
-	The sensor should comply to ECSS \cite{ECSS_URL} standards. They are required from launch provider, as well as describing good practices during space product development.
+	The sensor should comply to ECSS \cite{ECSS_URL} standards. They are required by launch provider, as well as describing good practices during space product development.
 	
 	ESCIES \cite{ESCIES_URL} provide valuable knowledge about components qualifications, testing and verification.
 
@@ -121,10 +121,15 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 		\item SENS \SI{5}{\volt} line, powered when sensor is enabled by OBC.
 	\end{itemize}
 
-\subsection{Power}
+\subsection{Power rail}
 	As mentioned earlier, the power for the sensor is \SI{+5}{\volt}, activated whenever sensor should be accessed by OBC. 
 	
 	Power line is controlled and protected by Latchup-Current Limiter FPF2701MX placed on EPS board. Therefore additional latchup protection in not necessary in this design. The sensor is enabled and disabled by EPS on OBC command. Having this in mind forces the design to be immune to immediate shutdowns. 
+
+\subsection{Power consumption}
+	During irradiation sensor should be completely turned off. It lowers possibility of latchup and increases overall system reliability.
+	
+	During readout required power should be less than \SI{1}{W}.
 	
 \subsection{Data interface}
 	The sensor is connected to OBC via $I^2C$ interface. OBC on this bus is master - and sensor should be one of slaves. PLD board can be disabled, therefore it should provide isolation of $I^2C$ bus when it is powered off.
