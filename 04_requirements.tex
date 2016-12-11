@@ -6,7 +6,7 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
 
 
 \section{PW-Sat2}
-    Presented sensor is scheduled to be launched on PW-Sat2 satellite \cite{PW-Sat2URL}. Therefore it should be designed especially for this particular type of mission. In this section PW-Sat2 mission will be presented. 
+    Presented sensor is scheduled to be launched on PW-Sat2 satellite \cite{PW-Sat2URL}. Therefore it should be designed especially for this particular type of mission. In this section PW-Sat2 mission will be presented.
 
     On fig. \ref{PW-Sat_render_01} exploded render of PW-sat2 is presented.
 
@@ -27,37 +27,36 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
     \end{figure}
 
 
-\subsection{Primary mission}
-    Primary mission of PW-Sat2 is to test deorbit sail. Its purpose is to increase atmospheric drag and shorten satellite life. This method of deorbitation could be easy way to reduce space debris on LEO. Render of PW-Sat2 with opened sail is on \ref{PW-Sat_render_sail}.
+    \subsection{Primary mission}
+        Primary mission of PW-Sat2 is to test deorbit sail. Its purpose is to increase atmospheric drag and shorten satellite life. This method of deorbitation could be easy way to reduce space debris on LEO. Render of PW-Sat2 with opened sail is on \ref{PW-Sat_render_sail}.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\paperwidth]{img/PW-Sat2_render_02.png}
-        \caption{PW-Sat2 with opened sail (by M. Świetlik)}
-        \label{PW-Sat_render_sail}
-    \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\paperwidth]{img/PW-Sat2_render_02.png}
+            \caption{PW-Sat2 with opened sail (by M. Świetlik)}
+            \label{PW-Sat_render_sail}
+        \end{figure}
 
-    More information about this experiment can be found in \cite{DDC_article}.
+        More information about this experiment can be found in \cite{DDC_article}.
 
-\subsection{Lifetime}
-    Due to its primary mission PW-Sat2 lifetime is planned to be 40 days long. After this time deorbit sail will open, and orbit will slowly decrease. Deorbitation from nominal orbit is planned to take N days. Therefore sensor should be able to measure dose absorbed during full mission - N days.
+    \subsection{Lifetime}
+        Due to its primary mission PW-Sat2 lifetime is planned to be 40 days long. After this time deorbit sail will open, and orbit will slowly decrease. Deorbitation from nominal orbit is planned to take N days. Therefore sensor should be able to measure dose absorbed during full mission - N days.
 
-\subsection{Orbit}
-    PW-Sat2 in planned to be launched to sun-synchronous circular orbit of attitude \SI{575}{\kilo\meter}, with LTAN of $10:30$ \cite{PWSAT_MA_CDR}.
+    \subsection{Orbit}
+        PW-Sat2 in planned to be launched to sun-synchronous circular orbit of attitude \SI{575}{\kilo\meter}, with LTAN of $10:30$ \cite{PWSAT_MA_CDR}.
 
 
-\subsection{Radiation analysis}
-    Simulations in SPENVIS \cite{SPENVIS_URL} were performed to estimate TID accumulated during PW-Sat2 mission. On fig \ref{TIDvsSheilding} dose as a function of shielding thickness was plotted.
+    \subsection{Radiation analysis}
+        Simulations in SPENVIS \cite{SPENVIS_URL} were performed to estimate TID accumulated during PW-Sat2 mission. On fig \ref{TIDvsSheilding} dose as a function of shielding thickness was plotted.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\paperwidth]{img/dose.eps}
-        \caption{TID vs shielding}
-        \label{TIDvsSheilding}
-    \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\paperwidth]{img/dose.eps}
+            \caption{TID vs shielding}
+            \label{TIDvsSheilding}
+        \end{figure}
 
-    Shielding of PW-Sat2 is about \SI{0.5}{\milli\meter} thick (aluminum sides as well as aluminum substrate for solar cells - \ref{PW-Sat_render_01}). Therefore predicted dose during PW-Sat2 mission is about \SI{10}{\kilo\rad}.
-
+        Shielding of PW-Sat2 is about \SI{0.5}{\milli\meter} thick (aluminum sides as well as aluminum substrate for solar cells - \ref{PW-Sat_render_01}). Therefore predicted dose during PW-Sat2 mission is about \SI{10}{\kilo\rad}.
 
 \section{Sensor requirements}
     Summing PW-Sat2 mission analysis, high-level sensor requirements were estimated:
@@ -65,173 +64,168 @@ Sensor is designed to be flown on-board of PW-Sat2 satellite. Therefore it shoul
     \begin{itemize}
         \item Total range of the sensor should be more than predicted dose. Derating this value gives range of about \SI{3}{\kilo\rad}.
 
-        \item Resolution should be lower than \SI{0.1}{\kilo\rad}, 
+        \item Resolution should be lower than \SI{0.1}{\kilo\rad},
 
         \item Total accuracy (across temperature \& component aging) should be less than \SI{0.5}{\kilo\rad}.
     \end{itemize}
-
-
-
 
 \section{Applicable standards}
     The sensor should comply to ECSS \cite{ECSS_URL} standards. They are required by launch provider, as well as describing good practices during space product development.
 
     ESCIES \cite{ESCIES_URL} provide valuable knowledge about components qualifications, testing and verification.
 
-
-
 \section{Electrical requirements}
     Sensor will be placed on-board of PW-Sat2. Therefore it should comply to its' standards - power supplies, communication interfaces etc.
 
-\subsection{Electronics stack}
-    Modules on PW-Sat2 are connected in PC-104 stack structure as shown on figure \ref{PW-Sat2_stack}. Is is placed inside structure and consists of (from the top):
-    \begin{itemize}
-        \item Payload module (PLD)
-        \item On-Board Computer (OBC)
-        \item Attitude Determination and Control Subsystem (ADCS)
-        \item Electrical Power System (EPS)
-        \item battery module (ACC)
-        \item communication transceiver (COMM)
-        \item antennas module (ANT)
-    \end{itemize}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\paperwidth]{img/PW-Sat2-stack.png}
-        \caption{PW-Sat2 electronics stack}
-        \label{PW-Sat2_stack}
-    \end{figure}
-
-
-    Sensor will be placed on Payload board, on the top of PC-104 stack. It will be placed on its PCB, described in \ref{PCB_description}. It will be one of sensors on this board, connected to PC-104 stack.
-
-
-\subsection{PC-104 connector}
-    PLD board is connected to OBC with PC-104 connector. Pinout is shown on figure \ref{PC104_PLD}.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\paperwidth]{img/PC-104.eps}
-        \caption{PC-104 connector to PLD board}
-        \label{PC104_PLD}
-    \end{figure}
-
-    Connector consists of:
-    \begin{itemize}
-        \item $I^2C$ bus, connected directly to MCU on OBC
-        \item SENS \SI{5}{\volt} line, powered when sensor is enabled by OBC
-    \end{itemize}
-
-\subsection{Power rail}
-    As mentioned earlier, the power for the sensor is \SI{+5}{\volt}, activated whenever sensor should be accessed by OBC. 
-
-    Power line is controlled and protected by Latchup-Current Limiter FPF2701MX placed on EPS board. Therefore additional latchup protection in not necessary in this design. However, this sensor will be not only one on PLD board and should have it's own power switch. PLD board is enabled and disabled by EPS on OBC command and sensor should be enabled only during TID readout. Having this in mind forces the design to be immune to immediate shutdowns. 
-
-\subsection{Power consumption}
-    During irradiation sensor should be completely turned off. It decreases possibility of radiation damage and increases overall system reliability.
-
-    During readout required power should be less than \SI{1}{W}.
-
-\subsection{Data interface}
-    The sensor is connected to OBC via $I^2C$ interface. OBC on this bus is master - and sensor should be one of slaves. PLD board can be disabled, therefore it should provide isolation of $I^2C$ bus when it is powered off.
-
-\subsection{Radiation immunity}
-    Design should be itself immune to radiation. For PW-Sat2 threshold of \SI{10}{\kilo\rad} was chosen for all COTS components. Semiconductor components should have radiation as described in \cite{ESCIES_TID_test_method}.
-
-\subsection{Electromagnetic compatibility}
-    EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{\volt}, other than on bigger S/C (\SI{+28}{\volt}).
-
-    \begin{itemize}
-        \item Conducted susceptibility is shown on figure \ref{EMC_conducted_susceptibility} . It was created by down-scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{\volt}/\SI{5}{\volt} = 5.6$. EMC limit on power line is defined as constant \SI{175}{\milli\volt} from \SI{30}{\hertz} to \SI{100}{\kilo\hertz}. Sensor should be able to filter this ripple to produce stable power for analog devices. In addition, it should be taken into account that output DC-DC converters on EPS runs on \SI{500}{\kilo\hertz}.
+    \subsection{Electronics stack}
+        Modules on PW-Sat2 are connected in PC-104 stack structure as shown on figure \ref{PW-Sat2_stack}. Is is placed inside structure and consists of (from the top):
+        \begin{itemize}
+            \item Payload module (PLD)
+            \item On-Board Computer (OBC)
+            \item Attitude Determination and Control Subsystem (ADCS)
+            \item Electrical Power System (EPS)
+            \item battery module (ACC)
+            \item communication transceiver (COMM)
+            \item antennas module (ANT)
+        \end{itemize}
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/EMC_conducted_susceptibility.eps}
-            \caption{Conducted susceptibility limit, frequency domain. Source: \cite{ECSS_E_ST_20_07C}}
-            \label{EMC_conducted_susceptibility}
+            \includegraphics[width=0.7\paperwidth]{img/PW-Sat2-stack.png}
+            \caption{PW-Sat2 electronics stack}
+            \label{PW-Sat2_stack}
         \end{figure}
 
 
-        \item Conducted emission is defined on figure \ref{EMC_conducted_emission}.
+        Sensor will be placed on Payload board, on the top of PC-104 stack. It will be placed on its PCB, described in \ref{PCB_description}. It will be one of sensors on this board, connected to PC-104 stack.
+
+
+    \subsection{PC-104 connector}
+        PLD board is connected to OBC with PC-104 connector. Pinout is shown on figure \ref{PC104_PLD}.
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/EMC_conducted_emission.eps}
-            \caption{Conducted susceptibility limit, frequency domain. Source: \cite{ECSS_E_ST_20_07C}}
-            \label{EMC_conducted_emission}
-        \end{figure}    
+            \includegraphics[width=0.5\paperwidth]{img/PC-104.eps}
+            \caption{PC-104 connector to PLD board}
+            \label{PC104_PLD}
+        \end{figure}
+
+        Connector consists of:
+        \begin{itemize}
+            \item $I^2C$ bus, connected directly to MCU on OBC
+            \item SENS \SI{5}{\volt} line, powered when sensor is enabled by OBC
+        \end{itemize}
+
+    \subsection{Power rail}
+        As mentioned earlier, the power for the sensor is \SI{+5}{\volt}, activated whenever sensor should be accessed by OBC.
+
+        Power line is controlled and protected by Latchup-Current Limiter FPF2701MX placed on EPS board. Therefore additional latchup protection in not necessary in this design. However, this sensor will be not only one on PLD board and should have it's own power switch. PLD board is enabled and disabled by EPS on OBC command and sensor should be enabled only during TID readout. Having this in mind forces the design to be immune to immediate shutdowns.
+
+    \subsection{Power consumption}
+        During irradiation sensor should be completely turned off. It decreases possibility of radiation damage and increases overall system reliability.
+
+        During readout required power should be less than \SI{1}{W}.
+
+    \subsection{Data interface}
+        The sensor is connected to OBC via $I^2C$ interface. OBC on this bus is master - and sensor should be one of slaves. PLD board can be disabled, therefore it should provide isolation of $I^2C$ bus when it is powered off.
+
+    \subsection{Radiation immunity}
+        Design should be itself immune to radiation. For PW-Sat2 threshold of \SI{10}{\kilo\rad} was chosen for all COTS components. Semiconductor components should have radiation as described in \cite{ESCIES_TID_test_method}.
+
+    \subsection{Electromagnetic compatibility}
+        EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{\volt}, other than on bigger S/C (\SI{+28}{\volt}).
+
+        \begin{itemize}
+            \item Conducted susceptibility is shown on figure \ref{EMC_conducted_susceptibility} . It was created by down-scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{\volt}/\SI{5}{\volt} = 5.6$. EMC limit on power line is defined as constant \SI{175}{\milli\volt} from \SI{30}{\hertz} to \SI{100}{\kilo\hertz}. Sensor should be able to filter this ripple to produce stable power for analog devices. In addition, it should be taken into account that output DC-DC converters on EPS runs on \SI{500}{\kilo\hertz}.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.5\paperwidth]{img/EMC_conducted_susceptibility.eps}
+                \caption{Conducted susceptibility limit, frequency domain. Source: \cite{ECSS_E_ST_20_07C}}
+                \label{EMC_conducted_susceptibility}
+            \end{figure}
 
 
-        \item Radiated susceptibility.
-            On board PW-Sat2 is a communication module transmitting \SI{0.5}{\watt} of power on frequency \SI{435.02}{\mega\hertz}. It is planned that during readout radio transmitter will be disabled, but proper tests should be conducted to check for possible errors and faults.
+            \item Conducted emission is defined on figure \ref{EMC_conducted_emission}.
 
-            PLD board is placed near OBC - so radiated emission from digital lines can couple to sensor elements causing noise and errors. Proper tests will be conducted and if necessary shielding will be implemented.
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.5\paperwidth]{img/EMC_conducted_emission.eps}
+                \caption{Conducted susceptibility limit, frequency domain. Source: \cite{ECSS_E_ST_20_07C}}
+                \label{EMC_conducted_emission}
+            \end{figure}
 
-        \item Radiated emission.
-            Sensor is not predicted to emit any kind of radio waves. In case of detected anomaly further design decisions would have to be made.
 
-    \end{itemize}
+            \item Radiated susceptibility.
+                On board PW-Sat2 is a communication module transmitting \SI{0.5}{\watt} of power on frequency \SI{435.02}{\mega\hertz}. It is planned that during readout radio transmitter will be disabled, but proper tests should be conducted to check for possible errors and faults.
+
+                PLD board is placed near OBC - so radiated emission from digital lines can couple to sensor elements causing noise and errors. Proper tests will be conducted and if necessary shielding will be implemented.
+
+            \item Radiated emission.
+                Sensor is not predicted to emit any kind of radio waves. In case of detected anomaly further design decisions would have to be made.
+
+        \end{itemize}
 
 
-\subsection{Inrush current}
-    Inrush current have to be limited to maximum power consumption to not trigger LCL on EPS.
+    \subsection{Inrush current}
+        Inrush current have to be limited to maximum power consumption to not trigger LCL on EPS.
 
-\subsection{Reliability of components}
-    This sensor is not a critical part of the satellite. But, reliable components should be used to ensure proper results. 
+    \subsection{Reliability of components}
+        This sensor is not a critical part of the satellite. But, reliable components should be used to ensure proper results.
 
-    Every used component should have failure rate of $0.1\si{\percent}$ or lower. This is essential in capacitors and other passive components.
+        Every used component should have failure rate of $0.1\si{\percent}$ or lower. This is essential in capacitors and other passive components.
 
 
 \section{Mechanical requirements}
     In this chapter design constrains and mechanical requirements of Falcon9 are presented. Launcher requirements were taken from \cite{Falcon9_user_manual}.
 
-\subsection{PCB}
-\label{PCB_description}
-    PCB of PLD board is standard 4-layer FR4 board with stack shown on figure \ref{PLD_PCB_stack}. Its dimensions are shown on \ref{PLD_PCB_size}, but design is forced to take much less space. For this sensor limits are \SI{3x3}{\centi\meter} double sided.
+    \subsection{PCB}
+    \label{PCB_description}
+        PCB of PLD board is standard 4-layer FR4 board with stack shown on figure \ref{PLD_PCB_stack}. Its dimensions are shown on \ref{PLD_PCB_size}, but design is forced to take much less space. For this sensor limits are \SI{3x3}{\centi\meter} double sided.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\paperwidth]{img/PLD_PCB_stack.png}
-        \caption{PLD board PCB stack}
-        \label{PLD_PCB_stack}
-    \end{figure}    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\paperwidth]{img/PLD_PCB_stack.png}
+            \caption{PLD board PCB stack}
+            \label{PLD_PCB_stack}
+        \end{figure}
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\paperwidth]{img/PC104_PLD_size.png}
-        \caption{PC-104 size}
-        \label{PLD_PCB_size}
-    \end{figure}    
-
-
-
-\subsection{Outgassing}
-    Every used component should be able to work in vacuum. Outgassing of components should be known to conduct required vacuum tests before launch.
-
-\subsection{Vibration}
-    During rocket launch large vibrations occur on payload, therefore it should be immune to it. In case of any heavy electronic components appropriate glue should be applied to prevent joint cracks.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\paperwidth]{img/Falcon9_vibration.eps}
-        \caption{Falcon9 maximum axial equivalent sine environment. Source: \cite{Falcon9_user_manual}}
-        \label{Falcon9_vibration}
-    \end{figure}    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\paperwidth]{img/PC104_PLD_size.png}
+            \caption{PC-104 size}
+            \label{PLD_PCB_size}
+        \end{figure}
 
 
-\subsection{Operation temperature}
-    The sensor should work in every operational case satellite can be. Simulations were performed to find bounds of possible temperature range inside satellite.    In \cite{PWSAT_TCS_CDR} results are presented. 
 
-    For PLD board operation range is $\SI{0}{\degreeCelsius}$ to $\SI{60}{\degreeCelsius}$. If the measured temperature will be outside this region, sensor will not be enabled.
+    \subsection{Outgassing}
+        Every used component should be able to work in vacuum. Outgassing of components should be known to conduct required vacuum tests before launch.
+
+    \subsection{Vibration}
+        During rocket launch large vibrations occur on payload, therefore it should be immune to it. In case of any heavy electronic components appropriate glue should be applied to prevent joint cracks.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\paperwidth]{img/Falcon9_vibration.eps}
+            \caption{Falcon9 maximum axial equivalent sine environment. Source: \cite{Falcon9_user_manual}}
+            \label{Falcon9_vibration}
+        \end{figure}
 
 
-\subsection{Thermal cycles}
-    Or PW-Sat2 orbit sun illumination is changing every $\approx \SI{90}{\minute}$. Therefore large number of thermal cycles are applied to On-Board electronics, which can cause joint cracks as well as component failures. Proper soldering and component selection will be made, according to ECSS.
+    \subsection{Operation temperature}
+        The sensor should work in every operational case satellite can be. Simulations were performed to find bounds of possible temperature range inside satellite.    In \cite{PWSAT_TCS_CDR} results are presented.
 
-    As described in \cite{ECSS_Q_ST_70_04C} the sensor should pass thermal cycle tests: $100$ times from $- (100 \pm 5)$\si{\degreeCelsius} to $(100 \pm 5)$\si{\degreeCelsius} in vacuum environment. Test procedure is shown on \ref{thermal_tests}.
+        For PLD board operation range is $\SI{0}{\degreeCelsius}$ to $\SI{60}{\degreeCelsius}$. If the measured temperature will be outside this region, sensor will not be enabled.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\paperwidth]{img/thermal_cycles.eps}
-        \caption{Thermal cycles test procedure. Source: \cite{ECSS_Q_ST_70_04C}}
-        \label{thermal_tests}
-    \end{figure}
+
+    \subsection{Thermal cycles}
+        Or PW-Sat2 orbit sun illumination is changing every $\approx \SI{90}{\minute}$. Therefore large number of thermal cycles are applied to On-Board electronics, which can cause joint cracks as well as component failures. Proper soldering and component selection will be made, according to ECSS.
+
+        As described in \cite{ECSS_Q_ST_70_04C} the sensor should pass thermal cycle tests: $100$ times from $- (100 \pm 5)$\si{\degreeCelsius} to $(100 \pm 5)$\si{\degreeCelsius} in vacuum environment. Test procedure is shown on \ref{thermal_tests}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\paperwidth]{img/thermal_cycles.eps}
+            \caption{Thermal cycles test procedure. Source: \cite{ECSS_Q_ST_70_04C}}
+            \label{thermal_tests}
+        \end{figure}

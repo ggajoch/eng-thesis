@@ -1,99 +1,129 @@
 \chapter{Sensor design}
+This chapter will cover sensor element selection, according to requirements presented previously.
 
-\section{Commercial RadFETs}
-At the moment of writing there are few available commercial solutions. They are used in medical dosimetry, but also on spacecrafts. 
+Most space missions have on-board TID sensor - based od RadFET. RadFET is special type of modified p-MOSFET transistor, with well known dose dependence. In research work many COTS elements were checked for their characteristics, and they are now considered as a RadFET equivalent.
 
-Most of commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Physical_phenomena_background}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\paperwidth]{img/radfet-silicon.eps}
-    \caption{4x RadFET silicon structure by Tyndall. Source: \cite{Tyndall_Radfet}}
-    \label{Tyndall_radfet_silicon}
-\end{figure}
-
-
-Available products on market:
-
-\subsection{REM Oxford}
-    REM Oxford \cite{RADFET_COM_URL}. This company produces RadFET type RFT300-CC10G1, its datasheet can be found on \cite{RFT300_CC10G1}. Structure is mounted on small carrier, as shown on figure \ref{REM_radfet_drawing}.
+\section{RadFETs}
+    Commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Physical_phenomena_background}.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\paperwidth]{img/remOxfordDrawing.eps}
-        \caption{RadFET made by REM Oxford. Source: \cite{RFT300_CC10G1}}
-        \label{REM_radfet_drawing}
-    \end{figure}
-
-    This sensor consists of two PMOS transistors with modified gate structure.
-
-    Key features:
-    \begin{itemize}
-        \item gate thickness \SI{200}{\nano\meter}, \SI{250}{\nano\meter} or \SI{300}{\nano\meter},
-        \item sensitivity $\SI{1.5}{\milli\volt/\centi\gray} = \SI{1.5}{\milli\volt/\rad}$. Sensitivity chart is shown on figure \ref{REM_radfet_sensitivity}. At required sensitivity (\SI{1}{kRad}) threshold voltage shifts by $>\SI{100}{\milli\volt}$, depending on configuration,
-        \item fading of shift is shown on figure \ref{REM_radfet_fading} - it is negligible on required mission duration ($<~\SI{3}{\percent}$),
-        \item manufacturer suggests readout current in range $10-\SI{500}{\micro\ampere}$,
-        \item sensor includes temperature readout from on-die diode
-    \end{itemize}
-
-    Price for one RadFET sensor begins from 800~\$.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\paperwidth]{img/remSensitivity.eps}
-        \caption{REM Oxford RadFET sensitivity. Source: \cite{RFT300_CC10G1}}
-        \label{REM_radfet_sensitivity}
-    \end{figure}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\paperwidth]{img/remOxfordFading.eps}
-        \caption{REM Oxford RadFET fading. Source: \cite{RFT300_CC10G1}}
-        \label{REM_radfet_fading}
+        \includegraphics[width=0.5\paperwidth]{img/radfet-silicon.eps}
+        \caption{4x RadFET silicon structure by Tyndall. Source: \cite{Tyndall_Radfet}}
+        \label{Tyndall_radfet_silicon}
     \end{figure}
 
 
-\subsection{Tyndall}
-    Tyndall Works manufactures RadFET components in different packaging options \cite{TYNDALL_URL}. They provide calibration data for each type of sensor, as their response is very non-linear. Graph showing sensitivity of TY1002 is shown on figure \ref{Tyndall_TY1002_sensitivity}. Tyndall provide 4 different options, their comparison is done in table \ref{Tyndall_comparison}. Tyndall recommends grounding RadFET terminals during irradiation.
+    Available products on market:
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\paperwidth]{img/Tyndall_TY1002_sensitivity.png}
-        \caption{Tyndall TY1002 sensitivity. Source: \cite{TYNDALL_URL}}
-        \label{Tyndall_TY1002_sensitivity}
-    \end{figure}
+    \subsection{REM Oxford}
+        REM Oxford \cite{RADFET_COM_URL}. This company produces RadFET type RFT300-CC10G1, its datasheet can be found on \cite{RFT300_CC10G1}. Structure is mounted on small carrier, as shown on figure \ref{REM_radfet_drawing}.
 
-    \begin{table}[H]
-    \begin{tabular}{| L{3.5cm} | C{2.5cm} | C{2.5cm} | C{2.5cm} | C{2.5cm} |}
-        \hline
-        Type: & TY1001 & TY1002 & TY1003 & TY1004 \\ \hline
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\paperwidth]{img/remOxfordDrawing.eps}
+            \caption{RadFET made by REM Oxford. Source: \cite{RFT300_CC10G1}}
+            \label{REM_radfet_drawing}
+        \end{figure}
 
-        Image: &
-        \includegraphics[width=0.12\paperwidth]{img/TY1001.png} & 
-        \includegraphics[width=0.12\paperwidth]{img/TY1002.png} & 
-        \includegraphics[width=0.12\paperwidth]{img/TY1003.png} & 
-        \includegraphics[width=0.12\paperwidth]{img/TY1004.png} \\ \hline
+        This sensor consists of two PMOS transistors with modified gate structure.
 
-        Package: & 14-pin ceramic DILpin ceramic DIpin ceramic DI & SOT-23 & SOT23-6 & 8-pin ceramic DIL \\ \hline
+        Key features:
+        \begin{itemize}
+            \item gate thickness \SI{200}{\nano\meter}, \SI{250}{\nano\meter} or \SI{300}{\nano\meter},
+            \item sensitivity $\SI{1.5}{\milli\volt/\centi\gray} = \SI{1.5}{\milli\volt/\rad}$. Sensitivity chart is shown on figure \ref{REM_radfet_sensitivity}. At required sensitivity (\SI{1}{kRad}) threshold voltage shifts by $>\SI{100}{\milli\volt}$, depending on configuration,
+            \item fading of shift is shown on figure \ref{REM_radfet_fading} - it is negligible on required mission duration ($<~\SI{3}{\percent}$),
+            \item manufacturer suggests readout current in range $10-\SI{500}{\micro\ampere}$,
+            \item sensor includes temperature readout from on-die diode
+        \end{itemize}
 
-        \# of transistors: & 4 & 1 & 2 & 2 \\  \hline
-        W/L : & 300/50 \& 690/15 & \multicolumn{3}{c|}{300/50}  \\  \hline
-        Oxide thickness: & - & - & \multicolumn{2}{c|}{\SI{400}{\nano\meter}} \\  \hline
+        Price for one RadFET sensor begins from 800~\$.
 
-        Maximum dose: & \multicolumn{4}{c|}{\SI{100}{\kilo\rad}} \\  \hline
-        Minimal detectable dose: & \multicolumn{4}{c|}{\SI{1}{\rad}} \\  \hline 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/remSensitivity.eps}
+            \caption{REM Oxford RadFET sensitivity. Source: \cite{RFT300_CC10G1}}
+            \label{REM_radfet_sensitivity}
+        \end{figure}
 
-        Recommended readout current: & \multicolumn{2}{c|}{\SI{12.5}{\micro\ampere}} & \multicolumn{2}{c|}{\SI{10}{\micro\ampere}} \\ \hline
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/remOxfordFading.eps}
+            \caption{REM Oxford RadFET fading. Source: \cite{RFT300_CC10G1}}
+            \label{REM_radfet_fading}
+        \end{figure}
 
-        Temperature readout: & diode & none & diode & diode \\ \hline
-    \end{tabular}
-    \caption{Tyndall RadFET comparison}
-    \label{Tyndall_comparison}
-    \end{table}
+
+    \subsection{Tyndall}
+        Tyndall Works manufactures RadFET components in different packaging options \cite{TYNDALL_URL}. They provide calibration data for each type of sensor, as their response is very non-linear. Graph showing sensitivity of TY1002 is shown on figure \ref{Tyndall_TY1002_sensitivity}. Tyndall provide 4 different options, their comparison is done in table \ref{Tyndall_comparison}. Tyndall recommends grounding RadFET terminals during irradiation.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/Tyndall_TY1002_sensitivity.png}
+            \caption{Tyndall TY1002 sensitivity. Source: \cite{TYNDALL_URL}}
+            \label{Tyndall_TY1002_sensitivity}
+        \end{figure}
+
+        \begin{table}[H]
+        \begin{tabular}{| L{3.5cm} | C{2.5cm} | C{2.5cm} | C{2.5cm} | C{2.5cm} |}
+            \hline
+            Type: & TY1001 & TY1002 & TY1003 & TY1004 \\ \hline
+
+            Image: &
+            \includegraphics[width=0.12\paperwidth]{img/TY1001.png} &
+            \includegraphics[width=0.12\paperwidth]{img/TY1002.png} &
+            \includegraphics[width=0.12\paperwidth]{img/TY1003.png} &
+            \includegraphics[width=0.12\paperwidth]{img/TY1004.png} \\ \hline
+
+            Package: & 14-pin ceramic DILpin ceramic DIpin ceramic DI & SOT-23 & SOT23-6 & 8-pin ceramic DIL \\ \hline
+
+            \# of transistors: & 4 & 1 & 2 & 2 \\  \hline
+            W/L : & 300/50 \& 690/15 & \multicolumn{3}{c|}{300/50}  \\  \hline
+            Oxide thickness: & - & - & \multicolumn{2}{c|}{\SI{400}{\nano\meter}} \\  \hline
+
+            Maximum dose: & \multicolumn{4}{c|}{\SI{100}{\kilo\rad}} \\  \hline
+            Minimal detectable dose: & \multicolumn{4}{c|}{\SI{1}{\rad}} \\  \hline
+
+            Recommended readout current: & \multicolumn{2}{c|}{\SI{12.5}{\micro\ampere}} & \multicolumn{2}{c|}{\SI{10}{\micro\ampere}} \\ \hline
+
+            Temperature readout: & diode & none & diode & diode \\ \hline
+        \end{tabular}
+        \caption{Tyndall RadFET comparison}
+        \label{Tyndall_comparison}
+        \end{table}
 
 
 \section{MOSFET as RadFET}
+    COTS transistors parameters also depends on total dose - but in less predictable way. But this solution is much cheaper, and after self-made calibration can be considered as flight solution. According to papers, many transistors were already measured by different scientific teams. For this thesis couple of them were selected for comparison.
+
+    P-MOSFET can have different characteristics (lower slope, higher drift and fading) than commercial RadFETs, but considering cost and space it is unfeasible for implementing RadFET-based sensor on PW-Sat2.
+
+
+
 \section{Chosen MOSFET: CD4007}
+
 \section{Conceptual Block diagram}
+
+    Conceptual block diagram is presented on figure TODO. It consists of mosfet, current source, analog to digital converter and die temperature measurement. Description is presented below.
+
+    \subsection{Thresold voltage}
+        According to theory, to measure TID accumulated threshold voltage in transistor have to be measured. The simplest solution is to use current source connected to MOSFET in diode connection. Measured voltage is not true threshold voltage which literature refers to, but this is enough for TID measurements, because absolute value of $V_{th}$ does not matter - only it's shift. From now, this thesis will refer to $V_{th}$ defined as $V_{GS}$ at a given drain current.
+
+        During irradiation current source should be disabled - as well as the whole sensor. This will lead to no power consumption during irradiation, enabling device only for readout.
+
+    \subsection{Die temperature}
+        Because measured threshold voltage strongly depends on die temperature this effect have to be compensated. According to papers, predicted dependence $V_{th}(TID)$ is about $TODO$ and temperature shift is \SI{-2}{\milli\volt/\kelvin}. Therefore die temperature have to be measured very accurately, and individual MOSFET will have to be calibrated prior to launch.
+
+        Couple of options were considered during this thesis:
+        \begin{itemize}
+            \item discrete PT-1000 sensor glued to MOSFET - this was rejected because of large heat resistance,
+            \item ESD diode measurement in CD4007 - readout circuit for this solution is rather complicated, therefore it was rejected too,
+            \item body diode in N-MOSFET in CD4007 package - this is chosen solution
+        \end{itemize}
+
+        Temperature dependence of body diode in N-MOSFET can be calibrated on ground. N-MOSFETs are placed very close to P-MOSFETs in CD4007, therefore temperature measurement will be very accurate.
+
+        Is is planned to use the same current source for both threshold voltage and temperature measurements - and to multiplex it. This will lead to very simple readout circuit, having in mind space restrictions.
+
 \section{Characteristic curves (MG)}
 \section{Operating point selection}
