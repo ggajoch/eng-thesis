@@ -7,34 +7,48 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
 \section{Background - calibration stand}
     During development of the system previous model was developed to test and calibrate MOSFET transistors to use as a radiation dosimeters. Calibration stand was developed by M. Gumiela in his engineering thesis \cite{MGThesis}. The basic goal was to develop measurement device which can be used to determine final operational point, calibrate radiation response and to perform temperature calibration of flight sensor.
-    
+
     TODO: opis stanowiska
 
+
 \section{Block diagram}
+    Block diagram of proposed system based on CD4007 is presented on figure TODO.
+
+    It was designed having in mind miniaturization of sensor - to fit on PW-Sat2 PLD board. Because CD4007 has 3 complementary MOS pairs it was proposed to use all of them - to improve fidelity of the measurements. One n-MOS is used as a temperature sensor.
+
+    Current source and ADC are multiplexed between 4 channels - 3x p-MOS and 1x n-MOS. This reduces board space and sensor accuracy (1 current source/ADC can be more sophisticated).
 
 \section{Low-level requirements}
+    Using design requirements \ref{Design_requirements} and characteristic curves from \ref{Characteristic_curves} low-level specifications were assumed:
+    \begin{itemize}
+        \item operating temperature range: $0 \div 60 \si{\degreeCelsius}$,
+        \item current source value: $\SI{100}{\micro\ampere} \pm \SI{10}{\nano\ampere}$,
+        \item ADC resolution: $TODO$,
+        \item ADC accuracy: $TODO$,
+        \item Noise floor on ADC: $TODO$
+    \end{itemize}
 
 \section{Analog front-end}
-\subsection{Current source}
-\subsection{ADC}
-\subsection{Multiplexer}
-\subsection{LDO}
-\subsection{Shielding}
+    \subsection{Current source}
+    \subsection{ADC}
+    \subsection{Multiplexer}
+    \subsection{LDO}
+    \subsection{Shielding}
 
 \section{Digital}
-\subsection{Microcontroller}
-\subsection{OBC interface}
+    \subsection{Microcontroller}
+    \subsection{OBC interface}
 
 \section{Software design}
-\subsection{AVR-HAL}
-\subsection{I2C-slave module}
-\subsection{Measurement algorithm}
+    \subsection{AVR-HAL}
+    \subsection{I2C-slave module}
+    \subsection{Measurement algorithm}
 
 \section{PCB}
-\subsection{PCB stack}
-\subsection{PCB layout}
-\subsection{3D model}
-\subsection{Manufacturing}
+    \subsection{PCB stack}
+    \subsection{PCB layout}
+    \subsection{3D model}
+    \subsection{Manufacturing}
 
 \section{Assembly}
 
