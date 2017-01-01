@@ -5,6 +5,10 @@
 % Author:  Marcin Szpyrka     (mszpyrka@agh.edu.pl)
 %          Grzegorz J. Nalepa (gjn@agh.edu.pl)
 %          AGH University of Science and Technology, Krak�w, POLAND
+%
+%				Modified by Jakub Nawała on 25 Dec 2016 in order to comply with the newest recommendations 
+%				published by the Faculty of Computer Sciense, Electronics and Telecommunications.
+%				
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,6 +30,8 @@
 \RequirePackage{url}
 \RequirePackage{titlesec}
 \RequirePackage{tocloft}
+\RequirePackage[utf8]{inputenc}		% Added by JN on 25 Dec 2016
+\RequirePackage{polski}						% Added by JN on 25 Dec 2016
 \RequirePackage{hyperref}
 
 \geometry{lmargin=30mm, rmargin=20mm, tmargin=25mm, bmargin=25mm, foot=10mm, head=10mm}
@@ -45,6 +51,7 @@
 \def\acknowledgements#1   {\gdef\@acknowledgements{#1}}
 \def\departmentPL#1   {\gdef\@departmentPL{#1}}
 \def\departmentEN#1   {\gdef\@departmentEN{#1}}
+\def\course#1					{\gdef\@course{#1}}	
 
 % \thesisheaders
 % 
@@ -62,41 +69,48 @@
 
 \begin{center}
 
-{\sffamily{\Large{\bfseries{\textsc Akademia G\'{o}rniczo-Hutnicza\\[2mm]
-im. Stanis\l{}awa Staszica w Krakowie}}}
-
-\vspace*{1mm}\rule{\textwidth}{1mm}\vspace*{1mm}
-
-{\large \@facultyPL}}\\\vspace*{2mm}
-{\large\textsc{\@departmentPL}}\vspace*{1cm}
-
-\ifpdflatex\includegraphics[scale=0.3]{agh}
-\else\includegraphics[scale=0.7]{agh}
+% AGH logo
+\ifpdflatex\includegraphics[width=\textwidth]{agh_logo_pl}
+\else\includegraphics[width=\textwidth]{agh_logo_pl}
 \fi
 \vspace*{1cm}
 
-{\huge\scshape \@thesistypePL}\\\vspace*{2cm}
+% Faculty name
+{\Large{\bfseries\scshape \@facultyPL}}\\
 
-{\LARGE\scshape \@author}\\\vspace*{2cm}
+% Department name
+{\large\textsc{\@departmentPL}}\vspace*{2cm}
 
-{\LARGE{\bfseries\scshape \@titlePL}}\\\vspace*{3cm}
+% Thesis type
+{\huge\scshape \@thesistypePL}\\\vspace*{1cm}
 
-\begin{flushright}
-\begin{minipage}[!h]{6cm} 
-\large{\scshape Promotor:}\\ \@supervisorPL
-\end{minipage}
-\end{flushright}
+% Thesis title
+{\LARGE{\bfseries\scshape \@titlePL}}\\\vspace*{0.5cm}
+{\Large{\bfseries\scshape \@titleEN}}\\\vspace*{2cm}
+
+% Author's name, study course and promotor
+\begin{flushleft}
+\begin{tabbing}
+\large{\scshape Autor:} \hspace{4cm} \= \@author \\
+\large{\scshape Kierunek studiów:} \> \@course \\
+\large{\scshape Opiekun pracy:} \> \@supervisorPL \\
+\end{tabbing}
+\end{flushleft}
 
 \vfill{\Large Krak\'{o}w \@date}
 
 \end{center}
 
-\clearpage \titlepage \vspace*{15cm} \vfill
+% Statement concerning legal issues of writing the thesis
+\clearpage \titlepage
 
 \begin{flushright}
 \begin{minipage}[!h]{12cm}
-\mbox{\large{\scshape \textbf{O\'SWIADCZENIE AUTORA PRACY}}}\\[3mm] 
-{\scshape O\'swiadczam, \'swiadomy odpowiedzialno\'sci karnej za po\'swiadczenie nieprawdy, \.ze niniejsz\k{a} prac\k{e} dyplomow\k{a} wykona\l{}em osobi\'scie i samodzielnie, i nie korzysta\l{}em ze \'zr\'ode\l{} innych ni\.z wymienione w pracy.}\\
+\mbox{\large{\scshape \textbf{OŚWIADCZENIE AUTORA PRACY}}}\\[3mm] 
+{\scshape Uprzedzony o odpowiedzialności karnej na podstawie art. 115 ust. 1 i 2 ustawy z dnia 
+4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (t.j. Dz.U. z 2006 r. Nr 90, poz. 631 z późn. zm.): „ Kto przywłaszcza sobie autorstwo albo wprowadza w błąd co do autorstwa całości lub części cudzego utworu albo artystycznego wykonania, podlega grzywnie, karze ograniczenia wolności albo pozbawienia wolności do lat 3. Tej samej karze podlega, kto rozpowszechnia bez podania nazwiska lub pseudonimu twórcy cudzy utwór 
+w wersji oryginalnej albo w postaci opracowania, artystyczne wykonanie albo publicznie zniekształca taki utwór, artystyczne wykonanie, fonogram, wideogram lub nadanie.”, a także uprzedzony o odpowiedzialności dyscyplinarnej na podstawie art. 211 ust. 1 ustawy z dnia 
+27 lipca 2005 r. Prawo o szkolnictwie wyższym (t.j. Dz. U. z 2012 r. poz. 572, z późn. zm.) „Za naruszenie przepisów obowiązujących w uczelni oraz za czyny uchybiające godności studenta student ponosi odpowiedzialność dyscyplinarną przed komisją dyscyplinarną albo przed sądem koleżeńskim samorządu studenckiego, zwanym dalej „sądem koleżeńskim”, oświadczam, że niniejszą pracę dyplomową wykonałem(-am) osobiście, samodzielnie i że nie korzystałem(-am) ze źródeł innych niż wymienione w pracy.}\\	% Added by JN on 25 Dec 2016
 \end{minipage}
 
 \vspace{2cm}
@@ -105,39 +119,6 @@ im. Stanis\l{}awa Staszica w Krakowie}}}
 \makebox[6cm][c]{\small PODPIS}
 
 \end{flushright}
-
-\clearpage \titlepage
-
-\begin{center}
-
-{\sffamily{\Large{\bfseries{\textsc AGH\\[2mm]
-University of Science and Technology in Krakow}}}
-
-\vspace*{1mm}\rule{\textwidth}{1mm}\vspace*{1mm}
-
-{\large \@facultyEN}}\\\vspace*{2mm}
-{\large\textsc{\@departmentEN}}\vspace*{1cm}
-
-\ifpdflatex\includegraphics[scale=0.3]{agh}
-\else\includegraphics[scale=0.7]{agh}
-\fi
-\vspace*{1cm}
-
-{\huge\scshape \@thesistypeEN}\\\vspace*{2cm}
-
-{\LARGE\scshape \@author}\\\vspace*{2cm}
-
-{\LARGE{\bfseries\scshape \@titleEN}}\\\vspace*{3cm}
-
-\begin{flushright}
-\begin{minipage}[!h]{6cm} 
-\large{\scshape Supervisor:}\\ \@supervisorEN
-\end{minipage}
-\end{flushright}
-
-\vfill{\Large Krakow \@date}
-
-\end{center}
 
 \clearpage \titlepage
 
@@ -150,7 +131,7 @@ University of Science and Technology in Krakow}}}
 
 \clearpage
 
-\setcounter{page}{5}
+\setcounter{page}{4}
 
 }
 
@@ -173,7 +154,7 @@ University of Science and Technology in Krakow}}}
 \renewcommand{\footrulewidth}{0.5pt}
 \fancyhf{}
 \fancyhead{}
-\fancyhead[L]{\slshape{\small \leftmark}}
+\fancyhead[L]{\slshape{\small \rightmark}}
 \fancyhead[R]{\bfseries \thepage}
 
 \thesisheaders
@@ -187,7 +168,6 @@ University of Science and Technology in Krakow}}}
 %---------------------------------------------------------------------------
 % Ustawienia parametrów dla tytułów rozdziałów, podrozdziałów, itd.
 %---------------------------------------------------------------------------
-
 
 \titleformat{\chapter}[block]
 {\bfseries\LARGE}{\filright \LARGE\thechapter. }{0ex}{}

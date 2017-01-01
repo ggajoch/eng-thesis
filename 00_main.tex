@@ -1,25 +1,28 @@
-% \documentclass[pdflatex,11pt]{aghdpl}
-% \documentclass{aghdpl}               % przy kompilacji programem latex
-\documentclass[pdflatex,en]{aghdpl}  % praca w języku angielskim
-\usepackage[british,UKenglish,USenglish,english]{babel}
+\documentclass[pdflatex,en,11pt]{aghdpl}
+\usepackage[english]{babel}
+\usepackage{polski}
 \usepackage[utf8]{inputenc}
 
-\usepackage[backend=bibtex,
+\usepackage[% backend=bibtex,
 %style=numeric,
-bibencoding=ascii,
+% bibencoding=ascii,
 style=alphabetic
 %style=reading
 ]{biblatex}
 
 \addbibresource{bibliografia.bib}
 
+\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{default}{last-first}
+
 % dodatkowe pakiety
 \usepackage{enumerate}
 \usepackage{listings}
 \usepackage{float}
 \usepackage{siunitx}
+\usepackage[acronym,nomain,toc]{glossaries}
 
-\lstloadlanguages{TeX}
+% \lstloadlanguages{TeX}
 
 \lstset{
   literate={ą}{{\k{a}}}1
@@ -59,14 +62,16 @@ style=alphabetic
 \author{Grzegorz Gajoch}
 \shortauthor{G. Gajoch}
 
+\course{Electronics and Telecommunications}
+
 \titlePL{Budowa sensora pochłoniętej dawki promieniowania jonizującego (TID) dla nano-satelitów typu CubeSat}
 \titleEN{Total Ionizing Dose (TID) sensor for CubeSat~nano-satellites}
 
 \shorttitlePL{Budowa sensora pochłoniętej dawki promieniowania jonizującego (TID) dla nano-satelitów typu CubeSat} % skrócona wersja tytułu jeśli jest bardzo długi
 \shorttitleEN{Total Ionizing Dose (TID) sensor for CubeSat~nano-satellites}
 
-\thesistypePL{Praca inżynierksa}
-\thesistypeEN{Bachelor of Science Thesis}
+\thesistypePL{Praca dyplomowa inżynierska}
+\thesistypeEN{Engineering Thesis}
 
 \supervisorPL{dr inż. Cezary Worek}
 \supervisorEN{Cezary Worek Ph.D}
@@ -81,6 +86,8 @@ style=alphabetic
 
 \acknowledgements{}
 
+\setlength{\cftsecnumwidth}{10mm}
+
 
 %---------------------------------------------------------------------------
 
@@ -91,14 +98,13 @@ style=alphabetic
 \tableofcontents
 \clearpage
 
-
-\include{01_introduction}
-% Introduction
-
-\include{02_conventions}
+\include{01_conventions}
 % Terms, definitions and abbreviated terms
 % - Abbreviated terms
 % - Conventions
+
+\include{02_introduction}
+% Introduction
 
 \include{03_principles}
 % Principles
