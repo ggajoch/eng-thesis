@@ -1,5 +1,27 @@
 \chapter{Principles}
 
+\section{Radiation on Low Earth Orbit}
+    Radiation on LEO comes from trapped particle belts, solar particle events and cosmic rays \cite{ESA_radiation}.
+    
+    \bigskip \textbf{Trapped particles}
+    
+    Electrons and protons are being trapped in Earth's magnetic field, following magnetic fields lines. They are serious concern on Low Earth Orbit along polar regions and inside South Atlantic Anomaly. On figure \ref{Polar_SAA} radiation pattern is shown.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\paperwidth]{img/03/polar_SAA.png}
+        \caption{Radiation pattern on LEO. Source: \cite{ESA_radiation}}
+        \label{Polar_SAA}
+    \end{figure}
+
+    \bigskip \textbf{Solar flares}
+    
+    During solar flares large fluxes of protons are produced, and some of them are reaching Earth. Magnetic field provides shielding from them, but they are being trapped in it, easily reaching polar regions. Solar flares are unpredictable, being a threat to spacecraft operations.
+    
+    \bigskip \textbf{Cosmic rays}
+
+    Cosmic rays originates from outside the solar system. They are very high energy particles, which make shielding very difficult. Flux of this kind of particles is low, therefore they mostly contribute in single-event processes.
+
 \section{Radiation effects on electronic devices}
     There are two basic effects of radiation on silicon components:
     \begin{itemize}
@@ -48,19 +70,85 @@
     \subsection{Total Ionizing Dose}
         TID is defined as total energy absorbed during exposure. This can be caused by any kind of radiation, behaving differently in every semiconductor device. In general, TID successively degrades electronic device parameters in time, causing them to stop functioning when critical irradiation was reached. Effect in p-MOSFET transistor is described in section \ref{Radiation_effects_on_MOS_transistors}.
 
-        Every qualified device for spacecraft system will have tested value of TID value, for example by MIL-STD-883G, Test Method 1019.7 \cite{MIL_STD_883}. For example, ADC128S102QML-SP have a guaranteed value of 100 kRad.
-
 \section{Need for TID radiation dosimetry}
-    During spacecraft mission accumulated radiation level should be monitored to not excess guaranteed values for components. For example, near end of its lifetime, spacecraft can be commanded to deorbit into atmosphere or move to parking orbit - before fail can occur, causing losing control of spacecraft.
-    Absorbed dose simulation and estimation is possible, but results are averaged by long period of time. Constantly flying by South Atlantic Anomaly or Van Allen belts can cause radiation estimation to be inaccurate, so near all spacecrafts implement sensor which constantly monitor radiation level absorbed by its electronics.
+    During spacecraft mission accumulated radiation level should be monitored to not excess guaranteed values for components. For example, near end of its lifetime, spacecraft can be commanded to deorbit into atmosphere or move to parking orbit - before fail can occur, causing losing control of spacecraft, like for example in Telstar-1.
+    Absorbed dose simulation is good method of its estimation. But, because radiation flux changes errors can accumulate during satellite lifetime. Flying by South Atlantic Anomaly or Van Allen belts can cause radiation estimation to be inaccurate, so near all spacecrafts implement sensor which constantly monitor radiation level absorbed by its electronics.
 
 \section{On-line TID radiation dosimetry}
+    Couple of possible dosimetry methods were considered:
+    \begin{itemize}
+        \item PIN diode,
+        \item memory dosimetry,
+        \item FGMOSFET,
+        \item RadFET
+    \end{itemize}
+    Detailed description of those dosimetry methods can be found in \cite{RadFET_PhD}.
+
+    For this sensor, it was decided to use RadFET as a sensing element. This kind of sensors have already flown on many satellites, are used in medical and industrial dosimetry.
+	
+	The most important advantages of RadFET dosimetry:
+    \begin{itemize}
+        \item sensor can be completely shut down during irradiation (no power consumption and reduced reliability issues),
+        \item integrated measurement (especially important for small dose rates),
+        \item on-line, non-destructive readout,
+        \item small size,
+        \item simple measuring setup
+    \end{itemize}
 
 \section{RadFET Theory}
-
+    Basic idea of RadFET of using metal-oxide semiconductor field-effect transistor (MOSFET) is to measure its threshold voltage shift, $\Delta V_{TH}$ and covert it into absorbed dose. 
+    
     \subsection{Radiation effects on MOS transistors}
     \label{Radiation_effects_on_MOS_transistors}
+        Irradiation of MOSFET transistor results in threshold voltage shift. It is caused by trapping of holes (generated during particle strike) and creation of interface states on gate/bulk boundary. Those effects are shown on figure \ref{MOS_irradiation} \cite{pMOS_dosimeters_radfets}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.4\paperwidth]{img/03/MOS_irradiation_schematic.eps}
+            \caption{pMOS irradiation schematic. Source: \cite{pMOS_dosimeters_radfets}}
+            \label{MOS_irradiation}
+        \end{figure}
+
+        Threshold voltage will shift according to following equation (\cite{pMOS_dosimeters_radfets}):
+        
+        $$\Delta V_{TH} = A \cdot D^n$$
+        
+        Where:
+        
+        \begin{tabular}{lcl}
+            $\Delta V_{TH}$ & - & threshold voltage shift \\
+            $A$ & - & constant \\
+            $D$ & - & absorbed dose \\
+            $n$ & - & degree of linearity (ideally $n = 1$) \\
+        \end{tabular}
+        \bigskip
+        
+
 
     \subsection{Threshold voltage measurement}
+        Simplest method to measure threshold voltage shift is to use diode configuration of MOS transistor, current source and measure voltage across, as shown in figure \ref{MOS_measurement_setup}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.3\paperwidth]{img/03/Vth-measurement-setup.eps}
+            \caption{Measurement setup. Source: \cite{pMOS_dosimeters_radfets}}
+            \label{MOS_measurement_setup}
+        \end{figure}
 
     \subsection{Temperature dependencies}
+        Threshold voltage of transistor strongly depends on die temperature. \cite{managing_temperature_effects_in_nanoscale_adaptive_systems}.
+        
+        This dependency is usually described to be linear:
+        
+        $$\Delta V_{TH} = A \cdot \Delta T$$
+        
+        Where:
+        
+        \begin{tabular}{lcl}
+            $\Delta V_{TH}$ & - & threshold voltage shift \\
+            $A$ & - & constant \\
+            $\Delta T$ & - & temperature change \\
+        \end{tabular}
+        \bigskip
+        
+        Constant coefficient depends on particular MOSFET, technology and (very weak effect) irradiation. Usually this coefficient is in range $-0.1$ to \SI{-1}{\milli\volt/\kelvin}.
