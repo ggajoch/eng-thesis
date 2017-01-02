@@ -1,161 +1,165 @@
 \chapter{Sensor design}
-This chapter will cover sensor element selection, according to requirements presented previously.
-
-Most space missions have on-board TID sensor - based od RadFET. RadFET is special type of modified p-MOSFET transistor, with well known dose dependence. In research work many COTS elements were checked for their characteristics, and they are now considered as a RadFET equivalent.
+This chapter will cover sensor basics, sensing element selection and theory of operation. Design will be presented on system-level view, for more detailed description of electronics skip to chapter \ref{Engineering_model_chapter}.
 
 \section{Review of commercially available RadFETs}
-    Commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Physical_phenomena_background}.
+    Commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Radiation_effects_on_MOS_transistors}. In table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\paperwidth]{img/radfet-silicon.eps}
+        \includegraphics[width=0.3\paperwidth]{img/radfet-silicon.eps}
         \caption{4x RadFET silicon structure by Tyndall. Source: \cite{Tyndall_Radfet}}
         \label{Tyndall_radfet_silicon}
     \end{figure}
 
+    \begin{table}[H]
+    \begin{tabular}{| L{3.5cm} | C{3.5cm} | C{3.5cm} | C{3.5cm} |}
+        \hline
+        Type: & REM RFT300 & Tyndall TY1003 & Tyndall TY1004 \\ \hline
 
-    Available products on market:
+        Image: &
+        \includegraphics[width=0.15\paperwidth]{img/05/rem.eps} &
+        \includegraphics[width=0.15\paperwidth]{img/TY1003.png} &
+        \includegraphics[width=0.15\paperwidth]{img/TY1004.png} \\ \hline
 
-    \subsection{REM Oxford}
-        REM Oxford \cite{RADFET_COM_URL}. This company produces RadFET type RFT300-CC10G1, its datasheet can be found on \cite{RFT300_CC10G1}. Structure is mounted on small carrier, as shown on figure \ref{REM_radfet_drawing}.
+        Package: & custom & SOT23-6 & 8-pin ceramic DIL \\ \hline
 
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.5\paperwidth]{img/remOxfordDrawing.eps}
-            \caption{RadFET made by REM Oxford. Source: \cite{RFT300_CC10G1}}
-            \label{REM_radfet_drawing}
-        \end{figure}
+        \# of transistors: & 2 & 2 & 2 \\  \hline
 
-        This sensor consists of two PMOS transistors with modified gate structure.
+        Recommended readout current: & $10$ - \SI{500}{\micro\ampere} & \multicolumn{2}{c|}{\SI{10}{\micro\ampere}} \\ \hline
 
-        Key features:
-        \begin{itemize}
-            \item gate thickness \SI{200}{\nano\meter}, \SI{250}{\nano\meter} or \SI{300}{\nano\meter},
-            \item sensitivity $\SI{1.5}{\milli\volt/\centi\gray} = \SI{1.5}{\milli\volt/\rad}$. Sensitivity chart is shown on figure \ref{REM_radfet_sensitivity}. At required sensitivity (\SI{1}{kRad}) threshold voltage shifts by $>\SI{100}{\milli\volt}$, depending on configuration,
-            \item fading of shift is shown on figure \ref{REM_radfet_fading} - it is negligible on required mission duration ($<~\SI{3}{\percent}$),
-            \item manufacturer suggests readout current in range $10-\SI{500}{\micro\ampere}$,
-            \item sensor includes temperature readout from on-die diode
-        \end{itemize}
-
-        Price for one RadFET sensor begins from 800~\$.
-
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.6\paperwidth]{img/remSensitivity.eps}
-            \caption{REM Oxford RadFET sensitivity. Source: \cite{RFT300_CC10G1}}
-            \label{REM_radfet_sensitivity}
-        \end{figure}
-
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.6\paperwidth]{img/remOxfordFading.eps}
-            \caption{REM Oxford RadFET fading. Source: \cite{RFT300_CC10G1}}
-            \label{REM_radfet_fading}
-        \end{figure}
+        TID dependency: & $n = 1$, $A~=~0.117$~\si{\milli\volt/\rad} & $n = 0.46$, $A~=~29.5$~\si{\milli\volt/\rad} & $n = 0.41$, $A~=~65.6$~\si{\milli\volt/\rad} \\ \hline
+        Temperature readout: & diode & diode & diode \\ \hline
+    \end{tabular}
+    \caption{Commercial RadFET comparison}
+    \label{commercial_radfet_comparison}
+    \end{table}
 
 
-    \subsection{Tyndall}
-        Tyndall Works manufactures RadFET components in different packaging options \cite{TYNDALL_URL}. They provide calibration data for each type of sensor, as their response is very non-linear. Graph showing sensitivity of TY1002 is shown on figure \ref{Tyndall_TY1002_sensitivity}. Tyndall provide 4 different options, their comparison is done in table \ref{Tyndall_comparison}. Tyndall recommends grounding RadFET terminals during irradiation.
+\section{COTS MOSFET as RadFET}
+    RadFETs are designed to act as a radiation sensor. However, parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but they require proper calibration and tests to be considered as a flight solution. 
+    
+    Many articles and papers prove that COTS MOSFETs can be reliably used as a TID sensor. Number of available transistors were tested, their basic characteristics are compared in table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
+    
+    \begin{table}[H]
+    \begin{tabular}{| L{2cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} |}
+        \hline
+        Type: & 3N163 & ZVP3306 & ZVP4525 & BS250F & CD4007 \\ \hline
+        Reference: & \cite{3N163_article} & \cite{COTSMosfetsGarcia} & \cite{COTSMosfetsGarcia} & \cite{COTSMosfetsGarcia} & \cite{COTSMosfetsGarcia} \\ \hline
+        
+        Package: & TO-72 & TO-92 & SOT-223 & SOT-23 & TSSOP-14 \\ \hline
+        
+        $I_{ZTC}$ [\si{\micro\ampere}]: & 225 & - & - & - & 145 \\ \hline
 
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.6\paperwidth]{img/Tyndall_TY1002_sensitivity.png}
-            \caption{Tyndall TY1002 sensitivity. Source: \cite{TYNDALL_URL}}
-            \label{Tyndall_TY1002_sensitivity}
-        \end{figure}
+        Sensitivity [\si{\milli\volt/\gray}]: & $24.3\pm 1.8$ & $3.7\pm 0.3$ & $3.4\pm 0.4$ & $3.1\pm 0.4$ & $4.6\pm 0.1$ \\ \hline
+        
+        $V_{TH_0} [\si{\volt}]$: & $2.0 - 3.0$ & $2.0 - 3.0$ & $1.5 - 2.5$ & $2.5 - 3.5$ & $1.9 - 2.5$ \\ \hline
 
-        \begin{table}[H]
-        \begin{tabular}{| L{3.5cm} | C{2.5cm} | C{2.5cm} | C{2.5cm} | C{2.5cm} |}
-            \hline
-            Type: & TY1001 & TY1002 & TY1003 & TY1004 \\ \hline
+        $V_{TH}$ @ \SI{100}{\gray} [\si{\volt}]: & $5.61$ & $3.4$ & $2.88$ & $3.85$ & $2.97$ \\ \hline
+    \end{tabular}
+    \caption{COTS MOSFET comparison}
+    \label{cots_mosfet_comparison}
+    \end{table}
 
-            Image: &
-            \includegraphics[width=0.12\paperwidth]{img/TY1001.png} &
-            \includegraphics[width=0.12\paperwidth]{img/TY1002.png} &
-            \includegraphics[width=0.12\paperwidth]{img/TY1003.png} &
-            \includegraphics[width=0.12\paperwidth]{img/TY1004.png} \\ \hline
-
-            Package: & 14-pin ceramic DILpin ceramic DIpin ceramic DI & SOT-23 & SOT23-6 & 8-pin ceramic DIL \\ \hline
-
-            \# of transistors: & 4 & 1 & 2 & 2 \\  \hline
-            W/L : & 300/50 \& 690/15 & \multicolumn{3}{c|}{300/50}  \\  \hline
-            Oxide thickness: & - & - & \multicolumn{2}{c|}{\SI{400}{\nano\meter}} \\  \hline
-
-            Maximum dose: & \multicolumn{4}{c|}{\SI{100}{\kilo\rad}} \\  \hline
-            Minimal detectable dose: & \multicolumn{4}{c|}{\SI{1}{\rad}} \\  \hline
-
-            Recommended readout current: & \multicolumn{2}{c|}{\SI{12.5}{\micro\ampere}} & \multicolumn{2}{c|}{\SI{10}{\micro\ampere}} \\ \hline
-
-            Temperature readout: & diode & none & diode & diode \\ \hline
-        \end{tabular}
-        \caption{Tyndall RadFET comparison}
-        \label{Tyndall_comparison}
-        \end{table}
-
-
-\section{COTS MOSFET as radiation sensor}
-    COTS transistors parameters also depends on total dose - but in less predictable way. But this solution is much cheaper, and after self-made calibration can be considered as flight solution. According to papers, many transistors were already measured by different scientific teams. For this thesis couple of them were selected for comparison.
-
-    P-MOSFET can have different characteristics (lower slope, higher drift and fading) than commercial RadFETs, but considering cost and space it is unfeasible for implementing RadFET-based sensor on PW-Sat2.
-
-
+    3N163 have the largest sensitivity - but having in mind \SI{5}{\volt} supply for sensor it was discarded. Second best is CD4007 - and it was selected for testing. Its parameters are suitable for this use, they were collected in table \ref{CD4007_parameters}.
+    
+    Another advantages of CD4007 are:
+    \begin{itemize}
+        \item 3 P-MOS in one package - averaging/redundancy,
+        \item additional diodes and transistors in device - possible temperature measurement
+        \item small, vibration and thermal resistant package
+    \end{itemize}
 
 \section{Selected MOSFET - CD4007}
+    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown on figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in table \ref{CD4007_parameters}.
 
-\section{Conceptual Block diagram}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\paperwidth]{img/05/cd4007.eps}
+        \caption{CD4007 internal diagram. Source: \cite{CD4007_schematic_functional}}
+        \label{CD4007_internal_diagram}
+    \end{figure}
 
-    Conceptual block diagram is presented on figure \ref{conceptual_block_diagram}. It consists of mosfet, current source, analog to digital converter, die temperature sensor and interface to OBC.
+    \begin{table}[H]
+    \begin{tabular}{R{7cm} | L{7cm} }
+        Transistor type: & 3x P-MOS and 3x N-MOS \\ \hline
+        Supply voltage: & 3-18~\si{\volt} \\ \hline
+        Threshold voltage: & \SI{1.8}{\volt} @ \SI{100}{\micro\ampere} \\ \hline
+        Temperature range: & \SI{-55}{\degreeCelsius} - \SI{125}{\degreeCelsius} \\ \hline
+        Zero-temperature coefficient current: & \SI{140}{\micro\ampere} \\ \hline
+        Predicted sensitivity: & \SI{4.6}{\milli\volt/\gray}
+    \end{tabular}
+    \caption{CD4007 parameters}
+    \label{CD4007_parameters}
+    \end{table}
+
+\section{Characteristic curves}
+\label{Characteristic_curves}
+
+\section{Threshold voltage measurement}
+    Threshold voltage changes with TID accumulated. Easiest method to measure change of this parameter is to connect MOSFET in diode configuration, forcing constant drain current. Block diagram of this method is shown on figure \ref{Vth_readout_block_diagram}.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.3\paperwidth]{img/conceptual_block_diagram.eps}
         \caption{Threshold voltage readout block diagram}
+        \label{Vth_readout_block_diagram}
     \end{figure}
 
-    \subsection{Threshold voltage}
-        Threshold voltage changes with TID accumulated. Easiest method to measure change of this parameter is to connect MOSFET in diode configuration, forcing constant drain current. Current source value will be selected during calibration - to achieve "zero temperature coefficient" point.
+    In saturation region drain current is described by following equation (body effect is negligible):
 
-        In saturation region drain current is described by following equation (body effect is negligible):
+    $$I_D = A \cdot (V_{GS} - V_{th})^2$$
+    Where:
 
-        $$I_D = A \cdot (V_{GS} - V_{th})^2$$
-        Where:
+    \begin{tabular}{lcl}
+        $I_D$ & - & drain current \\
+        $A = \frac{\mu_n C_{ox}}{2} \frac{W}{L}$ & - & constant for partuicular transistor \\
+        $V_{GS}$ & - & gate-source voltage \\
+        $V_{th}$ & - & threshold voltage \\
+    \end{tabular}
+    \bigskip
 
-        \begin{tabular}{lcl}
-            $I_D$ & - & drain current \\
-            $A = \frac{\mu_n C_{ox}}{2} \frac{W}{L}$ & - & constant for partuicular transistor \\
-            $V_{GS}$ & - & gate-source voltage \\
-            $V_{th}$ & - & threshold voltage \\
-        \end{tabular}
-        \bigskip
+    Because only threshold voltage change is interesting measuring $V_{GS}$ have the same effect:
+    $$I_D = A \cdot (V_{GS_1} - V_{th_1})^2 = A \cdot (V_{GS_2} - V_{th_2})^2$$
+    $$\Delta V_{GS} = \Delta V_{th}$$
 
-        Because only threshold voltage change is interesting measuring $V_{GS}$ have the same effect:
-        $$I_D = A \cdot (V_{GS_1} - V_{th_1})^2 = A \cdot (V_{GS_2} - V_{th_2})^2$$
-        $$\Delta V_{GS} = \Delta V_{th}$$
+    The sensor should be shut down during irradiation - therefore no-bias method was used. It allows to completely cut the power to the sensor, enabling it only for readout.
 
-        During irradiation current source should be disabled - as the whole sensor. This will lead to no power consumption during irradiation, enabling device only for readout.
+\section{Temperature measurement}
+    Because threshold voltage strongly depends on die temperature this effect have to be compensated. Flight MOSFET will be calibrated in thermal chamber prior to launch, obtaining characteristic curves 
 
-    \subsection{Die temperature}
-        Because threshold voltage strongly depends on die temperature this effect have to be compensated. Die temperature have to be measured accurately, individual MOSFET will have to be calibrated prior to launch.
+    Couple of possible temperature measurement techniques were considered during this thesis:
+    \begin{table}[H]
+    \begin{tabular}{R{4.5cm} | C{5cm} | C{5cm} }
+        Method & Pros & Cons \\ \hline
+        
+        PT-1000 sensor glued to MOSFET & accurate reading & large thermal resistance, difficult assembly, low reliability \\ \hline
 
-        Couple of possible temperature measurement techniques were considered during this thesis:
-        \begin{itemize}
-            \item discrete PT-1000 sensor glued to MOSFET - this was rejected because of large heat resistance,
-            \item ESD diode measurement in CD4007 - readout circuit for this solution is rather complicated, therefore it was rejected too,
-            \item body diode in N-MOSFET in CD4007 package - this is chosen solution
-        \end{itemize}
+        ESD diode measurement in CD4007 & no additional sensor & complicated current, multiplexing circuit, unknown characteristics \\ \hline
 
-        The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Thermal conductance is very high - CMOS pair is next to each other. Block diagram of proposed solution is presented on figure \ref{Temperature_measurement_block_diagram}.
+        body diode in N-MOSFET in CD4007  & simple setup, reliable, known characteristics & no possibility of simultaneous readout of threshold and temperature
+    \end{tabular}
+    \caption{CD4007 parameters}
+    \label{CD4007_parameters}
+    \end{table}
 
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.3\paperwidth]{img/n-mos-temperature.eps}
-            \caption{Temperature measurement block diagram}
-            \label{Temperature_measurement_block_diagram}
-        \end{figure}
+    The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Thermal resistance is very low - CMOS pair is on the same silicon die. Block diagram of proposed solution is presented on figure \ref{Temperature_measurement_block_diagram}.
 
-        During calibration, temperature vs measured drop look-up table will be created. It can be used as direct conversion from read voltage to temperature, or can be approximated by function fitting.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\paperwidth]{img/n-mos-temperature.eps}
+        \caption{Temperature measurement block diagram}
+        \label{Temperature_measurement_block_diagram}
+    \end{figure}
 
-\section{Characteristic curves (MG)}
-\label{Characteristic_curves}
+    During calibration, temperature characteristics of diode and p-MOS threshold voltage will be obtained. They will be used to compensate for threshold voltage shift associated with temperature. Individual flight component will be placed in thermal chamber, and proper look-up table will be created, with possible polynomial approximation.
+
+
+\section{Threshold voltage measurement}
+
+Conceptual block diagram is presented on figure \ref{conceptual_block_diagram}. It consists of mosfet, current source, analog to digital converter, die temperature sensor and interface to OBC.
+
+
+
+
 
 \section{Operating point selection}
