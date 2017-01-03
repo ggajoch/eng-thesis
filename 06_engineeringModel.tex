@@ -1,4 +1,5 @@
 \chapter{Engineering model}
+\label{Engineering_model_chapter}
 This chapter will describe engineering model developed during this thesis.
 
 This model should be as close to flight model as possible - but it could be e.g. on separate board, which is this case.
@@ -12,20 +13,26 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
 
 \section{Block diagram}
-    Block diagram of proposed system based on CD4007 is presented on figure TODO.
+    Block diagram of proposed system based on CD4007 is presented on figure \ref{sensor_block_diagram}.
 
     It was designed having in mind miniaturization of sensor - to fit on PW-Sat2 PLD board. Because CD4007 has 3 complementary MOS pairs it was proposed to use all of them - to improve fidelity of the measurements. One n-MOS is used as a temperature sensor.
 
-    Current source and ADC are multiplexed between 4 channels - 3x p-MOS and 1x n-MOS. This reduces board space and sensor accuracy (1 current source/ADC can be more sophisticated).
+    Current source and ADC are multiplexed between 4 channels - 3x p-MOS and 1x n-MOS. This reduces board space and increases sensor accuracy.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\paperwidth]{img/06/CD4007_mux_schematic.eps}
+        \caption{Block diagram}
+        \label{sensor_block_diagram}
+    \end{figure}
 
 \section{Low-level requirements}
-    Using design requirements \ref{Design_requirements} and characteristic curves from \ref{Characteristic_curves} low-level specifications were assumed:
+    Using design requirements \ref{Design_requirements} and characteristic curves from \ref{Characteristic_curves} low-level specifications were listed:
     \begin{itemize}
         \item operating temperature range: $0 \div 60 \si{\degreeCelsius}$,
-        \item current source value: $\SI{100}{\micro\ampere} \pm \SI{10}{\nano\ampere}$,
-        \item ADC resolution: $TODO$,
-        \item ADC accuracy: $TODO$,
-        \item Noise floor on ADC: $TODO$
+        \item compensated threshold voltage stability: \SI{0.5}{\milli\volt},
+        \item current source value: $\SI{125}{\micro\ampere} \pm \SI{50}{\nano\ampere}$,
+        \item ADC resolution: \SI{0.3}{\milli\volt} @ \SI{5}{\volt} reference = \SI{14}{bit}
     \end{itemize}
 
 
@@ -429,4 +436,3 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
 \section{Finished sensor}
     Photo of sensor after integration can be seen on figure TODO.
-    

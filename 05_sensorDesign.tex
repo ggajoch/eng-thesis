@@ -36,22 +36,22 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
 
 \section{COTS MOSFET as RadFET}
-    RadFETs are designed to act as a radiation sensor. However, parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but they require proper calibration and tests to be considered as a flight solution. 
-    
+    RadFETs are designed to act as a radiation sensor. However, parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but they require proper calibration and tests to be considered as a flight solution.
+
     Many articles and papers prove that COTS MOSFETs can be reliably used as a TID sensor. Number of available transistors were tested, their basic characteristics are compared in table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
-    
+
     \begin{table}[H]
     \begin{tabular}{| L{2cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} |}
         \hline
         Type: & 3N163 & ZVP3306 & ZVP4525 & BS250F & CD4007 \\ \hline
         Reference: & \cite{3N163_article} & \cite{COTSMosfetsGarcia} & \cite{COTSMosfetsGarcia} & \cite{COTSMosfetsGarcia} & \cite{COTSMosfetsGarcia} \\ \hline
-        
+
         Package: & TO-72 & TO-92 & SOT-223 & SOT-23 & TSSOP-14 \\ \hline
-        
+
         $I_{ZTC}$ [\si{\micro\ampere}]: & 225 & - & - & - & 145 \\ \hline
 
         Sensitivity [\si{\milli\volt/\gray}]: & $24.3\pm 1.8$ & $3.7\pm 0.3$ & $3.4\pm 0.4$ & $3.1\pm 0.4$ & $4.6\pm 0.1$ \\ \hline
-        
+
         $V_{TH_0} [\si{\volt}]$: & $2.0 - 3.0$ & $2.0 - 3.0$ & $1.5 - 2.5$ & $2.5 - 3.5$ & $1.9 - 2.5$ \\ \hline
 
         $V_{TH}$ @ \SI{100}{\gray} [\si{\volt}]: & $5.61$ & $3.4$ & $2.88$ & $3.85$ & $2.97$ \\ \hline
@@ -61,7 +61,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{table}
 
     3N163 have the largest sensitivity - but having in mind \SI{5}{\volt} supply for sensor it was discarded. Second best is CD4007 - and it was selected for testing. Its parameters are suitable for this use, they were collected in table \ref{CD4007_parameters}.
-    
+
     Another advantages of CD4007 are:
     \begin{itemize}
         \item 3 P-MOS in one package - averaging/redundancy,
@@ -91,9 +91,6 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \caption{CD4007 parameters}
     \label{CD4007_parameters}
     \end{table}
-
-\section{Characteristic curves}
-\label{Characteristic_curves}
 
 \section{Threshold voltage measurement}
     Threshold voltage changes with TID accumulated. Easiest method to measure change of this parameter is to connect MOSFET in diode configuration, forcing constant drain current. Block diagram of this method is shown on figure \ref{Vth_readout_block_diagram}.
@@ -125,13 +122,13 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     The sensor should be shut down during irradiation - therefore no-bias method was used. It allows to completely cut the power to the sensor, enabling it only for readout.
 
 \section{Temperature measurement}
-    Because threshold voltage strongly depends on die temperature this effect have to be compensated. Flight MOSFET will be calibrated in thermal chamber prior to launch, obtaining characteristic curves 
+    Because threshold voltage strongly depends on die temperature this effect have to be compensated. Flight MOSFET will be calibrated in thermal chamber prior to launch, obtaining characteristic curves
 
     Couple of possible temperature measurement techniques were considered during this thesis:
     \begin{table}[H]
     \begin{tabular}{R{4.5cm} | C{5cm} | C{5cm} }
         Method & Pros & Cons \\ \hline
-        
+
         PT-1000 sensor glued to MOSFET & accurate reading & large thermal resistance, difficult assembly, low reliability \\ \hline
 
         ESD diode measurement in CD4007 & no additional sensor & complicated current, multiplexing circuit, unknown characteristics \\ \hline
@@ -154,12 +151,35 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     During calibration, temperature characteristics of diode and p-MOS threshold voltage will be obtained. They will be used to compensate for threshold voltage shift associated with temperature. Individual flight component will be placed in thermal chamber, and proper look-up table will be created, with possible polynomial approximation.
 
 
-\section{Threshold voltage measurement}
+\section{Characteristic curves}
+\label{Characteristic_curves}
 
-Conceptual block diagram is presented on figure \ref{conceptual_block_diagram}. It consists of mosfet, current source, analog to digital converter, die temperature sensor and interface to OBC.
+    During M. Gumiela thesis calibration stand for CD4007 was developed. As an outcome of that project, rough calibration curves were obtained, which are presented below.
 
+    \bigskip \textbf{p-MOSFET transfer characteristics}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\paperwidth]{img/05/mg_iv_mosfet.eps}
+        \caption{CD4007 p-MOSFET transfer characteristics. Source: \cite{MGThesis}}
+    \end{figure}
 
+    \bigskip \textbf{Linearized temperature coefficient of threshold voltage}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\paperwidth]{img/05/mg_tc_coefficients.eps}
+        \caption{Linearized temperature coefficient of threshold voltage. Source: \cite{MGThesis}}
+    \end{figure}
 
-
+    \bigskip \textbf{Body diode forward voltage temperature calibration}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\paperwidth]{img/05/mg_diode_temp.eps}
+        \caption{Body diode temperature calibration. Source: \cite{MGThesis}}
+    \end{figure}
 
 \section{Operating point selection}
+    Current source value had to be chosen, having in mind requirements and working conditions.
+
+    In theory, zero-temperature coefficient current would be optimal, but after irradiation (source TODO) it will shift, causing significant error. Additionally, due to limited elements on market and slight differences between devices itself this point will be very difficult to achieve.
+
+    As a tradeoff between low temperature coefficient and low starting threshold voltage (to increase sensor range) current value of \SI{125}{\micro\ampere} was chosen.
