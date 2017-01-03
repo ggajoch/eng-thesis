@@ -2,11 +2,11 @@
 
 \section{Radiation on Low Earth Orbit}
     Radiation on LEO comes from trapped particle belts, solar particle events and cosmic rays \cite{ESA_radiation}.
-    
+
     \bigskip \textbf{Trapped particles}
-    
+
     Electrons and protons are being trapped in Earth's magnetic field, following magnetic fields lines. They are serious concern on Low Earth Orbit along polar regions and inside South Atlantic Anomaly. On figure \ref{Polar_SAA} radiation pattern is shown.
-    
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\paperwidth]{img/03/polar_SAA.png}
@@ -15,9 +15,9 @@
     \end{figure}
 
     \bigskip \textbf{Solar flares}
-    
+
     During solar flares large fluxes of protons are produced, and some of them are reaching Earth. Magnetic field provides shielding from them, but they are being trapped in it, easily reaching polar regions. Solar flares are unpredictable, being a threat to spacecraft operations.
-    
+
     \bigskip \textbf{Cosmic rays}
 
     Cosmic rays originates from outside the solar system. They are very high energy particles, which make shielding very difficult. Flux of this kind of particles is low, therefore they mostly contribute in single-event processes.
@@ -85,8 +85,8 @@
     Detailed description of those dosimetry methods can be found in \cite{RadFET_PhD}.
 
     For this sensor, it was decided to use RadFET as a sensing element. This kind of sensors have already flown on many satellites, are used in medical and industrial dosimetry.
-	
-	The most important advantages of RadFET dosimetry:
+
+    The most important advantages of RadFET dosimetry:
     \begin{itemize}
         \item sensor can be completely shut down during irradiation (no power consumption and reduced reliability issues),
         \item integrated measurement (especially important for small dose rates),
@@ -96,8 +96,8 @@
     \end{itemize}
 
 \section{RadFET Theory}
-    Basic idea of RadFET of using metal-oxide semiconductor field-effect transistor (MOSFET) is to measure its threshold voltage shift, $\Delta V_{TH}$ and covert it into absorbed dose. 
-    
+    Basic idea of RadFET of using metal-oxide semiconductor field-effect transistor (MOSFET) is to measure its threshold voltage shift, $\Delta V_{TH}$ and covert it into absorbed dose.
+
     \subsection{Radiation effects on MOS transistors}
     \label{Radiation_effects_on_MOS_transistors}
         Irradiation of MOSFET transistor results in threshold voltage shift. It is caused by trapping of holes (generated during particle strike) and creation of interface states on gate/bulk boundary. Those effects are shown on figure \ref{MOS_irradiation} \cite{pMOS_dosimeters_radfets}.
@@ -110,11 +110,11 @@
         \end{figure}
 
         Threshold voltage will shift according to following equation (\cite{pMOS_dosimeters_radfets}):
-        
+
         $$\Delta V_{TH} = A \cdot D^n$$
-        
+
         Where:
-        
+
         \begin{tabular}{lcl}
             $\Delta V_{TH}$ & - & threshold voltage shift \\
             $A$ & - & constant \\
@@ -122,7 +122,7 @@
             $n$ & - & degree of linearity (ideally $n = 1$) \\
         \end{tabular}
         \bigskip
-        
+
 
 
     \subsection{Threshold voltage measurement}
@@ -137,18 +137,18 @@
 
     \subsection{Temperature dependencies}
         Threshold voltage of transistor strongly depends on die temperature. \cite{managing_temperature_effects_in_nanoscale_adaptive_systems}.
-        
+
         This dependency is usually described to be linear:
-        
+
         $$\Delta V_{TH} = A \cdot \Delta T$$
-        
+
         Where:
-        
+
         \begin{tabular}{lcl}
             $\Delta V_{TH}$ & - & threshold voltage shift \\
             $A$ & - & constant \\
             $\Delta T$ & - & temperature change \\
         \end{tabular}
         \bigskip
-        
+
         Constant coefficient depends on particular MOSFET, technology and (very weak effect) irradiation. Usually this coefficient is in range $-0.1$ to \SI{-1}{\milli\volt/\kelvin}.
