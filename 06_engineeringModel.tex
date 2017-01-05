@@ -203,9 +203,9 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \label{ADG709_block}
         \end{figure}
     
-        Due to ESD diodes id CD4007 additional current switch had to be added to cut off potential from from n-MOS body diode. For this purpose simple 1-channel analog switch TODO was implemented.
+        Due to ESD diodes id CD4007 additional current switch had to be added to cut off potential from from n-MOS body diode. For this purpose simple 1-channel analog switch ADG849YKSZ was implemented.
 
-    \subsection{Differential filter}
+    \subsection{Differential \& common mode filter}
         Internal sampling frequency of ADC (for GAIN = 1 and $f_{clk} = \SI{1}{\mega\hertz})$ is about \SI{15.6}{\kilo\hertz}. To eliminate aliasing and reduce readout noise low-pass differential filter should be implemented on ADC input.
 
         Simple one-pole RC filter was selected. Its schematic can be found on figure \ref{low_pass_filter}.
@@ -425,6 +425,8 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \end{table}
 
     \subsection{Measurement algorithm}
+    \bigskip \textbf{RadFET sensor}
+    
     Sensor after receiving "start measurement" command (table \ref{Start_measurement_command}) does following steps:
     \begin{itemize}
         \item enable LDO,
@@ -441,10 +443,11 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \item make a positive pulse on INT line, informing OBC about conversion finish.
     \end{itemize}
 
-    When OBC wants to read data (by telecommand from ground station) it perform following steps:
+    \bigskip \textbf{OBC}
+    
+    When OBC wants to read data form sensor (issued by telecommand from ground station) it perform following steps:
     \begin{itemize}
         \item enable PLD power by sending proper command to EPS,
-        \item wait for some time to stabilize power lines,
         \item send "start measurement" command to RadFET,
         \item wait for trigger on INT line (external interrupt pin),
         \item send "data readout" command and store data in memory,
