@@ -24,7 +24,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \item differential ADC,
         \item multiplexer
     \end{itemize}
-    
+
 
     \begin{figure}[H]
         \centering
@@ -48,7 +48,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
     \subsection{SPICE models}
         Design should be validated by simulation. In this thesis, LTSpice XVII was used.
-            
+
         Models used during simulation:
         \begin{itemize}
             \item CD4007 - model RIT4007P7 from Rochester Institute of Technology \cite{RIT_FULLER},
@@ -126,7 +126,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \item output resistance range,
             \item noise and stability
         \end{itemize}
-        
+
         MOSFET/diode was replaced by resistor emulating its static resistance ($\SI{2}{\volt}/\SI{125}{\micro\ampere} = \SI{16}{\kilo\ohm}$, $\SI{0.6}{\volt}/\SI{125}{\micro\ampere} = \SI{5}{\kilo\ohm}$). Simulation view is shown on figure \ref{current_source_simulation}.
 
         \begin{figure}[H]
@@ -150,12 +150,12 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \bigskip\textbf{Output resistance range}
         \bigskip\textbf{Noise density}
         \bigskip\textbf{Stability}
-                
+
     \subsection{ADC}
         Analog to digital converter is responsible for reading $V_{DS}$ voltage across transistor and voltage across diode. Due to very low changes, high accuracy and resolution is required. Additionally, complex mixed signal element like ADC should have radiation tests to prove its long term reliability. To achieve at least \SI{0.1}{\milli\volt} resolution ADC has to be at least \SI{16}{bits}.
 
         Due to constrain on system and reliability the AD7714 from Analog Devices was chosen. Radiation tests shown that it fails between \SI{10}{\kilo\rad} and \SI{20}{\kilo\rad}, with no degradation up to \SI{10}{\kilo\rad} [TODO].
-        
+
         Internal diagram can be found on figure \ref{AD7714}. Key specs:
         \begin{itemize}
             \item \SI{24}{bits},
@@ -202,7 +202,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \caption{ADG709 internal block diagram. Source: TODO}
             \label{ADG709_block}
         \end{figure}
-    
+
         Due to ESD diodes id CD4007 additional current switch had to be added to cut off potential from from n-MOS body diode. For this purpose simple 1-channel analog switch ADG849YKSZ was implemented.
 
     \subsection{Differential \& common mode filter}
@@ -313,7 +313,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
     \subsection{PCB stack}
         Because outgassing of devices can be dangerous for turbomolecular pumps, it have to be limited as much as possible. Therefore soldermask and overlay layers are not present in the design, and packages of used components have known outgassing coefficients.
-        
+
         For this prototype board have 4 layers, on flight model board will be 6-layered. PCB stack generated from Altium Designer is shown of figure \ref{PCB_Altium_stack}.
 
         \begin{figure}[H]
@@ -327,7 +327,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         PCB layout in mixed signal board is very important. Ground potential shifts, induced noise, coupling between ground planes - all those effects were considered during layout process.
 
         \bigskip \textbf{Top \& bottom layers}
-        
+
         On top and bottom layers only components should be placed, every net should be connected on internal layers. But, because of having only 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown on figure \ref{top_bottom_layer_layout}.
 
         \begin{figure}[H]
@@ -426,7 +426,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
     \subsection{Measurement algorithm}
     \bigskip \textbf{RadFET sensor}
-    
+
     Sensor after receiving "start measurement" command (table \ref{Start_measurement_command}) does following steps:
     \begin{itemize}
         \item enable LDO,
@@ -444,7 +444,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \end{itemize}
 
     \bigskip \textbf{OBC}
-    
+
     When OBC wants to read data form sensor (issued by telecommand from ground station) it perform following steps:
     \begin{itemize}
         \item enable PLD power by sending proper command to EPS,
