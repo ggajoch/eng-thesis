@@ -6,7 +6,7 @@
 
 \section{Power}
     \subsection{LDO stabilisation}
-        Voltage after LDO was measured in time, to calculate delay between power enable and measurement start. Time graph is shown on figure \ref{LDO_rise_time}. Delay was estimated to be around \SI{1}{\second}.
+        Voltage after LDO was measured in time, to calculate delay between power enable and measurement start. Time graph is shown in the figure \ref{LDO_rise_time}. Delay was estimated to be around \SI{1}{\second}.
 
         \begin{figure}[H]
             \centering
@@ -48,7 +48,7 @@
         Temperature was swept from $20$ to \SI{70}{\degreeCelsius}, no detectable changes were measured by available meter, therefore it is assumed that current source changes lower than about \SI{20}{\nano\ampere} in this temperature range.
 
 \section{MOS settling}
-    After enabling measurement channel for threshold voltage it takes a lot of time to fully stabilize its value. Instead of pre-enabling, same time method was used. ADC takes measurement of threshold voltage at precisely specified time after enabling power. On figure \ref{MOS_settling} 10 runs of measured voltage vs time are plotted, proving this method is stable within \SI{20}{\uV}.
+    After enabling measurement channel for threshold voltage it takes a lot of time to fully stabilize its value. Instead of pre-enabling, same time method was used. ADC takes measurement of threshold voltage at precisely specified time after enabling power. In the figure \ref{MOS_settling} 10 runs of measured voltage vs time are plotted, proving this method is stable within \SI{20}{\uV}.
 
     \begin{figure}[H]
         \centering
@@ -60,7 +60,14 @@
 \section{Measurement noise}
     Most important noise figure is system noise - ADC reading noise floor during nominal work.
 
-    Because even smallest temperature changes cause ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose DC notch filter was used in post-processing, to eliminate any DC bias during measurement. Transfer function of this filter is shown on figure TODO. Example of filtration is shown on figure TODO.
+    Because even smallest temperature changes cause ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose DC notch filter was used in post-processing, to eliminate any DC bias during measurement. Transfer function of this filter is shown in the figure TODO. Example of filtration is shown in the figure TODO.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\paperwidth]{img/07/filterBeforeAfter.eps}
+        \caption{10 runs of MOS voltage setting}
+        \label{MOS_settling}
+    \end{figure}
 
     Image: [przed filtracją] -> po filtracji
 

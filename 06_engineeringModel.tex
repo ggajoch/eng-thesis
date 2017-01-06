@@ -13,7 +13,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
 
 \section{Block diagram}
-    Block diagram of proposed system based on CD4007 is presented on figure \ref{sensor_block_diagram}.
+    Block diagram of proposed system based on CD4007 is presented in the figure \ref{sensor_block_diagram}.
 
     It was designed having in mind miniaturization of sensor - to fit on PW-Sat2 PLD board. Because CD4007 has 3 complementary MOS pairs it was proposed to use 3 p-MOS transistors as TID sensors - to improve fidelity of the measurements. One n-MOS is used as a temperature sensor. Current source and ADC are multiplexed between 4 channels - this reduces board footprint and increases sensor reliability \& accuracy. Having in mind readout fidelity 3-wire method on multiplexer was implemented.
 
@@ -64,7 +64,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \item ultralow noise \SI{0.8}{\micro\volt RMS} (\SI{10}{\hertz} to \SI{100}{\kilo\hertz}),
             \item output current \SI{200}{\milli\ampere}
             \item input range \SI{1.8}{\volt} to \SI{20}{\volt}, output range \SI{0}{\volt} to \SI{15}{\volt}
-            \item ultrahigh PSRR \SI{79}{\decibel} at \SI{500}{\kilo\hertz}, more detailed graph is shown of figure TODO.
+            \item ultrahigh PSRR \SI{79}{\decibel} at \SI{500}{\kilo\hertz}, more detailed graph is shown in the figure TODO.
             \item low dropout voltage of \SI{200}{\mV}
         \end{itemize}
 
@@ -73,7 +73,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \subsection{Current source}
         Current source have to be the most accurate part of the design, because measured voltage depends in square of its variation. It was assumed that $\SI{50}{\nano\ampere}$ current stability across temperature and aging range will be sufficient. Current source have to supply both MOSFET (static resistance in operating point of about $20-25$~\si{\kilo\ohm}) and body diode temperature sensor (static resistance in operating point of about $3-7$~\si{\kilo\ohm})
 
-        Main concept of current source is based on Burr-Brown application note \cite{Make_a_precision_current_source_or_sink}. Idea schematic is shown on figure \ref{current_source_schematic}.
+        Main concept of current source is based on Burr-Brown application note \cite{Make_a_precision_current_source_or_sink}. Idea schematic is shown in the figure \ref{current_source_schematic}.
 
         \begin{figure}[H]
             \centering
@@ -127,7 +127,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \item noise and stability
         \end{itemize}
 
-        MOSFET/diode was replaced by resistor emulating its static resistance ($\SI{2}{\volt}/\SI{125}{\micro\ampere} = \SI{16}{\kilo\ohm}$, $\SI{0.6}{\volt}/\SI{125}{\micro\ampere} = \SI{5}{\kilo\ohm}$). Simulation view is shown on figure \ref{current_source_simulation}.
+        MOSFET/diode was replaced by resistor emulating its static resistance ($\SI{2}{\volt}/\SI{125}{\micro\ampere} = \SI{16}{\kilo\ohm}$, $\SI{0.6}{\volt}/\SI{125}{\micro\ampere} = \SI{5}{\kilo\ohm}$). Simulation view is shown in the figure \ref{current_source_simulation}.
 
         \begin{figure}[H]
             \centering
@@ -137,7 +137,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \end{figure}
 
         \bigskip\textbf{Temperature dependency}
-        Output current is shown on figure \ref{current_source_simulation_result}, simulation was performed on two different loads and resistor temperature coefficients.
+        Output current is shown in the figure \ref{current_source_simulation_result}, simulation was performed on two different loads and resistor temperature coefficients.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\paperwidth]{img/06/current_source_result.eps}
@@ -156,7 +156,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
         Due to constrain on system and reliability the AD7714 from Analog Devices was chosen. Radiation tests shown that it fails between \SI{10}{\kilo\rad} and \SI{20}{\kilo\rad}, with no degradation up to \SI{10}{\kilo\rad} [TODO].
 
-        Internal diagram can be found on figure \ref{AD7714}. Key specs:
+        Internal diagram can be found in the figure \ref{AD7714}. Key specs:
         \begin{itemize}
             \item \SI{24}{bits},
             \item \SI{0.0015}{\percent} nonlinearity,
@@ -194,7 +194,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \subsection{Multiplexer}
         Multiplexer have two purposes: to multiplex current and voltage lines (3-wire readout).
 
-        As an analog multiplexer ADG709 was chosen. Its radiation tests can be found in TODO. It is double 1:4 mux, allowing simultaneous current and voltage multiplexing. Internal block diagram is shown on figure \ref{ADG709_block}
+        As an analog multiplexer ADG709 was chosen. Its radiation tests can be found in TODO. It is double 1:4 mux, allowing simultaneous current and voltage multiplexing. Internal block diagram is shown in the figure \ref{ADG709_block}
 
         \begin{figure}[H]
             \centering
@@ -208,7 +208,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \subsection{Differential \& common mode filter}
         Internal sampling frequency of ADC (for GAIN = 1 and $f_{clk} = \SI{1}{\mega\hertz})$ is about \SI{15.6}{\kilo\hertz}. To eliminate aliasing and reduce readout noise low-pass differential filter should be implemented on ADC input.
 
-        Simple one-pole RC filter was selected. Its schematic can be found on figure \ref{low_pass_filter}.
+        Simple one-pole RC filter was selected. Its schematic can be found in the figure \ref{low_pass_filter}.
 
         \begin{figure}[H]
             \centering
@@ -264,7 +264,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \end{itemize}
 
     \subsection{OBC interface}
-        Interface to OBC is $I^2C$ bus. Because sensor can be turned off by cutting its voltage proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and in-sensor microcontroller. Its functional diagram can be seen on figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." (TODO). Thanks to it OBC can completely disable the sensor, by simply cutting it a power.
+        Interface to OBC is $I^2C$ bus. Because sensor can be turned off by cutting its voltage proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and in-sensor microcontroller. Its functional diagram can be seen in the figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." (TODO). Thanks to it OBC can completely disable the sensor, by simply cutting it a power.
 
         \begin{figure}[H]
             \centering
@@ -275,7 +275,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
 
 \section{Final schematic}
-    Top level schematic file can be seen on figure \ref{top_level_schematic}. Ports represents physical connectors - to satellite bus and debug socket.
+    Top level schematic file can be seen in the figure \ref{top_level_schematic}. Ports represents physical connectors - to satellite bus and debug socket.
 
     \begin{figure}[H]
         \centering
@@ -284,7 +284,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \label{top_level_schematic}
     \end{figure}
 
-    "RadFET" consists analog part of the design. Its block diagram can be seen on figure \ref{analog_schematic}.
+    "RadFET" consists analog part of the design. Its block diagram can be seen in the figure \ref{analog_schematic}.
 
     \begin{figure}[H]
         \centering
@@ -314,7 +314,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \subsection{PCB stack}
         Because outgassing of devices can be dangerous for turbomolecular pumps, it have to be limited as much as possible. Therefore soldermask and overlay layers are not present in the design, and packages of used components have known outgassing coefficients.
 
-        For this prototype board have 4 layers, on flight model board will be 6-layered. PCB stack generated from Altium Designer is shown of figure \ref{PCB_Altium_stack}.
+        For this prototype board have 4 layers, on flight model board will be 6-layered. PCB stack generated from Altium Designer is shown in the figure \ref{PCB_Altium_stack}.
 
         \begin{figure}[H]
             \centering
@@ -328,7 +328,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
         \bigskip \textbf{Top \& bottom layers}
 
-        On top and bottom layers only components should be placed, every net should be connected on internal layers. But, because of having only 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown on figure \ref{top_bottom_layer_layout}.
+        On top and bottom layers only components should be placed, every net should be connected on internal layers. But, because of having only 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in the figure \ref{top_bottom_layer_layout}.
 
         \begin{figure}[H]
             \centering
@@ -339,7 +339,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
         \bigskip \textbf{Internal layers}
 
-        One layer of board was designed to be completely a ground plane. More specifically, two ground planes - analog and digital one, connected under ADC. Second internal layer provides routing space, but also have ground planes on it (due to PCB temperature bending PCB cannot have only one ground plane). Layout is shown on figure \ref{internal_layers_layout}.
+        One layer of board was designed to be completely a ground plane. More specifically, two ground planes - analog and digital one, connected under ADC. Second internal layer provides routing space, but also have ground planes on it (due to PCB temperature bending PCB cannot have only one ground plane). Layout is shown in the figure \ref{internal_layers_layout}.
 
         \begin{figure}[H]
             \centering
@@ -349,7 +349,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \end{figure}
 
     \subsection{3D model}
-        Using Altium designer proper libraries, 3D model of board can be easily generated. On figure \ref{pcb_3d_model} 3d model with and without EMI shielding is shown.
+        Using Altium designer proper libraries, 3D model of board can be easily generated. In the figure \ref{pcb_3d_model} 3d model with and without EMI shielding is shown.
 
         \begin{figure}[H]
             \centering
@@ -368,7 +368,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \item \SI{1}{\mega\hertz} clock frequency.
     \end{itemize}
 
-    Software for sensor was written in C++14, using developed by PW-Sat2 team AVR-HAL library. Schematic of software building blocks is shown on figure \ref{Sensor_software_diagram}.
+    Software for sensor was written in C++14, using developed by PW-Sat2 team AVR-HAL library. Schematic of software building blocks is shown in the figure \ref{Sensor_software_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -466,4 +466,4 @@ This model was developed as flight-ready version for sensor calibration \& tests
     \end{itemize}
 
 \section{Finished sensor}
-    Photo of sensor after integration can be seen on figure TODO.
+    Photo of sensor after integration can be seen in the figure TODO.

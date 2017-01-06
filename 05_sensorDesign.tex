@@ -2,7 +2,7 @@
 This chapter will cover sensor basics, sensing element selection and theory of operation. Design will be presented on system-level view, for more detailed description of electronics skip to chapter \ref{Engineering_model_chapter}.
 
 \section{Review of commercially available RadFETs}
-    Commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Radiation_effects_on_MOS_transistors}. In table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
+    Commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in the figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Radiation_effects_on_MOS_transistors}. In table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
 
     \begin{figure}[H]
         \centering
@@ -70,7 +70,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{itemize}
 
 \section{Selected MOSFET - CD4007}
-    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown on figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in table \ref{CD4007_parameters}.
+    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown in the figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in table \ref{CD4007_parameters}.
 
     \begin{figure}[H]
         \centering
@@ -93,7 +93,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{table}
 
 \section{Threshold voltage measurement}
-    Threshold voltage changes with TID accumulated. Easiest method to measure change of this parameter is to connect MOSFET in diode configuration, forcing constant drain current. Block diagram of this method is shown on figure \ref{Vth_readout_block_diagram}.
+    Threshold voltage changes with TID accumulated. Easiest method to measure change of this parameter is to connect MOSFET in diode configuration, forcing constant drain current. Block diagram of this method is shown in the figure \ref{Vth_readout_block_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -139,7 +139,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \label{CD4007_parameters}
     \end{table}
 
-    The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Thermal resistance is very low - CMOS pair is on the same silicon die. Block diagram of proposed solution is presented on figure \ref{Temperature_measurement_block_diagram}.
+    The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Thermal resistance is very low - CMOS pair is on the same silicon die. Block diagram of proposed solution is presented in the figure \ref{Temperature_measurement_block_diagram}.
 
     \begin{figure}[H]
         \centering

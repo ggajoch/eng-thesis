@@ -79,7 +79,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
     Sensor will be placed on-board of PW-Sat2. Therefore it should comply to its' standards - power supplies, communication interfaces etc.
 
     \subsection{Electronics stack}
-        Modules on PW-Sat2 are connected in PC-104 stack structure as shown on figure \ref{PW-Sat2_stack}. Is is placed inside structure and consists of (from the top):
+        Modules on PW-Sat2 are connected in PC-104 stack structure as shown in the figure \ref{PW-Sat2_stack}. Is is placed inside structure and consists of (from the top):
         \begin{itemize}
             \item Payload module (PLD)
             \item On-Board Computer (OBC)
@@ -102,7 +102,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
 
     \subsection{PC-104 connector}
-        PLD board is connected to OBC with PC-104 connector. Pinout is shown on figure \ref{PC104_PLD}.
+        PLD board is connected to OBC with PC-104 connector. Pinout is shown in the figure \ref{PC104_PLD}.
 
         \begin{figure}[H]
             \centering
@@ -137,7 +137,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
         EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{\volt}, other than on bigger S/C (\SI{+28}{\volt}).
 
         \begin{itemize}
-            \item Conducted susceptibility is shown on figure \ref{EMC_conducted_susceptibility} . It was created by down-scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{\volt}/\SI{5}{\volt} = 5.6$. EMC limit on power line is defined as constant \SI{175}{\milli\volt} from \SI{30}{\hertz} to \SI{100}{\kilo\hertz}. Sensor should be able to filter this ripple to produce stable power for analog devices. In addition, it should be taken into account that output DC-DC converters on EPS runs on \SI{500}{\kilo\hertz}.
+            \item Conducted susceptibility is shown in the figure \ref{EMC_conducted_susceptibility} . It was created by down-scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{\volt}/\SI{5}{\volt} = 5.6$. EMC limit on power line is defined as constant \SI{175}{\milli\volt} from \SI{30}{\hertz} to \SI{100}{\kilo\hertz}. Sensor should be able to filter this ripple to produce stable power for analog devices. In addition, it should be taken into account that output DC-DC converters on EPS runs on \SI{500}{\kilo\hertz}.
 
             \begin{figure}[H]
                 \centering
@@ -147,7 +147,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
             \end{figure}
 
 
-            \item Conducted emission is defined on figure \ref{EMC_conducted_emission}.
+            \item Conducted emission is defined in the figure \ref{EMC_conducted_emission}.
 
             \begin{figure}[H]
                 \centering
@@ -182,7 +182,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
     \subsection{PCB}
     \label{PCB_description}
-        PCB of PLD board is standard 4-layer FR4 board with stack shown on figure \ref{PLD_PCB_stack}. Its dimensions are shown on \ref{PLD_PCB_size}, but design is forced to take much less space. For this sensor limits are \SI{3x3}{\centi\meter} double sided.
+        PCB of PLD board is standard 4-layer FR4 board with stack shown in the figure \ref{PLD_PCB_stack}. Its dimensions are shown on \ref{PLD_PCB_size}, but design is forced to take much less space. For this sensor limits are \SI{3x3}{\centi\meter} double sided.
 
         \begin{figure}[H]
             \centering
