@@ -6,7 +6,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.3\paperwidth]{img/radfet-silicon.eps}
+        \includegraphics[width=0.5\paperwidth]{img/radfet-silicon.eps}
         \caption{4x RadFET silicon structure by Tyndall. Source: \cite{Tyndall_Radfet}}
         \label{Tyndall_radfet_silicon}
     \end{figure}
@@ -36,7 +36,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
 
 \section{COTS MOSFET as RadFET}
-    RadFETs are designed to act as a radiation sensor. However, parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but they require proper calibration and tests to be considered as a flight solution.
+    RadFETs are specifically designed MOSFETs to act as a radiation sensor. However, parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but they require proper calibration and tests to be considered as a flight solution.
 
     Many articles and papers prove that COTS MOSFETs can be reliably used as a TID sensor. Number of available transistors were tested, their basic characteristics are compared in table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
 
@@ -133,13 +133,12 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
         ESD diode measurement in CD4007 & no additional sensor & complicated current, multiplexing circuit, unknown characteristics \\ \hline
 
-        body diode in N-MOSFET in CD4007  & simple setup, reliable, known characteristics & no possibility of simultaneous readout of threshold and temperature
+        body diode in N-MOSFET in CD4007  & simple setup, reliable, known characteristics, low thermal resistance & no possibility of simultaneous readout of threshold and temperature (short thermal lag)
     \end{tabular}
-    \caption{CD4007 parameters}
-    \label{CD4007_parameters}
+    \caption{Temperature readout methods}
     \end{table}
 
-    The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Thermal resistance is very low - CMOS pair is on the same silicon die. Block diagram of proposed solution is presented in the figure \ref{Temperature_measurement_block_diagram}.
+    The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Block diagram of proposed solution is presented in the figure \ref{Temperature_measurement_block_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -154,7 +153,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 \section{Characteristic curves}
 \label{Characteristic_curves}
 
-    During M. Gumiela thesis calibration stand for CD4007 was developed. As an outcome of that project, rough calibration curves were obtained, which are presented below.
+    During M. Gumiela thesis \cite{MGThesis} calibration stand for CD4007 was developed. As an outcome of that project, rough calibration curves were obtained, which are presented below.
 
     \bigskip \textbf{p-MOSFET transfer characteristics}
     \begin{figure}[H]
@@ -180,6 +179,6 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 \section{Operating point selection}
     Current source value had to be chosen, having in mind requirements and working conditions.
 
-    In theory, zero-temperature coefficient current would be optimal, but after irradiation (source TODO) it will shift, causing significant error. Additionally, due to limited elements on market and slight differences between devices itself this point will be very difficult to achieve.
+    In theory, zero-temperature coefficient current would be optimal, but after irradiation it could slightly shift, causing significant error. Additionally, due to limited elements on market and slight differences between devices itself this point will be very difficult to achieve.
 
     As a tradeoff between low temperature coefficient and low starting threshold voltage (to increase sensor range) current value of \SI{125}{\micro\ampere} was chosen.

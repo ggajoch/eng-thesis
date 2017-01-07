@@ -41,10 +41,10 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
         More information about this experiment can be found in \cite{DDC_article}.
 
     \subsection{Lifetime}
-        Due to its primary mission PW-Sat2 lifetime is planned to be 40 days long. After this time deorbit sail will open, and orbit will slowly decrease. Deorbitation from nominal orbit is planned to take N days. Therefore sensor should be able to measure dose absorbed during full mission - N days.
+        Due to its primary mission PW-Sat2 basic lifetime is planned to be 40 days long. After this time deorbit sail will open, and orbit will slowly decay. Deorbitation from nominal orbit is planned to take about one year \cite{PWSAT_MA_CDR}, but possibly with unreliable data connection. Therefore sensor should be able to measure dose absorbed during primary mission (40 days), but also to work during full predicted mission - about one year.
 
     \subsection{Orbit}
-        PW-Sat2 in planned to be launched to sun-synchronous circular orbit of attitude \SI{575}{\kilo\meter}, with LTAN of $10:30$ \cite{PWSAT_MA_CDR}.
+        PW-Sat2 in planned to be launched to sun-synchronous circular orbit of attitude \SI{575}{\kilo\meter}, with LTAN of 10:30 \cite{PWSAT_MA_CDR}.
 
 
     \subsection{Radiation analysis}
@@ -57,21 +57,26 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
             \label{TIDvsSheilding}
         \end{figure}
 
-        Shielding of PW-Sat2 is about \SI{0.5}{\milli\meter} thick (aluminum sides as well as aluminum substrate for solar cells - \ref{PW-Sat_render_01}). Therefore predicted dose during PW-Sat2 mission is about \SI{10}{\kilo\rad}.
+        Shielding of PW-Sat2 is about \SI{0.5}{\milli\meter} thick (aluminum sides as well as aluminum substrate for solar cells - \ref{PW-Sat_render_01}). Therefore  predicted dose during primary mission is \SI{1}{\kilo\rad} and during full mission about \SI{10}{\kilo\rad}.
 
 \section{Sensor requirements}
-    Summing PW-Sat2 mission analysis, high-level sensor requirements were estimated:
+    Summing PW-Sat2 mission analysis, high-level sensor requirements were estimated, summarized in table \ref{sensor_requirements_table}.
 
-    \begin{itemize}
-        \item Total range of the sensor should be more than predicted dose. Derating this value gives range of about \SI{10}{\kilo\rad}.
-
-        \item Resolution should be lower than \SI{0.1}{\kilo\rad},
-
-        \item Total accuracy (across temperature \& component aging) should be less than \SI{0.5}{\kilo\rad}.
-    \end{itemize}
+    \begin{table}[H]
+        \begin{center}
+            \begin{tabular}{r|l}
+                \textbf{Requirement} & \textbf{Value} \\ \hline
+                Range & \SI{10}{\kilo\rad} \\
+                Resolution & \SI{10}{\rad} \\
+                Total accuracy & \SI{\pm 100}{\rad}
+            \end{tabular}
+        \end{center}
+        \caption{Sensor requirements}
+        \label{sensor_requirements_table}
+    \end{table}
 
 \section{Applicable standards}
-    The sensor should comply to ECSS \cite{ECSS_URL} standards. They are required by launch provider, as well as describing good practices during space product development.
+    The sensor should comply to ECSS \cite{ECSS_URL} standards. They are required by launch provider, and they describe good practices during space product development.
 
     ESCIES \cite{ESCIES_URL} provide valuable knowledge about components qualifications, testing and verification.
 
@@ -81,13 +86,13 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
     \subsection{Electronics stack}
         Modules on PW-Sat2 are connected in PC-104 stack structure as shown in the figure \ref{PW-Sat2_stack}. Is is placed inside structure and consists of (from the top):
         \begin{itemize}
-            \item Payload module (PLD)
-            \item On-Board Computer (OBC)
-            \item Attitude Determination and Control Subsystem (ADCS)
-            \item Electrical Power System (EPS)
-            \item battery module (ACC)
-            \item communication transceiver (COMM)
-            \item antennas module (ANT)
+            \item \textbf{Payload module (PLD)} - where the sensor will be located,
+            \item On-Board Computer (OBC) - main data processing unit,
+            \item Attitude Determination and Control Subsystem (ADCS) - controls attitude (detumbling and sunpointing),
+            \item Electrical Power System (EPS) - charges and discharges batteries, provides safety mechanisms,
+            \item Battery module (ACC) - main energy storage,
+            \item Communication transceiver (COMM) - VHF \& UHF full duplex transceiver,
+            \item Antennas module (ANT) - antennas for uplink and downlink.
         \end{itemize}
 
         \begin{figure}[H]
@@ -97,30 +102,19 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
             \label{PW-Sat2_stack}
         \end{figure}
 
-
-        Sensor will be placed on Payload board, on the top of PC-104 stack. It will be placed on its PCB, described in \ref{PCB_description}. It will be one of sensors on this board, connected to PC-104 stack.
-
-
     \subsection{PC-104 connector}
-        PLD board is connected to OBC with PC-104 connector. Pinout is shown in the figure \ref{PC104_PLD}.
+        PLD board is connected to OBC with PC-104 connector. This connector provides data and power connections to satellite bus.
 
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.5\paperwidth]{img/PC-104.eps}
-            \caption{PC-104 connector to PLD board}
-            \label{PC104_PLD}
-        \end{figure}
-
-        Connector consists of:
+        This connector consists of:
         \begin{itemize}
-            \item $I^2C$ bus, connected directly to MCU on OBC
-            \item SENS \SI{5}{\volt} line, powered when sensor is enabled by OBC
+            \item $I^2C$ bus, connected directly to MCU on OBC,
+            \item SENS \SI{5}{\volt} line, powered only when sensor is commanded to be enabled.
         \end{itemize}
 
     \subsection{Power rail}
-        As mentioned earlier, the power for the sensor is \SI{+5}{\volt}, activated whenever sensor should be accessed by OBC.
+        As mentioned earlier, the power for the sensor is +\SI{5}{\volt}, activated whenever sensor should be accessed by OBC.
 
-        Power line is controlled and protected by Latchup-Current Limiter FPF2701MX placed on EPS board. Therefore additional latchup protection in not necessary in this design. However, this sensor will be not only one on PLD board and should have it's own power switch. PLD board is enabled and disabled by EPS on OBC command and sensor should be enabled only during TID readout. Having this in mind forces the design to be immune to immediate shutdowns.
+        Power line is controlled and protected by Latchup-Current Limiter FPF2701MX placed on EPS board. Therefore additional latchup protection in not necessary in this design. However, this sensor will be not only one on PLD board and should have it's own power switch. PLD board is enabled and disabled by EPS on OBC command and sensor should be enabled only during TID readout. Having this in mind forces the design to be immune to immediate shutdowns and dose have to be accumulated off-line.
 
     \subsection{Power consumption}
         During irradiation sensor should be completely turned off. It decreases possibility of radiation damage and increases overall system reliability.
@@ -131,10 +125,10 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
         The sensor is connected to OBC via $I^2C$ interface. OBC on this bus is master - and sensor should be one of slaves. PLD board can be disabled, therefore it should provide isolation of $I^2C$ bus when it is powered off.
 
     \subsection{Radiation immunity}
-        Design should be itself immune to radiation. For PW-Sat2 threshold of \SI{10}{\kilo\rad} was chosen for all COTS components. Semiconductor components should have radiation as described in \cite{ESCIES_TID_test_method}.
+        Design should be itself immune to radiation. For PW-Sat2 threshold of \SI{10}{\kilo\rad} was chosen for all COTS components. Semiconductors should have radiation tests as described in \cite{ESCIES_TID_test_method}.
 
     \subsection{Electromagnetic compatibility}
-        EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{\volt}, other than on bigger S/C (\SI{+28}{\volt}).
+        EMC requirements are described in \cite{ECSS_E_ST_20_07C}. This standard was tailored to PW-Sat2 because power rail is \SI{+5}{\volt}, other than on bigger spacecrafts (\SI{+28}{\volt}).
 
         \begin{itemize}
             \item Conducted susceptibility is shown in the figure \ref{EMC_conducted_susceptibility} . It was created by down-scaling figure A-4 from \cite{ECSS_E_ST_20_07C} by factor of $\SI{28}{\volt}/\SI{5}{\volt} = 5.6$. EMC limit on power line is defined as constant \SI{175}{\milli\volt} from \SI{30}{\hertz} to \SI{100}{\kilo\hertz}. Sensor should be able to filter this ripple to produce stable power for analog devices. In addition, it should be taken into account that output DC-DC converters on EPS runs on \SI{500}{\kilo\hertz}.
@@ -201,7 +195,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
 
     \subsection{Outgassing}
-        Every used component should be able to work in vacuum. Outgassing of components should be known to conduct required vacuum tests before launch.
+        Every used component should be able to work in vacuum. Outgassing of components should be known to conduct required vacuum tests before launch. Too big outgassing coefficient can result in damage of turbomolecular pump in vacuum chamber.
 
     \subsection{Vibration}
         During rocket launch large vibrations occur on payload, therefore it should be immune to it. In case of any heavy electronic components appropriate glue should be applied to prevent joint cracks.

@@ -9,7 +9,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
 \section{Background - calibration stand}
     During development of the system previous model was developed to test and calibrate MOSFET transistors to use as a radiation dosimeters. Calibration stand was developed by M. Gumiela in his engineering thesis \cite{MGThesis}. The basic goal was to develop measurement device which can be used to determine final operational point, calibrate radiation response and to perform temperature calibration of flight sensor.
 
-    TODO: opis stanowiska
+    The test and calibration stand allows to carry out simultatenous investigation of parameters of multiple MOSFETs (i.e. 18) and diodes (i.e. 6). It is possible to obtaing transfer characteristics of the DUT (I-V) utilizing adjustable constant current source, thermal calibration (Vth(T), Vd(T)) thanks to precise reference thermometers, Iztc investigation and finally TID on-line calibration.
 
 
 \section{Block diagram}
@@ -264,7 +264,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \item \SI{1}{\kilo B} SRAM
         \end{itemize}
 
-    \subsection{OBC interface}
+    \subsection{On-Board Computer interface}
         Interface to OBC is $I^2C$ bus. Because sensor can be turned off by cutting its voltage proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and in-sensor microcontroller. Its functional diagram can be seen in the figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." (TODO). Thanks to it OBC can completely disable the sensor, by simply cutting it a power.
 
         \begin{figure}[H]

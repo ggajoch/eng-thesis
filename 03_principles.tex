@@ -1,11 +1,13 @@
 \chapter{Principles}
 
+This chapter describes basic informations about radiation environment, failure modes in electronic devices and introduction to RadFET dosimetry.
+
 \section{Radiation on Low Earth Orbit}
-    Radiation on LEO comes from trapped particle belts, solar particle events and cosmic rays \cite{ESA_radiation}.
+    Radiation on LEO comes from trapped particle belts, solar particle events and cosmic rays \cite{ESA_radiation}. There are also other sources of radiation, but they are negligible comparing to those effects.
 
     \bigskip \textbf{Trapped particles}
 
-    Electrons and protons are being trapped in Earth's magnetic field, following magnetic fields lines. They are serious concern on Low Earth Orbit along polar regions and inside South Atlantic Anomaly. In the figure \ref{Polar_SAA} radiation pattern is shown.
+    Electrons and protons are being trapped in Earth's magnetic field, following magnetic fields lines. They are serious concern on Low Earth Orbit along polar regions and inside South Atlantic Anomaly. In the figure \ref{Polar_SAA} radiation pattern along Earth is shown.
 
     \begin{figure}[H]
         \centering
@@ -16,7 +18,7 @@
 
     \bigskip \textbf{Solar flares}
 
-    During solar flares large fluxes of protons are produced, and some of them are reaching Earth. Magnetic field provides shielding from them, but they are being trapped in it, easily reaching polar regions. Solar flares are unpredictable, being a threat to spacecraft operations.
+    During solar flares large fluxes of protons are produced, and some of them are reaching Earth. Magnetic field provides shielding from them, but they are being trapped in it, easily reaching polar regions and South Atlantic Anomaly. Solar flares are unpredictable, being a threat to spacecraft operations.
 
     \bigskip \textbf{Cosmic rays}
 
@@ -71,16 +73,16 @@
         TID is defined as total energy absorbed during exposure. This can be caused by any kind of radiation, behaving differently in every semiconductor device. In general, TID successively degrades electronic device parameters in time, causing them to stop functioning when critical irradiation was reached. Effect in p-MOSFET transistor is described in section \ref{Radiation_effects_on_MOS_transistors}.
 
 \section{Need for TID radiation dosimetry}
-    During spacecraft mission accumulated radiation level should be monitored to not excess guaranteed values for components. For example, near end of its lifetime, spacecraft can be commanded to deorbit into atmosphere or move to parking orbit - before fail can occur, causing losing control of spacecraft, like for example in Telstar-1.
-    Absorbed dose simulation is good method of its estimation. But, because radiation flux changes errors can accumulate during satellite lifetime. Flying by South Atlantic Anomaly or Van Allen belts can cause radiation estimation to be inaccurate, so near all spacecrafts implement sensor which constantly monitor radiation level absorbed by its electronics.
+    During spacecraft mission accumulated radiation level should be monitored to not excess guaranteed values for components. For example, near end of its lifetime, spacecraft can be commanded to deorbit into atmosphere or move to graveyard orbit - before fail can occur, causing losing control of spacecraft, like for example in Telstar-1.
+    Absorbed dose simulation is good method of its estimation. But, because radiation flux changes (due to cosmic event, like solar flares) errors can accumulate during satellite lifetime. Flying by South Atlantic Anomaly or Van Allen belts can cause radiation estimation to be inaccurate, so near all spacecrafts implement sensor which constantly monitor radiation level absorbed by its electronics.
 
 \section{On-line TID radiation dosimetry}
     Couple of possible dosimetry methods were considered:
     \begin{itemize}
-        \item PIN diode,
-        \item memory dosimetry,
-        \item FGMOSFET,
-        \item RadFET
+        \item PIN diode - forward voltage shift during irradiation \cite{PIN_dosimetry},
+        \item memory dosimetry - single events cause bit flips in memory - accumulated number of errors reflects absorbed dose \cite{RadFET_PhD},
+        \item FGMOSFET - change in differential channel current - indicative of radiation dose \cite{FGMOSFET_patent},
+        \item RadFET - shift of threshold voltage of p-MOS transistor indicates irradiation \cite{RadFET_PhD}.
     \end{itemize}
     Detailed description of those dosimetry methods can be found in \cite{RadFET_PhD}.
 
@@ -92,8 +94,13 @@
         \item integrated measurement (especially important for small dose rates),
         \item on-line, non-destructive readout,
         \item small size,
-        \item simple measuring setup
     \end{itemize}
+    And most crucial drawbacks:
+    \begin{itemize}
+        \item low sensitivity - requires sophisticated measurement setup,
+        \item required temperature compensation.
+    \end{itemize}
+
 
 \section{RadFET Theory}
     Basic idea of RadFET of using metal-oxide semiconductor field-effect transistor (MOSFET) is to measure its threshold voltage shift, $\Delta V_{TH}$ and covert it into absorbed dose.
@@ -109,7 +116,7 @@
             \label{MOS_irradiation}
         \end{figure}
 
-        Threshold voltage will shift according to following equation (\cite{pMOS_dosimeters_radfets}):
+        Threshold voltage will shift according to following equation \cite{pMOS_dosimeters_radfets}:
 
         $$\Delta V_{TH} = A \cdot D^n$$
 
@@ -136,7 +143,7 @@
         \end{figure}
 
     \subsection{Temperature dependencies}
-        Threshold voltage of transistor strongly depends on die temperature. \cite{managing_temperature_effects_in_nanoscale_adaptive_systems}.
+        Threshold voltage of transistor strongly depends on die temperature \cite{managing_temperature_effects_in_nanoscale_adaptive_systems}.
 
         This dependency is usually described to be linear:
 

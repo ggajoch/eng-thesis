@@ -24,23 +24,19 @@
     \subsection{Noise}
         Noise of current source was measured for long period of time, taking sufficient number of samples. Results (\ref{Current_Stability}) shows that noise floor is below specifications for this meter.
 
-        \begin{table}[H]
-            \begin{center}
-                \begin{tabular}{cc}
-                    \includegraphics[width=0.35\paperwidth]{img/07/current_time.eps}
-                    &
-                    \includegraphics[width=0.35\paperwidth]{img/07/current_hist.eps}
-                \end{tabular}
-            \end{center}
-            \caption{Current noise in time and histogram}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/07/current_time.eps}
+            \includegraphics[width=0.6\paperwidth]{img/07/current_hist.eps}
+            \caption{LDO rise time}
             \label{Current_Stability}
-        \end{table}
+        \end{figure}
 
     \subsection{Load range}
         Output load was changed in identical manner as in simulation, to tests its fidelity. Simulation and build model shown same range and stability - confirming the design. Current source works as intended for loads between \SI{1.4}{\kilo\ohm} and \SI{22.5}{\kilo\ohm} (figure \ref{Current_sensor_output_characteristics}).
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.6\paperwidth]{img/07/output_resistance.eps}
+            \includegraphics[width=0.9\paperwidth]{img/07/output_resistance.eps}
             \caption{Current sensor output characteristics}
             \label{Current_sensor_output_characteristics}
         \end{figure}
@@ -61,7 +57,7 @@
 \section{Measurement noise}
     Most important noise figure is system noise - ADC reading noise floor during nominal work.
 
-    Because even smallest temperature changes cause ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose DC notch filter was used in post-processing, to eliminate any DC bias during measurement. Sampling frequency of ADC was its nominal rate of \SI{0.25}{\hertz}. Transfer function of this filter is shown in the figure TODO. Example of filtration is shown in the figure \ref{notch_DC_example}.
+    Because even smallest temperature changes cause ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose DC notch filter was used in post-processing, to eliminate any DC bias during measurement. Sampling frequency of ADC was its nominal rate of \SI{0.25}{\hertz}. Example of filtration is shown in the figure \ref{notch_DC_example}.
 
     \begin{figure}[H]
         \centering
@@ -69,8 +65,6 @@
         \caption{Input and output of DC notch filter}
         \label{notch_DC_example}
     \end{figure}
-
-    Image: ch-ka filtru
 
     \subsection{Diode}
         \begin{figure}[H]
@@ -95,7 +89,7 @@
         Because the only difference between temperature and threshold voltage channels is semiconductor itself, source of noise can be estimated from significant difference between them.
 
         Estimated current source noise is $2 nA$.
-        This value can be confirmed by calculations, reference voltage LT1634 have low-frequency noise of $U_N = \SI{15}{\uV}$, this value is directly across series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. Noise output from LTSpice:
+        This value can be confirmed by calculations, reference voltage LT1634 have low-frequency noise of $U_N = \SI{15}{\uV}$, this value is directly across series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. % Noise output from LTSpice:
 
 
 
@@ -137,7 +131,7 @@
 \section{Temperature compensation stability}
     The sensor should be compensated for temperature, with assumption that temperature characteristic curves will not change during irradiation.
 
-    During temperature sweep data was gathered, and post-processed applying thermal compensation (given by charts \ref{Body_diode_temperature_dependency} and \ref{threshold_voltage_temperature_dependency}). In full sensing range, sensor output shifts of maximum $\SI{104}{\uV}$, which reflects to TID measurement accuracy of about \SI{\pm 1}{\rad}. Detailed accuracies are listed in table \ref{Temperature_compensation_results}.
+    During temperature sweep data was gathered, and post-processed applying thermal compensation (given by charts \ref{Body_diode_temperature_dependency} and \ref{threshold_voltage_temperature_dependency}). In full sensing range, sensor output shifts of maximum $\SI{104}{\uV}$, which reflects to TID measurement accuracy of about \SI{\pm 1}{\rad}. Take note, TID dependency was not tested, but assumed according to \cite{COTSMosfetsGarcia}. Detailed accuracies are listed in table \ref{Temperature_compensation_results}.
 
 
     \begin{figure}[H]
