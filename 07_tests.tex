@@ -88,8 +88,13 @@
     \subsection{Interpretation}
         Because the only difference between temperature and threshold voltage channels is semiconductor itself, source of noise can be estimated from significant difference between them.
 
-        Estimated current source noise is $2 nA$.
-        This value can be confirmed by calculations, reference voltage LT1634 have low-frequency noise of $U_N = \SI{15}{\uV}$, this value is directly across series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. % Noise output from LTSpice:
+        Dependence between threshold voltage and drain current for this type of transistor was measured by M. Gumiela:
+        $$I_D~[\mu A] = 410.376 \cdot (V_{TH} - 1.56457)^2 \text{~~~~~~Source: \ref{CD4007_p-MOSFET_transfer}}$$
+        $$\frac{\textit{d}}{\textit{d}V_{TH}} I_D= 820.75 \cdot (-1.56 + V_{TH}) = \SI{439.46}{\uA/V} \text{~~~@ operating point}$$
+        $$\textit{d}I_d = \SI{3.82}{\nA}$$
+        Estimated equivalent current source have RMS value of $I_{N~RMS} = \SI{3.82}{\nA}$.
+
+        This value is the same order of magnitude as calculated: reference voltage LT1634 have low-frequency noise of $U_N = \SI{15}{\uV}$ [TODO], this value is sensed directly across series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. Left part of the noise can origin from different part of the circuit, thermal and shot noise etc. % Noise output from LTSpice:
 
 
 
@@ -97,7 +102,7 @@
     By sweeping temperature from \SI{0}{\degreeCelsius} up to \SI{75}{\degreeCelsius} temperature dependency charts were obtained for the device.
 
     \subsection{Diode}
-        Diode response (figure \ref{Body_diode_temperature_dependency}) is alsost ideally linear.
+        Diode response (figure \ref{Body_diode_temperature_dependency}) is almost ideally linear.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.6\paperwidth]{img/07/diodeVsTemperature.eps}
