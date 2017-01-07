@@ -16,6 +16,7 @@
         \end{figure}
 
     \subsection{Power consumption}
+        Current drawn during readout is about \SI{25}{\milli\ampere} at \SI{5}{\volt} rail, so power consumption of the sensor equals \SI{0.125}{\watt}.
 
 \section{Current source}
     Current source was tested on HP 34970A - 6 1/2 digit multimeter, with 200 PLC enabled.
@@ -60,27 +61,35 @@
 \section{Measurement noise}
     Most important noise figure is system noise - ADC reading noise floor during nominal work.
 
-    Because even smallest temperature changes cause ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose DC notch filter was used in post-processing, to eliminate any DC bias during measurement. Transfer function of this filter is shown in the figure TODO. Example of filtration is shown in the figure TODO.
+    Because even smallest temperature changes cause ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose DC notch filter was used in post-processing, to eliminate any DC bias during measurement. Sampling frequency of ADC was its nominal rate of \SI{0.25}{\hertz}. Transfer function of this filter is shown in the figure TODO. Example of filtration is shown in the figure \ref{notch_DC_example}.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\paperwidth]{img/07/filterBeforeAfter.eps}
-        \caption{10 runs of MOS voltage setting}
-        \label{MOS_settling}
+        \caption{Input and output of DC notch filter}
+        \label{notch_DC_example}
     \end{figure}
-
-    Image: [przed filtracją] -> po filtracji
 
     Image: ch-ka filtru
 
     \subsection{Diode}
-        Image: time + histogram
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\paperwidth]{img/07/diodeVoltage.eps}
+            \caption{Measured noise on body temperature channel}
+        \end{figure}
 
-        Noise on temperature measurement channel have standard deviation of $1.2 uV$
+        Noise on temperature measurement channel have standard deviation of $\SI{1.58}{\uV}$
     \subsection{Threshold voltage}
-        Image: time + histogram
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/07/thresholdVoltageHistograms.eps}
+            \caption{Measured noise on body temperature channel}
+        \end{figure}
 
-        Noise on threshold voltage measurement channel have standard deviation of $8.2 uV$
+        Noise on threshold voltage measurement channel have standard deviations of \SI{8.68}{\uV}, \SI{8.77}{\uV}, \SI{8.71}{\uV}.
+
+
 
     \subsection{Interpretation}
         Because the only difference between temperature and threshold voltage channels is semiconductor itself, source of noise can be estimated from significant difference between them.
@@ -94,21 +103,59 @@
     By sweeping temperature from \SI{0}{\degreeCelsius} up to \SI{75}{\degreeCelsius} temperature dependency charts were obtained for the device.
 
     \subsection{Diode}
-        Diode response (ref) is alsost ideally linear.
+        Diode response (figure \ref{Body_diode_temperature_dependency}) is alsost ideally linear.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/07/diodeVsTemperature.eps}
+            \caption{Body diode temperature dependency}
+            \label{Body_diode_temperature_dependency}
+        \end{figure}
 
-        Image: chart + dopasowanie
 
     \subsection{Threshold voltage}
-        Threshold voltage (ref) tends to be non-linear, but quadratic equation can be fitted to it.
+        Threshold voltage (figure \ref{threshold_voltage_temperature_dependency}) tends to be non-linear, but quadratic equation can be fitted to it. Equation used: $V_{TH} = a \cdot t^2 + b \cdot t + c$, fitted parameters are shown in table \ref{vth_fit_params}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\paperwidth]{img/07/thresholdVoltageTemperatureDependency.eps}
+            \caption{Threshold voltage temperature dependency}
+            \label{threshold_voltage_temperature_dependency}
+        \end{figure}
 
-        Image: chart + dopasowanie
-
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{c|c|c|c}
+                    Channel & a & b & c \\ \hline
+                    ch 1 & $-0.00174~\pm~1.17011e-6$ & $-0.06692~\pm~8.33551e-5$ & $2027.53424~\pm~0.00125$ \\
+                    ch 2 & $-0.00176~\pm~1.07318e-6$ & $-0.07437~\pm~7.64496e-5$ & $2028.72804~\pm~0.00114$ \\
+                    ch 3 & $-0.00169~\pm~1.12071e-6$ & $-0.08736~\pm~7.98355e-5$ & $2036.83689~\pm~0.00119$ \\
+                \end{tabular}
+            \end{center}
+            \caption{Temperature compensation results}
+            \label{vth_fit_params}
+        \end{table}
 
 \section{Temperature compensation stability}
     The sensor should be compensated for temperature, with assumption that temperature characteristic curves will not change during irradiation.
 
-    During temperature sweep data was gathered, and post-processed applying thermal compensation (given by charts ref and ref). In full sensing range, sensor output shifts of maximum $\SI{400}{\uV}$, which reflects to TID measurement accuracy of \SI{\pm 1}{\rad}.
+    During temperature sweep data was gathered, and post-processed applying thermal compensation (given by charts \ref{Body_diode_temperature_dependency} and \ref{threshold_voltage_temperature_dependency}). In full sensing range, sensor output shifts of maximum $\SI{104}{\uV}$, which reflects to TID measurement accuracy of about \SI{\pm 1}{\rad}. Detailed accuracies are listed in table \ref{Temperature_compensation_results}.
 
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\paperwidth]{img/07/compensatedThresholdVoltage.eps}
+        \caption{Threshold voltage temperature compensation}
+        \label{threshold_voltage_temperature_compensation}
+    \end{figure}
 
-    
+    \begin{table}[H]
+        \begin{center}
+            \begin{tabular}{c|c|c|c}
+                Channel & Standard deviation & Maximum difference & Accuracy ($3~\sigma$) \\ \hline
+                ch 1 & \SI{15.13}{\uV} & \SI{89.40}{\uV} & \SI{\pm~0.0108}{\gray} = \SI{\pm~1.08}{\rad} \\
+                ch 2 & \SI{16.27}{\uV} & \SI{103.24}{\uV} & \SI{\pm~0.0109}{\gray} = \SI{\pm~1.09}{\rad} \\
+                ch 3 & \SI{15.36}{\uV} & \SI{101.26}{\uV} & \SI{\pm~0.0103}{\gray} = \SI{\pm~1.03}{\rad} \\
+            \end{tabular}
+        \end{center}
+        \caption{Temperature compensation results}
+        \label{Temperature_compensation_results}
+    \end{table}
