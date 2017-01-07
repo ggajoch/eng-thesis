@@ -16,24 +16,24 @@ This chapter describes basic informations about radiation environment, failure m
          \label{Polar_SAA}
     \end{figure}
 
-u    \bigskip \textbf{Solar flares}
+    \bigskip \textbf{Solar flares}
 
     During solar flares large fluxes of protons are produced, and some of them are reaching Earth. Magnetic field provides shielding from them, but they are being trapped in it, easily reaching polar regions and South Atlantic Anomaly. Solar flares are unpredictable, being a threat to spacecraft operations.
 
     \bigskip \textbf{Cosmic rays}
 
     Cosmic rays originates from outside the solar system. They are very high energy particles, which make shielding very difficult. Flux of this kind of particles is low, therefore they mostly contribute in single-event processes.
-e
+
 \section{Radiation effects on electronic devices}
     There are two basic effects of radiation on silicon components:
     \begin{itemize}
-        \item ionizing effect
+         \item ionizing effect
         \item displacement damage
     \end{itemize}
 
     Those two effect are responsible for changing parameters of semiconductor devices, which after some time can lead to failure of the device. Main source of this radiation are gamma (ionization) and neutron particles (displacement).
 
-h    In space electronics during analysis and design two major problems are considered - Single Event Effects (SEE) and Total Ionizing Dose (TID). Every silicon and silica device is susceptible to both of those - and both have to be considered during product design, development and testing.
+    In space electronics during analysis and design two major problems are considered - Single Event Effects (SEE) and Total Ionizing Dose (TID). Every silicon and silica device is susceptible to both of those - and both have to be considered during product design, development and testing.
 
     \subsection{Single Events Effects}
         Single Event Effects are connected with generation of electron-hole pair in semiconductor, when material is exposed to ionizing radiation. Amount of pairs generated is proportional to energy deposited. For semiconductor device parameter $LET_{th}$ (Linear Energy Transfer Threshold) is defined, being a measure of how susceptible the device is. For particles with Linear Energy Transfer (LET - normalized particle energy per mass of the absorbing material), below this threshold no effect will be observed.
@@ -73,11 +73,11 @@ h    In space electronics during analysis and design two major problems are cons
         TID is defined as the total energy absorbed during exposure. This can be caused by any kind of radiation, behaving differently in every semiconductor device. In general, TID successively degrades electronic device parameters over time, causing them to stop functioning when critical irradiation is reached. The effect in p-MOSFET transistors is described in section \ref{Radiation_effects_on_MOS_transistors}.
 
 \section{Need for TID radiation dosimetry}
-    During spacecraft missions, accumulated radiation levels should be monitored so as not to exceed guaranteed values for components. For example, near the end of its lifetime, a spacecraft can be commanded to deorbit into the atmosphere or move to graveyard orbit - before failure can occur, causing loss of control of the spacecraft, like for example in Telstar-1.
-    Absorbed dose simulation is a good method of its estimation, but, because radiation flux varies (due to cosmic events like solar flares), errors can accumulate during the satellite lifetime. Flying by South Atlantic Anomaly or Van Allen belts can cause radiation estimation to be inaccurate, so near all spacecrafts implement sensor which constantly monitor radiation level absorbed by its electronics.
+    During spacecraft missions, accumulated radiation levels should be monitored in order not to exceed certain guaranteed values for components. For example, near the end of its lifetime, a spacecraft can be commanded to deorbit into the atmosphere or move to graveyard orbit - before failure can occur, causing loss of control of the spacecraft, like for example in Telstar-1.
+    Absorbed dose simulation is a good method of its estimation, but, because radiation flux varies (due to cosmic events like solar flares), errors can accumulate during a satellite's lifetime. Flying by the South Atlantic Anomaly or Van Allen belts can cause inaccuracies in radiation estimations, so nearly all spacecraft implement sensors which constantly monitor the radiation levels absorbed by their electronics.
 
 \section{On-line TID radiation dosimetry}
-    Couple of possible dosimetry methods were considered:
+    A number of possible dosimetry methods were considered:
     \begin{itemize}
         \item PIN diode - forward voltage shift during irradiation \cite{PIN_dosimetry},
         \item memory dosimetry - single events cause bit flips in memory - accumulated number of errors reflects absorbed dose \cite{RadFET_PhD},
@@ -86,7 +86,7 @@ h    In space electronics during analysis and design two major problems are cons
     \end{itemize}
     Detailed description of those dosimetry methods can be found in \cite{RadFET_PhD}.
 
-    For this sensor, it was decided to use RadFET as a sensing element. This kind of sensors have already flown on many satellites, are used in medical and industrial dosimetry.
+    For this sensor, it was decided to use RadFET as a sensing element. These kinds of sensor have already flown on many satellites and are used in medical and industrial dosimetry.
 
     The most important advantages of RadFET dosimetry:
     \begin{itemize}
@@ -95,7 +95,7 @@ h    In space electronics during analysis and design two major problems are cons
         \item on-line, non-destructive readout,
         \item small size,
     \end{itemize}
-    And most crucial drawbacks:
+    And the most crucial drawbacks:
     \begin{itemize}
         \item low sensitivity - requires sophisticated measurement setup,
         \item required temperature compensation.
@@ -103,11 +103,11 @@ h    In space electronics during analysis and design two major problems are cons
 
 
 \section{RadFET Theory}
-    Basic idea of RadFET of using metal-oxide semiconductor field-effect transistor (MOSFET) is to measure its threshold voltage shift, $\Delta V_{TH}$ and covert it into absorbed dose.
+    The basic idea of RadFET, using metal-oxide semiconductor field-effect transistors (MOSFET), is to measure the threshold voltage shift, $\Delta V_{TH}$ and convert it into an absorbed dose.
 
     \subsection{Radiation effects on MOS transistors}
     \label{Radiation_effects_on_MOS_transistors}
-        Irradiation of MOSFET transistor results in threshold voltage shift. It is caused by trapping of holes (generated during particle strike) and creation of interface states on gate/bulk boundary. Those effects are shown in the figure \ref{MOS_irradiation} \cite{pMOS_dosimeters_radfets}.
+        Irradiation of MOSFET transistor results in threshold voltage shift. This is caused by trapping of holes (generated during particle strike) and creation of interface states on gate/bulk boundary. Those effects are shown in the figure \ref{MOS_irradiation} \cite{pMOS_dosimeters_radfets}.
 
         \begin{figure}[H]
             \centering
@@ -116,7 +116,7 @@ h    In space electronics during analysis and design two major problems are cons
             \label{MOS_irradiation}
         \end{figure}
 
-        Threshold voltage will shift according to following equation \cite{pMOS_dosimeters_radfets}:
+        Threshold voltage will shift according to the following equation \cite{pMOS_dosimeters_radfets}:
 
         $$\Delta V_{TH} = A \cdot D^n$$
 
@@ -133,7 +133,7 @@ h    In space electronics during analysis and design two major problems are cons
 
 
     \subsection{Threshold voltage measurement}
-        Simplest method to measure threshold voltage shift is to use diode configuration of MOS transistor, current source and measure voltage across, as shown in the figure \ref{MOS_measurement_setup}.
+        The simplest method to measure threshold voltage shift is to use diode configuration of MOS transistor, current source and measure voltage across, as shown in the figure \ref{MOS_measurement_setup}.
 
         \begin{figure}[H]
             \centering
@@ -158,4 +158,4 @@ h    In space electronics during analysis and design two major problems are cons
         \end{tabular}
         \bigskip
 
-        Constant coefficient depends on particular MOSFET, technology and (very weak effect) irradiation. Usually this coefficient is in range $-0.1$ to \SI{-1}{\milli\volt/\kelvin}.
+        Constant coefficient depends on particular MOSFET, technology and (very weakly) irradiation. Usually this coefficient is in the range $-0.1$ to \SI{-1}{\milli\volt/\kelvin}.
