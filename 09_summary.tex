@@ -1,1 +1,27 @@
 \chapter{Summary}
+    Engineering model of the sensor was designed and preliminary tested. This is solid foundation to further work, which will result in flight-ready version of the sensor. This model allowed to test concept and possible solutions of sensor components, proving the design.
+
+    Tests have proven fidelity of measurements - assumed resolution and range are beyond required. Designed sensor parameters are shown in table \ref{sensor_results_parameters}.
+
+    \begin{table}[H]
+        \begin{center}
+            \begin{tabular}{r|l}
+                \textbf{Parameter} & \textbf{Result} \\ \hline
+                Sensor resolution & \SI{0.003}{\rad}, \\
+                Sensor accuracy & \SI{1}{\rad}, \\
+                Sensor range & \SI{10}{\kilo\rad}, \\
+                Operating temperature range & \SI{0}{\degreeCelsius} to \SI{70}{\degreeCelsius}, \\
+                Communication protocol & $I^2C$, \\
+                Sensor supply voltage & \SI{5}{\volt}, \\
+                Sensor power consumption & \SI{0.125}{\watt}, \\
+                Radiation tolerance & $>~\SI{15}{\kilo\rad}$ \\
+
+            \end{tabular}
+        \end{center}
+        \caption{Finished sensor parameters}
+        \label{sensor_results_parameters}
+    \end{table}
+
+    Thesis resulted in fully integrated, ready to use sensor which can be used as a preliminary calibration check model. It was designed having in mind space environment, limitations and requirements of CubeSat satellite. During testing, sensor proved its design by conducted tests. Moreover, its size and requirements on the bus are limited, broaden possibilities of manufacturing this sensor as a separate module, for other CubeSat missions.
+
+    As a next steps, this model have to be tested more throughly - especially radiation tests and calibration. Later, qualification and flight models would be manufactured, hopefully leading to sensor launch on PW-Sat2 satellite at the end of year 2017, where it can be tested in target space conditions.
