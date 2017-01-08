@@ -67,7 +67,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \item ultrahigh PSRR \SI{79}{\decibel} at \SI{500}{\kilo\hertz}, more detailed graph is shown in the figure \ref{LT3042_PSRR}.
             \item low dropout voltage of \SI{200}{\mV}
         \end{itemize}
-    
+
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.4\paperwidth]{img/06/LT3042_PSRR.eps}
@@ -79,9 +79,9 @@ This model was developed as flight-ready version for sensor calibration \& tests
 
     \subsection{RadFET power switch}
         Because main PLD microcontroller is also controlling other sensors (photodiodes, temperature sensors) RadFET analog front-end have to have a possibility to be turned off. For this purpose, TPS2551DBVx current-limited power-distribution switch was implemented in the design.
-        
+
         More accurately, two of them - one to disable digital part of ADC and second to disable all analog part of the design.
-        
+
         Apart from possibility of disabling RadFET they provide point-of-load latch-up current limitation, allowing to cut down power in case of SEE even faster.
 
     \subsection{Current source}
