@@ -168,7 +168,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \subsection{Analog to digital converter}
         The analog to digital converter is responsible for reading $V_{DS}$ voltage across the transistor and voltage across the diode. Due to very low changes, high accuracy and resolution is required. Additionally, complex mixed signal elements like ADC should be radiation tested to prove long term reliability. To achieve at least \SI{0.1}{\milli\volt} resolution, ADC has to be at least \SI{16}{bits}.
 
-        Due to constraints on the system and reliability issues, the AD7714 from Analog Devices was chosen. Radiation tests have shown that it fails between \SI{10}{\kilo\rad} and \SI{20}{\kilo\rad}, with no degradation up to \SI{10}{\kilo\rad} [TODO].
+        Due to constraints on the system and reliability issues, the AD7714 from Analog Devices was chosen. Radiation tests have shown that it fails between \SI{10}{\kilo\rad} and \SI{20}{\kilo\rad}, with no degradation up to \SI{10}{\kilo\rad} \cite{ADC_radiation_tests}.
 
         Internal diagram is shown in figure \ref{AD7714}. Key specs:
         \begin{itemize}
@@ -209,7 +209,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \subsection{Multiplexer}
         The multiplexer has two purposes: to multiplex current and voltage lines (3-wire readout).
 
-        As an analog multiplexer, ADG709 was chosen. Its radiation tests can be found in TODO. It is a double 1:4 mux, allowing for simultaneous current and voltage multiplexing. It's internal block diagram is shown in figure \ref{ADG709_block}
+        As an analog multiplexer, ADG709 was chosen. Its radiation tests can be found in \cite{IEEE_radiation_tests_1992_2009}. It is a double 1:4 mux, allowing for simultaneous current and voltage multiplexing. It's internal block diagram is shown in figure \ref{ADG709_block}
 
         \begin{figure}[H]
             \centering
@@ -267,7 +267,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         Several options were considered, and the final choice was ATmega164PV-10AQ. More detailed comparison can be found in \cite{PWSAT_EPS_CDR}.
 
-        AVR devices are known for their simplicity, reliability and sparsity of bugs. Radiation tests were performed for ATmega series, showing their performance for up to \SI{30}{\kilo\rad} [TODO].
+        AVR devices are known for their simplicity, reliability and sparsity of bugs. Radiation tests were performed for ATmega series, showing their performance for up to \SI{30}{\kilo\rad} \cite{ATMEGA128_radiation_tests}.
 
         Features of this particular device:
         \begin{itemize}
