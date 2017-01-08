@@ -42,7 +42,7 @@
         \end{figure}
 
     \subsection{Temperature stability}
-        Temperature was swept from $20$ to \SI{70}{\degreeCelsius}, no detectable changes were measured by the available meter, therefore it is assumed that current source fluctuates lower than about \SI{20}{\nano\ampere} in this temperature range.
+        Temperature was swept from $20$ to \SI{70}{\degreeCelsius}, no detectable changes were measured by the available meter, therefore it is assumed that current source fluctuates less than about \SI{20}{\nano\ampere} in this temperature range.
 
 \section{MOS settling}
     After enabling the measurement channel for the threshold voltage it takes a lot of time to fully stabilize its value. Instead of pre-enabling, same time method was used. ADC takes measurement of threshold voltage at precisely specified time after enabling power. In figure \ref{MOS_settling} 10 runs of measured voltage vs time are plotted, proving this method is stable within \SI{20}{\uV}.
@@ -94,7 +94,7 @@
         $$\textit{d}I_d = \SI{3.82}{\nA}$$
         Estimated equivalent current source have RMS value of $I_{N~RMS} = \SI{3.82}{\nA}$.
 
-        This value is the same order of magnitude as calculated: reference voltage LT1634 has low-frequency noise of $U_N = \SI{15}{\uV}$ [TODO], this value is sensed directly across a series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. The left-hand side part of the noise equation can originate from different parts of the circuit, thermal and shot noise etc. % Noise output from LTSpice:
+        This value is the same order of magnitude as calculated: reference voltage LT1634 has low-frequency noise of $U_N = \SI{15}{\uV}$ \cite{LT1634_datasheet}, this value is sensed directly across a series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. The left-hand side part of the noise equation can originate from different parts of the circuit, thermal and shot noise etc. % Noise output from LTSpice:
 
 
 
@@ -112,7 +112,7 @@
 
 
     \subsection{Threshold voltage}
-        The threshold voltage (figure \ref{threshold_voltage_temperature_dependency}) tends to be non-linear, but it can be approximated as a quadratic function. Equation used: $V_{TH} = a \cdot t^2 + b \cdot t + c$, fitted parameters are shown in table \ref{vth_fit_params}.
+        The threshold voltage (figure \ref{threshold_voltage_temperature_dependency}) tends to be non-linear, but it can be approximated by a quadratic function. Equation used: $V_{TH} = a \cdot t^2 + b \cdot t + c$, fitted parameters are shown in table \ref{vth_fit_params}.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.6\paperwidth]{img/07/thresholdVoltageTemperatureDependency.eps}

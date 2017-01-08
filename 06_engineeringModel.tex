@@ -2,7 +2,7 @@
 \label{Engineering_model_chapter}
 This chapter will describe the engineering model developed during this thesis.
 
-The model should be as close to the flight model as possible - although it was, in fact, developed on a separate board.
+The model should be as close to the flight model as possible - although it was, in fact, developed on a different factor board.
 
 The model was developed as a flight-ready version for sensor calibration and testing alongside flight software developing and testing.
 
@@ -105,7 +105,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         After irradiation MOSFET $V_{DS}$ is planned to be no more than \SI{2.5}{\volt}, so the reference voltage has to be lower than \SI{2}{\volt}.
 
-        Linear Technology LT1634-1.25 shunt voltage reference was chosen. It is one of the best shunt references from Linear Technology. Basic specification:
+        Linear Technology LT1634-1.25 shunt voltage reference was chosen. It is one of the best shunt references from Linear Technology. Basic specification \cite{LT1634_datasheet}:
         \begin{itemize}
             \item \SI{0.05}{\percent} initial accuracy,
             \item \SI{10}{ppm/\degreeCelsius} maximum temperature drift,
@@ -225,7 +225,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
             \label{low_pass_filter}
         \end{figure}
 
-        Using AC analysis it's frequency characteristic was obtained - figure \ref{low_pass_filter_output}. At half the sampling frequency, attenuation is about \SI{22}{\decibel}.
+        Using AC analysis its frequency characteristic was obtained - figure \ref{low_pass_filter_output}. At half the sampling frequency, attenuation is about \SI{22}{\decibel}.
 
         \begin{figure}[H]
             \centering
@@ -322,7 +322,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \subsection{PCB stack}
         Because outgassing of devices can be dangerous for turbomolecular pumps, it must be limited as much as possible. Therefore soldermask and overlay layers are not present in the design, and packages of used components have known outgassing coefficients.
 
-        Although this prototype board has 4 layers, the on flight model board will be 6-layered. The PCB stack generated from Altium Designer is shown in figure \ref{PCB_Altium_stack}.
+        Although this prototype board has 4 layers, the flight model board will be 6-layered. The PCB stack generated from Altium Designer is shown in figure \ref{PCB_Altium_stack}.
 
         \begin{figure}[H]
             \centering
@@ -336,7 +336,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \bigskip \textbf{Top \& bottom layers}
 
-        Components should be placed only on top and bottom layers, every net should be connected on internal layers. Because the model exists only on a 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in figure \ref{top_bottom_layer_layout}.
+        Components should be placed only on top and bottom layers, every net should be connected on internal layers. Because the model is built on a 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in figure \ref{top_bottom_layer_layout}.
 
         \begin{figure}[H]
             \centering
@@ -367,7 +367,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{figure}
 
 \section{Software design}
-    An important aspect of the sensor is it's embedded software. It has to control data acquisition (LDO, ADC, MUX), check for validity and expose \iic interface to OBC.
+    An important aspect of the sensor is its embedded software. It has to control data acquisition (LDO, ADC, MUX), check for validity and expose \iic interface to OBC.
 
     Because the main microcontroller is 8-bit AVR-core processor, software has to be highly optimized, especially for speed and data memory consumption. Available resources:
     \begin{itemize}
