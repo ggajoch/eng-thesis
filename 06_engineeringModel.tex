@@ -408,7 +408,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \subsection{$I^2C$-slave interface}
     Cubesat standards define two \iic lines along the satellite board stack, which most of the commercially available devices use. It was the easiest option for connecting the PLD board to OBC, so this communication bus was selected.
 
-    The sensor acts as a slave on the \iic bus. Communication protocol is based on a request-reply manner, with interrupt pin acting as a notification.
+    The sensor acts as a slave on the \iic bus. Communication protocol is based on a request-reply manner, with the interrupt pin state acting as a notification.
 
     When OBC wants to gather data from the sensor it will do following tasks in order:
     \begin{itemize}
