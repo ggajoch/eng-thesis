@@ -1,12 +1,12 @@
 \chapter{Sensor design}
-This chapter will cover sensor basics, sensing element selection and theory of operation. Design will be presented on system-level view, for more detailed description of electronics skip to chapter \ref{Engineering_model_chapter}.
+This chapter will cover sensor basics, sensing element selection and theory of operation. The design will be presented at a system-level view. For a more detailed description of the electronics, please skip to chapter \ref{Engineering_model_chapter}.
 
 \section{Review of commercially available RadFETs}
-    Commercial solutions are based on modified MOS structure (with thicker gate region). Example silicon structure is show in the figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing different structure, fitted to particular requirements. Found companies produce RadFET sensor alone, leaving readout circuit design for customer. Physical phenomena for RadFET sensors is described in section \ref{Radiation_effects_on_MOS_transistors}. In table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
+    Commercial solutions are based on a modified MOS structure (with thicker gate region). Example silicon structure is shown in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing individual structures fitted to particular requirements. Researched companies only produce the RadFET sensors, leaving the readout circuit design for the customer to realise. A physical schematic and description for RadFET sensors is found in section \ref{Radiation_effects_on_MOS_transistors}. In table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\paperwidth]{img/radfet-silicon.eps}
+        \includegraphics[width=0.5\paperwidth]{img/05/radfet-silicon.eps}
         \caption{4x RadFET silicon structure by Tyndall. Source: \cite{Tyndall_Radfet}}
         \label{Tyndall_radfet_silicon}
     \end{figure}
@@ -18,8 +18,8 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
         Image: &
         \includegraphics[width=0.15\paperwidth]{img/05/rem.eps} &
-        \includegraphics[width=0.15\paperwidth]{img/TY1003.png} &
-        \includegraphics[width=0.15\paperwidth]{img/TY1004.png} \\ \hline
+        \includegraphics[width=0.15\paperwidth]{img/05/TY1003.png} &
+        \includegraphics[width=0.15\paperwidth]{img/05/TY1004.png} \\ \hline
 
         Package: & custom & SOT23-6 & 8-pin ceramic DIL \\ \hline
 
@@ -36,9 +36,9 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
 
 \section{COTS MOSFET as RadFET}
-    RadFETs are specifically designed MOSFETs to act as a radiation sensor. However, parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but they require proper calibration and tests to be considered as a flight solution.
+    RadFETs are specifically designed MOSFETs that act as radiation sensors. However, the parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but require proper calibration and testing in order to be considered as a flight solution.
 
-    Many articles and papers prove that COTS MOSFETs can be reliably used as a TID sensor. Number of available transistors were tested, their basic characteristics are compared in table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
+    Many articles and papers prove that COTS MOSFETs can be used reliably as TID sensors. A number of available transistors were tested, their basic characteristics are compared in table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
 
     \begin{table}[H]
     \begin{tabular}{| L{2cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} |}
@@ -60,17 +60,17 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \label{cots_mosfet_comparison}
     \end{table}
 
-    3N163 have the largest sensitivity - but having in mind \SI{5}{\volt} supply for sensor it was discarded. Second best is CD4007 - and it was selected for testing. Its parameters are suitable for this use, they were collected in table \ref{CD4007_parameters}.
+    3N163 type have the greatest sensitivity - but bearing in mind the \SI{5}{\volt} supply for the sensor, it was discarded. The second best type is CD4007, which was selected for testing. Its parameters are suitable for the use under discussion, as shown in table \ref{CD4007_parameters}.
 
-    Another advantages of CD4007 are:
+    Other advantages of CD4007 are:
     \begin{itemize}
         \item 3 P-MOS in one package - averaging/redundancy,
         \item additional diodes and transistors in device - possible temperature measurement
-        \item small, vibration and thermal resistant package
+        \item small, vibration and thermally resistant package
     \end{itemize}
 
 \section{Selected MOSFET - CD4007}
-    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown in the figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in table \ref{CD4007_parameters}.
+    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown below in figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in table \ref{CD4007_parameters}.
 
     \begin{figure}[H]
         \centering
@@ -93,7 +93,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{table}
 
 \section{Threshold voltage measurement}
-    Threshold voltage changes with TID accumulated. Easiest method to measure change of this parameter is to connect MOSFET in diode configuration, forcing constant drain current. Block diagram of this method is shown in the figure \ref{Vth_readout_block_diagram}.
+    Threshold voltage changes with TID accumulated. The easiest method to measure change of this parameter is to connect the MOSFET in diode configuration, forcing constant drain current. A block diagram of this method is shown in figure \ref{Vth_readout_block_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -102,7 +102,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
         \label{Vth_readout_block_diagram}
     \end{figure}
 
-    In saturation region drain current is described by following equation (body effect is negligible):
+    In saturation region, drain current is described by the following equation (body effect is negligible):
 
     $$I_D = A \cdot (V_{GS} - V_{th})^2$$
     Where:
@@ -115,16 +115,16 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{tabular}
     \bigskip
 
-    Because only threshold voltage change is interesting measuring $V_{GS}$ have the same effect:
+    Because only the threshold voltage change is of interest, measuring $V_{GS}$ has the same effect:
     $$I_D = A \cdot (V_{GS_1} - V_{th_1})^2 = A \cdot (V_{GS_2} - V_{th_2})^2$$
     $$\Delta V_{GS} = \Delta V_{th}$$
 
-    The sensor should be shut down during irradiation - therefore no-bias method was used. It allows to completely cut the power to the sensor, enabling it only for readout.
+    The sensor should be shut down during irradiation - therefore no-bias method was used. It allows for complete isolation of supply power to the sensor, enabling it only for readout.
 
 \section{Temperature measurement}
-    Because threshold voltage strongly depends on die temperature this effect have to be compensated. Flight MOSFET will be calibrated in thermal chamber prior to launch, obtaining characteristic curves
+    Because threshold voltage strongly depends on die temperature, this effect has to be compensated for. The flight MOSFET will be calibrated in a thermal chamber prior to launch, thus obtaining characteristic curves.
 
-    Couple of possible temperature measurement techniques were considered during this thesis:
+    A number of possible temperature measurement techniques were considered during this thesis:
     \begin{table}[H]
     \begin{tabular}{R{4.5cm} | C{5cm} | C{5cm} }
         Method & Pros & Cons \\ \hline
@@ -138,28 +138,29 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \caption{Temperature readout methods}
     \end{table}
 
-    The chosen solution is to measure temperature of silicon die using body diode in complementary N-MOS transistor. Block diagram of proposed solution is presented in the figure \ref{Temperature_measurement_block_diagram}.
+    The chosen solution: to measure temperature of silicon die using body diode in complementary N-MOS transistor. A block diagram of this proposed solution is presented in figure \ref{Temperature_measurement_block_diagram}.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.3\paperwidth]{img/n-mos-temperature.eps}
+        \includegraphics[width=0.3\paperwidth]{img/05/n-mos-temperature.eps}
         \caption{Temperature measurement block diagram}
         \label{Temperature_measurement_block_diagram}
     \end{figure}
 
-    During calibration, temperature characteristics of diode and p-MOS threshold voltage will be obtained. They will be used to compensate for threshold voltage shift associated with temperature. Individual flight component will be placed in thermal chamber, and proper look-up table will be created, with possible polynomial approximation.
+    During calibration, both the temperature characteristics of the diode and the p-MOS threshold voltage will be obtained. They will be used to compensate for the threshold voltage shift associated with temperature. An individual flight component will be placed in a thermal chamber, and a proper look-up table will be created, with possible polynomial approximation.
 
 
 \section{Characteristic curves}
 \label{Characteristic_curves}
 
-    During M. Gumiela thesis \cite{MGThesis} calibration stand for CD4007 was developed. As an outcome of that project, rough calibration curves were obtained, which are presented below.
+    During M. Gumiela's thesis, \cite{MGThesis} a calibration stand for CD4007 was developed. As an outcome of that project, rough calibration curves were obtained, which are presented below.
 
     \bigskip \textbf{p-MOSFET transfer characteristics}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\paperwidth]{img/05/mg_iv_mosfet.eps}
         \caption{CD4007 p-MOSFET transfer characteristics. Source: \cite{MGThesis}}
+        \label{CD4007_p-MOSFET_transfer}
     \end{figure}
 
     \bigskip \textbf{Linearized temperature coefficient of threshold voltage}
@@ -177,8 +178,8 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{figure}
 
 \section{Operating point selection}
-    Current source value had to be chosen, having in mind requirements and working conditions.
+    A current source value had to be chosen, keeping in mind the requirements and working conditions.
 
-    In theory, zero-temperature coefficient current would be optimal, but after irradiation it could slightly shift, causing significant error. Additionally, due to limited elements on market and slight differences between devices itself this point will be very difficult to achieve.
+    In theory, a zero-temperature coefficient current would be optimal, but after irradiation it could shift slightly, causing a significant error. Additionally, due to limited availability of elements on the market and slight differences between devices, this operating point would be very difficult to achieve.
 
-    As a tradeoff between low temperature coefficient and low starting threshold voltage (to increase sensor range) current value of \SI{125}{\micro\ampere} was chosen.
+    As a tradeoff between low temperature coefficient and low starting threshold voltage, (to increase sensor range) the current value of \SI{125}{\micro\ampere} was chosen.
