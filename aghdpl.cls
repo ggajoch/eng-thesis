@@ -22,6 +22,7 @@
 \ProcessOptions\LoadClass[a4paper,oneside]{report} 
 
 \RequirePackage{times}
+\usepackage{hyperref}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
@@ -32,7 +33,6 @@
 \RequirePackage{tocloft}
 \RequirePackage[utf8]{inputenc}		% Added by JN on 25 Dec 2016
 \RequirePackage{polski}						% Added by JN on 25 Dec 2016
-\RequirePackage{hyperref}
 
 \geometry{lmargin=30mm, rmargin=20mm, tmargin=25mm, bmargin=25mm, foot=10mm, head=10mm}
 \definecolor{Green}{rgb}{0.1,0.5,0.1}
@@ -58,7 +58,7 @@
 % \pagestyle{fancy}
 
 %\bibliographystyle{abbrv}
-\linespread{1.3}
+\linespread{1.5}
 \renewcommand{\labelitemi}{--}
 
 %------------------------------------------------------------------------------
@@ -85,8 +85,8 @@
 {\huge\scshape \@thesistypePL}\\\vspace*{1cm}
 
 % Thesis title
-{\LARGE{\bfseries\scshape \@titlePL}}\\\vspace*{0.5cm}
-{\Large{\bfseries\scshape \@titleEN}}\\\vspace*{2cm}
+{\LARGE{\bfseries\scshape \@titleEN}}\\\vspace*{0.5cm}
+{\Large{\bfseries\scshape \@titlePL}}\\\vspace*{2cm}
 
 % Author's name, study course and promotor
 \begin{flushleft}
