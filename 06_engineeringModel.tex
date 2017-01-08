@@ -189,22 +189,15 @@ The model was developed as a flight-ready version for sensor calibration and tes
             \label{AD7714}
         \end{figure}
 
-        AD7714 requires external crystal or clock oscillator in the frequency range \SI{1}{\mega\hertz} to \SI{2.54}{\mega\hertz}. Crystal oscillators for these frequencies are large and susceptible to shocks and damage because of their large, delicate internal structure (firure \ref{Opening_a_Quartz_Crystal_Can_Effects_Thereof}). \SI{1}{\mega\hertz} ceramic oscillator ISM95-3351AH was therefore selected for operation (figure \ref{ISM95-3351AH-1.0000}).
+        AD7714 requires external crystal or clock oscillator in the frequency range \SI{1}{\mega\hertz} to \SI{2.54}{\mega\hertz}. Crystal oscillators for these frequencies are large and susceptible to shocks and damage because of their large, delicate internal structure. \SI{1}{\mega\hertz} ceramic oscillator ISM95-3351AH was therefore selected for operation (figure \ref{ISM95-3351AH-1.0000}). Comparison of solutions is shown in the figure \ref{crystal_oscillator_difference}.
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/06/crystal.png}
-            \caption{Low frequency crystal oscillator internals. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof}}
-            \label{Opening_a_Quartz_Crystal_Can_Effects_Thereof}
+            \includegraphics[width=0.35\paperwidth]{img/06/crystal.png}
+                        \includegraphics[width=0.35\paperwidth]{img/06/ISM95.png}
+            \caption{Low frequency crystal oscillator internals. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof}, ISM95-3351AH-1.0000 ceramic oscillator package. Source: \cite{ISM95_series_datasheet}}
+            \label{crystal_oscillator_difference}
         \end{figure}
-
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.5\paperwidth]{img/06/ISM95.png}
-            \caption{ISM95-3351AH-1.0000 ceramic oscillator package. Source: \cite{ISM95_series_datasheet}}
-            \label{ISM95-3351AH-1.0000}
-        \end{figure}
-
 
     \subsection{Multiplexer}
         The multiplexer has two purposes: to multiplex current and voltage lines (3-wire readout).
@@ -236,7 +229,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\paperwidth]{img/06/low_pass_filter_output.eps}
+            \includegraphics[width=0.6\paperwidth]{img/06/low_pass_filter_output.eps}
             \caption{Low pass filter frequency characteristics.}
             \label{low_pass_filter_output}
         \end{figure}
