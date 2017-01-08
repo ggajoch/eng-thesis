@@ -3,7 +3,7 @@
 
 In this chapter the requirement for the TID sensor will be presented.
 
-Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Therefore it should be designed for its particular requirements. In addition, it should be designed having in mind active space standard and launcher requirements.
+Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Therefore it should be designed for its particular requirements. In addition, it should be designed having in mind active space standard and launcher requirements, as well as CubeSat Design Specification, which summarizes requirements for CubeSat satellite \cite{CDS}.
 
 
 \section{PW-Sat2}
@@ -13,7 +13,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\paperwidth]{img/PW-Sat2_render_01.png}
+        \includegraphics[width=0.5\paperwidth]{img/04/PW-Sat2_render_01.png}
         \caption{PW-Sat2 render (by M. Świetlik)}
         \label{PW-Sat_render_01}
     \end{figure}
@@ -22,7 +22,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
     \begin{figure}[H]
         \centering
-           \includegraphics[width=0.3\paperwidth]{img/Falcon9.jpg}
+           \includegraphics[width=0.3\paperwidth]{img/04/Falcon9.jpg}
         \caption{Falcon9 rocket. Source: \url{www.spacex.com}}
         \label{Falcon9}
     \end{figure}
@@ -33,7 +33,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\paperwidth]{img/PW-Sat2_render_02.png}
+            \includegraphics[width=0.7\paperwidth]{img/04/PW-Sat2_render_02.png}
             \caption{PW-Sat2 with opened sail (by M. Świetlik)}
             \label{PW-Sat_render_sail}
         \end{figure}
@@ -52,7 +52,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\paperwidth]{img/dose.eps}
+            \includegraphics[width=0.7\paperwidth]{img/04/dose.eps}
             \caption{TID vs shielding}
             \label{TIDvsSheilding}
         \end{figure}
@@ -97,7 +97,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\paperwidth]{img/PW-Sat2-stack.png}
+            \includegraphics[width=0.7\paperwidth]{img/04/PW-Sat2-stack.png}
             \caption{PW-Sat2 electronics stack}
             \label{PW-Sat2_stack}
         \end{figure}
@@ -108,6 +108,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
         This connector consists of:
         \begin{itemize}
             \item $I^2C$ bus, connected directly to MCU on OBC,
+            \item interrupt line on which the sensor can notify OBC about command completion,
             \item SENS \SI{5}{\volt} line, powered only when sensor is commanded to be enabled.
         \end{itemize}
 
@@ -135,7 +136,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=0.5\paperwidth]{img/EMC_conducted_susceptibility.eps}
+                \includegraphics[width=0.5\paperwidth]{img/04/EMC_conducted_susceptibility.eps}
                 \caption{Conducted susceptibility limit, frequency domain. Source: \cite{ECSS_E_ST_20_07C}}
                 \label{EMC_conducted_susceptibility}
             \end{figure}
@@ -145,7 +146,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=0.5\paperwidth]{img/EMC_conducted_emission.eps}
+                \includegraphics[width=0.5\paperwidth]{img/04/EMC_conducted_emission.eps}
                 \caption{Conducted susceptibility limit, frequency domain. Source: \cite{ECSS_E_ST_20_07C}}
                 \label{EMC_conducted_emission}
             \end{figure}
@@ -180,14 +181,14 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/PLD_PCB_stack.png}
+            \includegraphics[width=0.5\paperwidth]{img/04/PLD_PCB_stack.png}
             \caption{PLD board PCB stack}
             \label{PLD_PCB_stack}
         \end{figure}
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\paperwidth]{img/PC104_PLD_size.png}
+            \includegraphics[width=0.7\paperwidth]{img/04/PC104_PLD_size.png}
             \caption{PC-104 size}
             \label{PLD_PCB_size}
         \end{figure}
@@ -201,7 +202,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
         During rocket launch large vibrations occur on payload, therefore it should be immune to it. In case of any heavy electronic components appropriate glue should be applied to prevent joint cracks.
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/Falcon9_vibration.eps}
+            \includegraphics[width=0.5\paperwidth]{img/04/Falcon9_vibration.eps}
             \caption{Falcon9 maximum axial equivalent sine environment. Source: \cite{Falcon9_user_manual}}
             \label{Falcon9_vibration}
         \end{figure}
@@ -220,7 +221,7 @@ Final sensor is designed to be flown on-board of PW-Sat2 cubesat satellite. Ther
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/thermal_cycles.eps}
+            \includegraphics[width=0.5\paperwidth]{img/04/thermal_cycles.eps}
             \caption{Thermal cycles test procedure. Source: \cite{ECSS_Q_ST_70_04C}}
             \label{thermal_tests}
         \end{figure}
