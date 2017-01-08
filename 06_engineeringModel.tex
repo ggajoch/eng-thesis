@@ -70,7 +70,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
     
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\paperwidth]{img/06/LT3042_PSRR.eps}
+            \includegraphics[width=0.4\paperwidth]{img/06/LT3042_PSRR.eps}
             \caption{LT3042 PSRR. Source: \cite{LT3042_datasheet}}
             \label{LT3042_PSRR}
         \end{figure}
@@ -185,7 +185,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\paperwidth]{img/06/AD7714.eps}
-            \caption{AD7714 internal block diagram. Source: TODO}
+            \caption{AD7714 internal block diagram. Source: \cite{AD7714_datasheet}}
             \label{AD7714}
         \end{figure}
 
@@ -194,14 +194,14 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\paperwidth]{img/06/crystal.png}
-            \caption{Low frequency crystal oscillator internals. Source: \cite{        Opening_a_Quartz_Crystal_Can_Effects_Thereof}}
+            \caption{Low frequency crystal oscillator internals. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof}}
             \label{Opening_a_Quartz_Crystal_Can_Effects_Thereof}
         \end{figure}
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\paperwidth]{img/06/ISM95.png}
-            \caption{ISM95-3351AH-1.0000 ceramic oscillator package. Source: TODO}
+            \caption{ISM95-3351AH-1.0000 ceramic oscillator package. Source: \cite{ISM95_series_datasheet}}
             \label{ISM95-3351AH-1.0000}
         \end{figure}
 
@@ -214,7 +214,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.3\paperwidth]{img/06/ADG709.eps}
-            \caption{ADG709 internal block diagram. Source: TODO}
+            \caption{ADG709 internal block diagram. Source: \cite{ADG709_datasheet}}
             \label{ADG709_block}
         \end{figure}
 
@@ -249,7 +249,7 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.7\paperwidth]{img/06/BMI-S-203.eps}
-            \caption{BMI-S-203 shield. Source: TODO}
+            \caption{BMI-S-203 shield. Source: \cite{EMI_shieldings_catalog}}
             \label{BMI-S-203}
         \end{figure}
 
@@ -265,9 +265,9 @@ This model was developed as flight-ready version for sensor calibration \& tests
             \item communicating with OBC to retrieve data.
         \end{itemize}
 
-        Couple of options were considered, and the final choose was ATmega164PV-10AQ. More detailed comparison can be found in TTODO.
+        Couple of options were considered, and the final choose was ATmega164PV-10AQ. More detailed comparison can be found in \cite{PWSAT_EPS_CDR}.
 
-        AVR devices are known from their simplicity, reliability and very little bugs. Radiation tests were performed for ATmega series , showing their performance for up to \SI{30}{\kilo\rad} [TODO].
+        AVR devices are known from their simplicity, reliability and very little bugs. Radiation tests were performed for ATmega series, showing their performance for up to \SI{30}{\kilo\rad} [TODO].
 
         Features of this particular device:
         \begin{itemize}
@@ -279,12 +279,12 @@ This model was developed as flight-ready version for sensor calibration \& tests
         \end{itemize}
 
     \subsection{On-Board Computer interface}
-        Interface to OBC is $I^2C$ bus. Because sensor can be turned off by cutting its voltage proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and in-sensor microcontroller. Its functional diagram can be seen in the figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." (TODO). Thanks to it OBC can completely disable the sensor, by simply cutting it a power.
+        Interface to OBC is $I^2C$ bus. Because sensor can be turned off by cutting its voltage proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and in-sensor microcontroller. Its functional diagram can be seen in the figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." \cite{PCA9517_datasheet}. Thanks to it OBC can completely disable the sensor, by simply cutting it a power.
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.7\paperwidth]{img/06/PCA9517.eps}
-            \caption{PCA9517 internal block diagram. Source: TODO}
+            \caption{PCA9517 internal block diagram. Source: \cite{PCA9517_datasheet}}
             \label{PCA9517}
         \end{figure}
 
