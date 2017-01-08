@@ -7,7 +7,7 @@ The model should be as close to the flight model as possible - although it was, 
 The model was developed as a flight-ready version for sensor calibration and testing alongside flight software developing and testing.
 
 \section{Background - calibration stand}
-    During development of the system previous model was developed to test and calibrate MOSFET transistors to use as a radiation dosimeters. Calibration stand was developed by M. Gumiela in his engineering thesis \cite{MGThesis}. The basic goal was to develop a measurement device which can be used to determine the final operational point, calibrate the radiation response and perform temperature calibration of the flight sensor.
+    During development of the sensor, the previous model was developed to test and calibrate MOSFET transistors for use as radiation dosimeters. The calibration stand was developed by M. Gumiela in his engineering thesis \cite{MGThesis}. The basic goal was to develop a measurement device which can be used to determine the final operational point, calibrate the radiation response and perform temperature calibration of the flight sensor.
 
     The test and calibration stand allows for the carring out of simultatenous investigations of parameters of multiple MOSFETs (i.e. 18) and diodes (i.e. 6). It is possible to obtain the transfer characteristics of the DUT (I-V) utilizing an adjustable constant current source, thermal calibration (Vth(T), Vd(T)) thanks to precise reference thermometers, Iztc investigation and finally TID on-line calibration.
 
@@ -159,7 +159,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
             \label{current_source_simulation_result}
         \end{figure}
 
-        In both cases current change across temperature range does not exceed \SI{40}{\nano\ampere}.
+        In both cases, output current across temperature range does not exceed \SI{40}{\nano\ampere}.
 
         \bigskip\textbf{Output resistance range}
         \bigskip\textbf{Noise density}
@@ -218,7 +218,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
             \label{ADG709_block}
         \end{figure}
 
-        Due to ESD diodes id CD4007, an additional current switch had to be added to cut off potential from from n-MOS body diode. For this purpose, a simple 1-channel analog switch ADG849YKSZ was implemented.
+        Due to ESD diodes in CD4007, an additional current switch had to be added to cut off potential from n-MOS body diode. For this purpose, a simple 1-channel analog switch ADG849YKSZ was implemented.
 
     \subsection{Differential \& common mode filter}
         The internal sampling frequency of ADC (for GAIN = 1 and $f_{clk} = \SI{1}{\mega\hertz})$ is about \SI{15.6}{\kilo\hertz}. To eliminate aliasing and reduce readout noise, a low-pass differential filter should be implemented on ADC input.
@@ -265,9 +265,9 @@ The model was developed as a flight-ready version for sensor calibration and tes
             \item communicating with OBC to retrieve data.
         \end{itemize}
 
-        Couple of options were considered, and the final choice was ATmega164PV-10AQ. More detailed comparison can be found in \cite{PWSAT_EPS_CDR}.
+        Several options were considered, and the final choice was ATmega164PV-10AQ. More detailed comparison can be found in \cite{PWSAT_EPS_CDR}.
 
-        AVR devices are known from their simplicity, reliability and very little bugs. Radiation tests were performed for ATmega series, showing their performance for up to \SI{30}{\kilo\rad} [TODO].
+        AVR devices are known for their simplicity, reliability and sparsity of bugs. Radiation tests were performed for ATmega series, showing their performance for up to \SI{30}{\kilo\rad} [TODO].
 
         Features of this particular device:
         \begin{itemize}
@@ -279,7 +279,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{itemize}
 
     \subsection{On-Board Computer interface}
-        Interface to OBC is $I^2C$ bus. Because sensor can be turned off by cutting its voltage proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and in-sensor microcontroller. Its functional diagram can be seen in the figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." \cite{PCA9517_datasheet}. Thanks to it OBC can completely disable the sensor, by simply cutting it a power.
+        The interface to OBC is $I^2C$ bus. Because the sensor can be turned off by cutting its voltage, proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and the in-sensor microcontroller. Its functional diagram can be seen in figure \ref{PCA9517}. From it's datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." \cite{PCA9517_datasheet}. Thanks to this, OBC can completely disable the sensor by simply cutting off power.
 
         \begin{figure}[H]
             \centering
@@ -290,7 +290,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
 
 \section{Final schematic}
-    Top level schematic file can be seen in the figure \ref{top_level_schematic}. Ports represents physical connectors - to satellite bus and debug socket.
+    The top level schematic file can be seen in figure \ref{top_level_schematic}. Ports represent physical connectors - to satellite bus and debug socket.
 
     \begin{figure}[H]
         \centering
@@ -299,7 +299,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \label{top_level_schematic}
     \end{figure}
 
-    "RadFET" consists analog part of the design. Its block diagram can be seen in the figure \ref{analog_schematic}.
+    "RadFET" makes up the analog part of the design. Its block diagram can be seen in figure \ref{analog_schematic}.
 
     \begin{figure}[H]
         \centering
@@ -310,26 +310,26 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
 
 \section{PCB}
-    Engineering model of the sensor was manufactured on similar board to the flight model. It should represent space required for this sensor, noise coupling and performance.
+    The engineering model of the sensor was manufactured on a similar board to the flight model. It should represent the space required for this sensor, noise coupling and performance.
 
-    For schematic capture, PCB layout \& DRC Altium Designer EDA software was used.
+    For schematic capture, PCB layout and DRC Altium Designer EDA software was used.
 
     \subsection{PCB materials}
-        During initial phase of PW-Sat2 project it was decided that all self-made board will be manufactured on FR4 laminate. Despite most space-qualified PCBs are made of polimide, it will be very hard (and expensive) to manufacture them. Despite higher glass transition temperature they do not provide much advantages.
+        During the initial phase of the PW-Sat2 project it was decided that all self-made boards would be manufactured from FR4 laminate. Because most space-qualified PCBs are made of polyimide, it is very hard (and expensive) to manufacture them. Apart from a higher glass transition temperature they do not provide many advantages.
 
-        But, careful should be taken to check for:
+        Care should be taken to check for:
         \begin{itemize}
             \item vibration tolerance,
             \item gluing quality of multiple layer boards,
             \item outgassing coefficient.
         \end{itemize}
 
-        Having this in mind manufacturer of PCB was selected - Technoservice S.A.
+        With this in mind, a manufacturer of PCB was selected - Technoservice S.A.
 
     \subsection{PCB stack}
-        Because outgassing of devices can be dangerous for turbomolecular pumps, it have to be limited as much as possible. Therefore soldermask and overlay layers are not present in the design, and packages of used components have known outgassing coefficients.
+        Because outgassing of devices can be dangerous for turbomolecular pumps, it must be limited as much as possible. Therefore soldermask and overlay layers are not present in the design, and packages of used components have known outgassing coefficients.
 
-        For this prototype board have 4 layers, on flight model board will be 6-layered. PCB stack generated from Altium Designer is shown in the figure \ref{PCB_Altium_stack}.
+        Although this prototype board has 4 layers, the on flight model board will be 6-layered. The PCB stack generated from Altium Designer is shown in figure \ref{PCB_Altium_stack}.
 
         \begin{figure}[H]
             \centering
@@ -339,11 +339,11 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{figure}
 
     \subsection{PCB layout}
-        PCB layout in mixed signal board is very important. Ground potential shifts, induced noise, coupling between ground planes - all those effects were considered during layout process.
+        The PCB layout in the mixed signal board is very important. Ground potential shifts, induced noise, coupling between ground planes - all these effects were considered during the layout process.
 
         \bigskip \textbf{Top \& bottom layers}
 
-        On top and bottom layers only components should be placed, every net should be connected on internal layers. But, because of having only 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in the figure \ref{top_bottom_layer_layout}.
+        Components should be placed only on top and bottom layers, every net should be connected on internal layers. Because the model exists only on a 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in figure \ref{top_bottom_layer_layout}.
 
         \begin{figure}[H]
             \centering
@@ -354,7 +354,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \bigskip \textbf{Internal layers}
 
-        One layer of board was designed to be completely a ground plane. More specifically, two ground planes - analog and digital one, connected under ADC. Second internal layer provides routing space, but also have ground planes on it (due to PCB temperature bending PCB cannot have only one ground plane). Layout is shown in the figure \ref{internal_layers_layout}.
+        One layer of the board was designed to serve completely as a ground plane. More specifically, two ground planes - an analog and a digital one, connected under ADC. The second internal layer provides routing space, but also has ground planes on it (due to PCB temperature bending, the PCB cannot have only one ground plane). Layout is shown in figure \ref{internal_layers_layout}.
 
         \begin{figure}[H]
             \centering
@@ -364,7 +364,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{figure}
 
     \subsection{3D model}
-        Using Altium designer and proper self-made libraries, 3D model of board can be easily generated. In the figure \ref{pcb_3d_model} 3D model with and without EMI shielding is shown.
+        Using the Altium designer and proper self-made libraries, a 3D model of board can be easily generated. In figure \ref{pcb_3d_model} a 3D model with and without EMI shielding is shown.
 
         \begin{figure}[H]
             \centering
@@ -374,16 +374,16 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{figure}
 
 \section{Software design}
-    Important aspect of the sensor is embedded software. It has to control data acquisition (LDO, ADC, MUX), check for validity and expose \iic interface to OBC.
+    An important aspect of the sensor is it's embedded software. It has to control data acquisition (LDO, ADC, MUX), check for validity and expose \iic interface to OBC.
 
-    Because main microcontroller is 8-bit AVR-core processor, software have to be highly optimized, especially for speed and data memory consumption. Available resources:
+    Because the main microcontroller is 8-bit AVR-core processor, software has to be highly optimized, especially for speed and data memory consumption. Available resources:
     \begin{itemize}
         \item \SI{16}{\kilo B} of FLASH,
         \item \SI{1}{\kilo B} of SRAM,
         \item \SI{1}{\mega\hertz} clock frequency.
     \end{itemize}
 
-    Software for sensor was written in C++14, using developed by PW-Sat2 team AVR-HAL library. Schematic of software building blocks is shown in the figure \ref{Sensor_software_diagram}.
+    Software for the sensor was written in C++14, using the AVR-HAL library developed by the PW-Sat2 team. A schematic of software building blocks is shown in figure \ref{Sensor_software_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -393,7 +393,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \end{figure}
 
     \subsection{AVR-HAL}
-    AVR-HAL is a library created to ease software development on AVR microcontrollers. It was created by PW-Sat2 team, having in mind low overhead (in most modules zero-data usage), extensibility and modern software development languages and techniques (C++14, unit and integration testing). It was created for specific purpose which is embedded software development on-board PW-Sat modules (EPS, PLD, SunS). Therefore only few devices are officially supported (ATmega164, 165, 328), with extensible tests on existing platforms.
+    AVR-HAL is a library created to ease software development on AVR microcontrollers. It was created by the PW-Sat2 team, with low overhead (in most modules zero-data usage), extensibility and modern software development languages and techniques (C++14, unit and integration testing) in mind. It was created for a specific purpose: embedded software development on-board PW-Sat modules (EPS, PLD, SunS). Therefore, only a few devices are officially supported (ATmega164, 165, 328), with extensible tests on existing platforms.
 
     AVR-HAL consists of basic modules:
     \begin{itemize}
@@ -403,14 +403,14 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \item Debugging libraries - software created to allow unified debugging of many devices (serial port, command line interface, gdb connection etc).
     \end{itemize}
 
-    Using AVR-HAL writing application software is only high-level work, leaving all hardware access to tested and proven library.
+    Using AVR-HAL, writing application software is only high-level work, leaving all hardware access to the tested and proven library.
 
     \subsection{$I^2C$-slave interface}
-    Cubesat standard define two \iic lines along satellite board stack, which most of the commercially available devices use. It was the easiest option for connecting PLD board to OBC, so this communication bus was selected.
+    Cubesat standards define two \iic lines along the satellite board stack, which most of the commercially available devices use. It was the easiest option for connecting the PLD board to OBC, so this communication bus was selected.
 
-    The sensor acts as a slave on \iic bus. Communication protocol is based on request-reply manner, with interrupt pin acting as a notification.
+    The sensor acts as a slave on the \iic bus. Communication protocol is based on a request-reply manner, with interrupt pin acting as a notification.
 
-    When OBC wants to gather data from sensor it will do following tasks in order:
+    When OBC wants to gather data from the sensor it will do following tasks in order:
     \begin{itemize}
         \item send measurement start request to sensor (table \ref{Start_measurement_command}),
         \item wait until conversion is completed (pulse on interrupt line is triggered),
@@ -442,7 +442,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \subsection{Measurement algorithm}
     \bigskip \textbf{RadFET sensor}
 
-    Sensor after receiving "start measurement" command (table \ref{Start_measurement_command}) does following steps:
+    The sensor, after receiving "start measurement" command (table \ref{Start_measurement_command}) does following steps:
     \begin{itemize}
         \item enable LDO,
         \item wait for power line stabilization,
@@ -460,7 +460,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
     \bigskip \textbf{OBC}
 
-    When OBC wants to read data form sensor (issued by telecommand from ground station) it perform following steps:
+    When OBC wants to read data from the sensor (issued by telecommand from ground station) it performs the following steps:
     \begin{itemize}
         \item enable PLD power by sending proper command to EPS,
         \item send "start measurement" command to RadFET,
@@ -470,9 +470,9 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \end{itemize}
 
 \section{Assembly}
-    For final model, proper ECSS standards will be applied during soldering and integration. On engineering model proper tools and techniques should be tested to eliminate unnecessary problems later on.
+    For the final model, proper ECSS standards will be applied during soldering and integration. On the engineering model proper tools and techniques should be tested to eliminate unnecessary problems later on.
 
-    Equipment used during soldering and integration are compliant with ECSS standards, same tools would be used on flight hardware:
+    Equipment used during soldering and integration is compliant with ECSS standards, the same tools are used on flight hardware:
     \begin{itemize}
         \item Weller WMRP station,
         \item \SI{63}{\percent} Sn/\SI{37}{\percent} Pb \SI{0.2}{\milli\meter} soldering wire,
