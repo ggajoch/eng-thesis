@@ -134,7 +134,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{itemize}
 
         \bigskip \textbf{Simulation}
-        
+
         Behavioral simulations were performed to find all possible problems with the circuit:
         \begin{itemize}
             \item temperature dependency,
@@ -152,7 +152,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{figure}
 
         \bigskip\textbf{Temperature dependency}
-        
+
         Output current is shown in the figure \ref{current_source_simulation_result}, simulation was performed on two different loads and resistor temperature coefficients.
         \begin{figure}[H]
             \centering
@@ -164,7 +164,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         Taking worst-case scenario, output current change across temperature range does not exceed \SI{50}{\nano\ampere}.
 
         \bigskip\textbf{Output resistance range}
-        
+
         Simulation shows that current source works reliably between \SI{1400}{\ohm} and \SI{22.5}{\kilo\ohm}. More detailed graph is shown in the figure \ref{Current_sensor_output_characteristics}.
 
     \subsection{Analog to digital converter}
@@ -288,7 +288,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
     \subsection{Watchdog}
         Because of possibility of Single Event Effects (described in section \ref{Single_Event_Effects}), mitigation of SEFI and SEU was implemented. It consist of a window watchdog, which reboots sensor in case of software being stuck in non-recoverable state. In case of failure, it will re-initialize sensor, which can recover in case any SEU in volatile (RAM) memory. In addition, in case of SEL it will pull down reset line, allowing for microcontroller internal circuitry to reset after power restore.
-        
+
         For this purpose, TPS3813-Q1 Processor Supervisor with window-watchdog was added to design. It is qualified to automotive operation, as well as it is recommended in Texas Instruments Defense Guide \cite{TI_defense_guide}. Internal block diagram is shown in the figure \ref{TPS3813}.
 
         \begin{figure}[H]
