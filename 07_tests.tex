@@ -6,7 +6,7 @@
 
 \section{Power}
     \subsection{LDO stabilisation}
-        Voltage after LDO was measured against time, to calculate the delay between power enablement and measurement start. The time-domain graph is shown in figure \ref{LDO_rise_time}. Delay was estimated to be around \SI{1}{\second}.
+        Voltage after LDO was measured against time, to calculate the delay between power enablement and measurement start. The time-domain graph is shown in the figure \ref{LDO_rise_time}. Delay was estimated to be around \SI{1}{\second}.
 
         \begin{figure}[H]
             \centering
@@ -16,28 +16,28 @@
         \end{figure}
 
     \subsection{Power consumption}
-        The current drawn during readout is about \SI{25}{\milli\ampere} at \SI{5}{\volt} rail, so the power consumption of the sensor equals \SI{0.125}{\watt}.
+        The current drawn during readout is about \SI{25}{\milli\ampere} at \SI{5}{\volt} rail, so the power consumption of the sensor equals to \SI{0.125}{\watt}.
 
 \section{Current source}
     Current source was tested on HP 34970A - 6 1/2 digit multimeter, with 200 power line cycle integration enabled.
 
     \subsection{Noise}
-        The noise of the current source was measured for a long period of time, taking a sufficient number of samples. The results (\ref{Current_Stability}) show that the noise floor is below specification for this meter.
+        The noise of the current source was measured for a long period of time, taking a sufficient number of samples. Results (figure \ref{Current_Stability}) show that the noise floor is below specification for this meter.
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.6\paperwidth]{img/07/current_time.eps}
-            \includegraphics[width=0.6\paperwidth]{img/07/current_hist.eps}
-            \caption{LDO rise time}
+            \includegraphics[width=0.5\paperwidth]{img/07/current_time.eps}
+            \includegraphics[width=0.5\paperwidth]{img/07/current_hist.eps}
+            \caption{Current noise measurement}
             \label{Current_Stability}
         \end{figure}
 
     \subsection{Load range}
-        Output load was changed identically as it was in simulation, to test its fidelity. Simulation and build models show the same range and stability - confirming the design. The current source works as intended for loads between \SI{1.4}{\kilo\ohm} and \SI{22.5}{\kilo\ohm} (figure \ref{Current_sensor_output_characteristics}).
+        Output characteristics was measured in identical manner as in simulation. Simulation and build models show the same range of stability - confirming both the design and simulation. The current source works as intended for loads between \SI{1.4}{\kilo\ohm} and \SI{22.5}{\kilo\ohm} (figure \ref{Current_sensor_output_characteristics}).
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.9\paperwidth]{img/07/output_resistance.eps}
-            \caption{Current sensor output characteristics}
+            \includegraphics[width=0.8\paperwidth]{img/07/output_resistance.eps}
+            \caption{Current source output characteristics}
             \label{Current_sensor_output_characteristics}
         \end{figure}
 
@@ -45,7 +45,7 @@
         Temperature was swept from $20$ to \SI{70}{\degreeCelsius}, no detectable changes were measured by the available meter, therefore it is assumed that current source fluctuates less than about \SI{20}{\nano\ampere} in this temperature range.
 
 \section{MOS settling}
-    After enabling the measurement channel for the threshold voltage it takes a lot of time to fully stabilize its value. Instead of pre-enabling, same time method was used. ADC takes measurement of threshold voltage at precisely specified time after enabling power. In figure \ref{MOS_settling} 10 runs of measured voltage vs time are plotted, proving this method is stable within \SI{20}{\uV}.
+    After enabling the measurement channel for the threshold voltage it takes a lot of time to fully stabilize its value. Instead of pre-enabling, same time method was used. ADC takes measurement of threshold voltage at precisely specified time after enabling power. In the figure \ref{MOS_settling} 10 runs of measured voltage vs time are plotted, proving this method is stable within \SI{20}{\uV}.
 
     \begin{figure}[H]
         \centering
@@ -55,9 +55,9 @@
     \end{figure}
 
 \section{Measurement noise}
-    The most important noise figure is system noise - ADC reading noise floor during nominal work.
+    The most important noise figure is system noise - ADC reading noise floor during nominal operation.
 
-    Because even the smallest temperature changes cause the ADC reading to shift (due to threshold/diode voltage shift) this efect had to be eliminated to measure noise. For this purpose a DC notch filter was used in post-processing, to eliminate any DC bias during measurement. The sampling frequency of the ADC was its nominal rate of \SI{0.25}{\hertz}. An example of filtration is shown in figure \ref{notch_DC_example}.
+    Because even the smallest temperature changes cause the ADC reading to shift (due to threshold/diode voltage shift), this efect had to be eliminated to measure noise. For this purpose a DC notch filter was used in post-processing, to eliminate any DC bias during measurement. The sampling frequency of the ADC was its nominal rate of \SI{0.25}{\hertz}. An example of filtration is shown in the figure \ref{notch_DC_example}.
 
     \begin{figure}[H]
         \centering
@@ -94,25 +94,25 @@
         $$\textit{d}I_d = \SI{3.82}{\nA}$$
         Estimated equivalent current source have RMS value of $I_{N~RMS} = \SI{3.82}{\nA}$.
 
-        This value is the same order of magnitude as calculated: reference voltage LT1634 has low-frequency noise of $U_N = \SI{15}{\uV}$ \cite{LT1634_datasheet}, this value is sensed directly across a series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. The left-hand side part of the noise equation can originate from different parts of the circuit, thermal and shot noise etc. % Noise output from LTSpice:
+        This value is the same order of magnitude as calculated: reference voltage LT1634 has low-frequency noise of $U_N = \SI{15}{\uV}$ \cite{LT1634_datasheet}, this value is sensed directly across a series resistor, therefore $I_{NOISE} = U_N/R = \SI{1.5}{\nA}$. Additional noise equation can originate from different parts of the circuit, thermal and shot noise etc.
 
 
 
 \section{Temperature characteristics}
     By placing the sensor in a thermal chamber and sweeping the temperature from \SI{0}{\degreeCelsius} up to \SI{75}{\degreeCelsius} temperature dependency charts were obtained for the device.
 
-    \subsection{Diode}
+    \subsection{Diode channel}
         The diode response (figure \ref{Body_diode_temperature_dependency}) is almost ideally linear.
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.6\paperwidth]{img/07/diodeVsTemperature.eps}
+            \includegraphics[width=0.4\paperwidth]{img/07/diodeVsTemperature.eps}
             \caption{Body diode temperature dependency}
             \label{Body_diode_temperature_dependency}
         \end{figure}
 
 
-    \subsection{Threshold voltage}
-        The threshold voltage (figure \ref{threshold_voltage_temperature_dependency}) tends to be non-linear, but it can be approximated by a quadratic function. Equation used: $V_{TH} = a \cdot t^2 + b \cdot t + c$, fitted parameters are shown in table \ref{vth_fit_params}.
+    \subsection{Threshold voltage channels}
+        The threshold voltage (figure \ref{threshold_voltage_temperature_dependency}) tends to be non-linear, but it can be approximated by a quadratic function. Equation used: $V_{TH} = a \cdot t^2 + b \cdot t + c$, fitted parameters are shown in the table \ref{vth_fit_params}.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.6\paperwidth]{img/07/thresholdVoltageTemperatureDependency.eps}
@@ -121,6 +121,8 @@
         \end{figure}
 
         \begin{table}[H]
+            \caption{Threshold voltage temperature dependency}
+            \label{vth_fit_params}
             \begin{center}
                 \begin{tabular}{c|c|c|c}
                     Channel & a & b & c \\ \hline
@@ -129,24 +131,25 @@
                     ch 3 & $-0.00169~\pm~1.12071e-6$ & $-0.08736~\pm~7.98355e-5$ & $2036.83689~\pm~0.00119$ \\
                 \end{tabular}
             \end{center}
-            \caption{Temperature compensation results}
-            \label{vth_fit_params}
         \end{table}
 
+\newpage
 \section{Temperature compensation stability}
     The sensor should be compensated for temperature, with the assumption that temperature characteristic curves will not change during irradiation.
 
-    During temperature sweep, data was gathered and post-processed, applying thermal compensation (given by charts \ref{Body_diode_temperature_dependency} and \ref{threshold_voltage_temperature_dependency}). In full sensing range, the sensor output shifts off the maximum $\SI{104}{\uV}$, which reflects TID measurement accuracy of about \SI{\pm 1}{\rad}. Note that TID dependency was not tested, but assumed according to \cite{COTSMosfetsGarcia}. Detailed accuracies are listed in table \ref{Temperature_compensation_results}.
+    During temperature sweep, data was gathered and post-processed, applying thermal compensation (given by charts \ref{Body_diode_temperature_dependency} and \ref{threshold_voltage_temperature_dependency}). In full sensing range, the sensor output shifts off the maximum $\SI{104}{\uV}$, which reflects TID measurement accuracy of about \SI{\pm 1}{\rad}. Note that TID dependency was not tested, but assumed according to \cite{COTSMosfetsGarcia}. Detailed accuracies are listed in the table \ref{Temperature_compensation_results}.
 
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\paperwidth]{img/07/compensatedThresholdVoltage.eps}
+        \includegraphics[width=0.7\paperwidth]{img/07/compensatedThresholdVoltage.eps}
         \caption{Threshold voltage temperature compensation}
         \label{threshold_voltage_temperature_compensation}
     \end{figure}
 
     \begin{table}[H]
+        \caption{Temperature compensation results}
+        \label{Temperature_compensation_results}
         \begin{center}
             \begin{tabular}{c|c|c|c}
                 Channel & Standard deviation & Maximum difference & Accuracy ($3~\sigma$) \\ \hline
@@ -155,6 +158,4 @@
                 ch 3 & \SI{15.36}{\uV} & \SI{101.26}{\uV} & \SI{\pm~0.0103}{\gray} = \SI{\pm~1.03}{\rad} \\
             \end{tabular}
         \end{center}
-        \caption{Temperature compensation results}
-        \label{Temperature_compensation_results}
     \end{table}

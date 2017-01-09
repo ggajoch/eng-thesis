@@ -2,22 +2,24 @@
 This chapter will cover sensor basics, sensing element selection and theory of operation. The design will be presented at a system-level view. For a more detailed description of the electronics, please skip to chapter \ref{Engineering_model_chapter}.
 
 \section{Review of commercially available RadFETs}
-    Commercial solutions are based on a modified MOS structure (with thicker gate region). Example silicon structure is shown in figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing individual structures fitted to particular requirements. Researched companies only produce the RadFET sensors, leaving the readout circuit design for the customer to realise. A physical schematic and description for RadFET sensors is found in section \ref{Radiation_effects_on_MOS_transistors}. In table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
+    Commercial solutions are based on a modified MOS structure (with thicker gate region). Example silicon structure is shown in the figure \ref{Tyndall_radfet_silicon}. Different companies produce their own RadFET devices, by designing individual structures fitted to particular requirements. Researched companies only produce the RadFET sensors, leaving the readout circuit design for the customer to realise. A physical schematic and description for RadFET sensors is found in section \ref{Radiation_effects_on_MOS_transistors}. In the table \ref{commercial_radfet_comparison} commercially available RadFETs are compared.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\paperwidth]{img/05/radfet-silicon.eps}
+        \includegraphics[width=0.45\paperwidth]{img/05/radfet-silicon.eps}
         \caption{4x RadFET silicon structure by Tyndall. Source: \cite{Tyndall_Radfet}}
         \label{Tyndall_radfet_silicon}
     \end{figure}
 
     \begin{table}[H]
+    \caption{Commercial RadFET comparison}
+    \label{commercial_radfet_comparison}
     \begin{tabular}{| L{3.5cm} | C{3.5cm} | C{3.5cm} | C{3.5cm} |}
         \hline
         Type: & REM RFT300 & Tyndall TY1003 & Tyndall TY1004 \\ \hline
 
         Image: &
-        \includegraphics[width=0.15\paperwidth]{img/05/rem.eps} &
+        \includegraphics[width=0.10\paperwidth]{img/05/rem.eps} &
         \includegraphics[width=0.15\paperwidth]{img/05/TY1003.png} &
         \includegraphics[width=0.15\paperwidth]{img/05/TY1004.png} \\ \hline
 
@@ -30,17 +32,17 @@ This chapter will cover sensor basics, sensing element selection and theory of o
         TID dependency: & $n = 1$, $A~=~0.117$~\si{\milli\volt/\rad} & $n = 0.46$, $A~=~29.5$~\si{\milli\volt/\rad} & $n = 0.41$, $A~=~65.6$~\si{\milli\volt/\rad} \\ \hline
         Temperature readout: & diode & diode & diode \\ \hline
     \end{tabular}
-    \caption{Commercial RadFET comparison}
-    \label{commercial_radfet_comparison}
     \end{table}
 
 
 \section{COTS MOSFET as RadFET}
     RadFETs are specifically designed MOSFETs that act as radiation sensors. However, the parameters of COTS MOSFET transistors also depend on total absorbed dose. They are much cheaper, but require proper calibration and testing in order to be considered as a flight solution.
 
-    Many articles and papers prove that COTS MOSFETs can be used reliably as TID sensors. A number of available transistors were tested, their basic characteristics are compared in table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
+    Many articles and papers prove that COTS MOSFETs can be used reliably as TID sensors. A number of available transistors were tested, their basic characteristics are compared in the table \ref{cots_mosfet_comparison}. Parameters are taken at unbiased gate.
 
     \begin{table}[H]
+    \caption{COTS MOSFET comparison}
+    \label{cots_mosfet_comparison}
     \begin{tabular}{| L{2cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} | C{2.4cm} |}
         \hline
         Type: & 3N163 & ZVP3306 & ZVP4525 & BS250F & CD4007 \\ \hline
@@ -56,11 +58,9 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
         $V_{TH}$ @ \SI{100}{\gray} [\si{\volt}]: & $5.61$ & $3.4$ & $2.88$ & $3.85$ & $2.97$ \\ \hline
     \end{tabular}
-    \caption{COTS MOSFET comparison}
-    \label{cots_mosfet_comparison}
     \end{table}
 
-    3N163 type have the greatest sensitivity - but bearing in mind the \SI{5}{\volt} supply for the sensor, it was discarded for too small range. The second best type is CD4007, which was selected for testing. Its parameters are suitable for the use under discussion, as shown in table \ref{CD4007_parameters}.
+    3N163 type have the greatest sensitivity - but bearing in mind the \SI{5}{\volt} supply for the sensor, it was discarded for too small range. The second best type is CD4007, which was selected for testing. Its parameters are suitable for the use under discussion, as shown in the table \ref{CD4007_parameters}.
 
     Other advantages of CD4007 are:
     \begin{itemize}
@@ -70,7 +70,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{itemize}
 
 \section{Selected MOSFET - CD4007}
-    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown below in figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in table \ref{CD4007_parameters}.
+    The CD4007 consists of three complementary pairs of N- and P-channel enhancement mode MOS transistors. Internal connection diagram is shown below in the figure \ref{CD4007_internal_diagram}. Predicted parameters of those transistors are collected in the table \ref{CD4007_parameters}.
 
     \begin{figure}[H]
         \centering
@@ -80,6 +80,8 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \end{figure}
 
     \begin{table}[H]
+    \caption{CD4007 parameters}
+    \label{CD4007_parameters}
     \begin{tabular}{R{7cm} | L{7cm} }
         Transistor type: & 3x P-MOS and 3x N-MOS \\ \hline
         Supply voltage: & 3-18~\si{\volt} \\ \hline
@@ -88,12 +90,10 @@ This chapter will cover sensor basics, sensing element selection and theory of o
         Zero-temperature coefficient current: & \SI{140}{\micro\ampere} \\ \hline
         Predicted sensitivity: & \SI{4.6}{\milli\volt/\gray}
     \end{tabular}
-    \caption{CD4007 parameters}
-    \label{CD4007_parameters}
     \end{table}
 
 \section{Threshold voltage measurement}
-    Threshold voltage changes with TID accumulated. The easiest method to measure change of this parameter is to connect the MOSFET in diode configuration, forcing constant drain current. A block diagram of this method is shown in figure \ref{Vth_readout_block_diagram}.
+    Threshold voltage changes with TID accumulated. The easiest method to measure change of this parameter is to connect the MOSFET in diode configuration, forcing constant drain current. A block diagram of this method is shown in the figure \ref{Vth_readout_block_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -126,8 +126,9 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
     A number of possible temperature measurement techniques were considered during this thesis:
     \begin{table}[H]
+    \caption{Temperature readout methods}
     \begin{tabular}{R{4.5cm} | C{5cm} | C{5cm} }
-        Method & Pros & Cons \\ \hline
+        \textbf{Method} & \textbf{Pros} & \textbf{Cons} \\ \hline
 
         PT-1000 sensor glued to MOSFET & accurate reading & large thermal resistance, difficult assembly, low reliability \\ \hline
 
@@ -135,21 +136,20 @@ This chapter will cover sensor basics, sensing element selection and theory of o
 
         body diode in N-MOSFET in CD4007  & simple setup, reliable, known characteristics, low thermal resistance & no possibility of simultaneous readout of threshold and temperature (short thermal lag)
     \end{tabular}
-    \caption{Temperature readout methods}
     \end{table}
 
-    The chosen solution: to measure temperature of silicon die using body diode in complementary N-MOS transistor. A block diagram of this proposed solution is presented in figure \ref{Temperature_measurement_block_diagram}.
+    The chosen solution: to measure temperature of silicon die using body diode in complementary N-MOS transistor. A block diagram of this proposed solution is presented in the figure \ref{Temperature_measurement_block_diagram}.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.3\paperwidth]{img/05/n-mos-temperature.eps}
+        \includegraphics[width=0.5\paperwidth]{img/05/n-mos-temperature.eps}
         \caption{Temperature measurement block diagram}
         \label{Temperature_measurement_block_diagram}
     \end{figure}
 
     During calibration, both the temperature characteristics of the diode and the p-MOS threshold voltage will be obtained. They will be used to compensate for the threshold voltage shift associated with temperature. An individual flight component will be placed in a thermal chamber, and a proper look-up table will be created, with possible polynomial approximation.
 
-
+\newpage
 \section{Characteristic curves}
 \label{Characteristic_curves}
 
@@ -158,7 +158,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \bigskip \textbf{p-MOSFET transfer characteristics}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\paperwidth]{img/05/mg_iv_mosfet.eps}
+        \includegraphics[width=0.56\paperwidth]{img/05/mg_iv_mosfet.eps}
         \caption{CD4007 p-MOSFET transfer characteristics. Source: \cite{MGThesis}}
         \label{CD4007_p-MOSFET_transfer}
     \end{figure}
@@ -166,7 +166,7 @@ This chapter will cover sensor basics, sensing element selection and theory of o
     \bigskip \textbf{Linearized temperature coefficient of threshold voltage}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\paperwidth]{img/05/mg_tc_coefficients.eps}
+        \includegraphics[width=0.56\paperwidth]{img/05/mg_tc_coefficients.eps}
         \caption{Linearized temperature coefficient of threshold voltage. Source: \cite{MGThesis}}
     \end{figure}
 

@@ -102,7 +102,7 @@
 \end{center}
 
 % Statement concerning legal issues of writing the thesis
-\clearpage \titlepage
+ \titlepage
 
 \begin{flushright}
 \begin{minipage}[!h]{12cm}
@@ -120,18 +120,18 @@ w wersji oryginalnej albo w postaci opracowania, artystyczne wykonanie albo publ
 
 \end{flushright}
 
-\clearpage \titlepage
+ \titlepage
 
-\vspace*{15cm} \vfill
-\begin{flushright} 
-\begin{minipage}[!h]{8cm}
-{\Large \@acknowledgements}
-\end{minipage}
-\end{flushright}
+%\vspace*{15cm} \vfill
+%\begin{flushright} 
+%\begin{minipage}[!h]{8cm}
+%{\Large \@acknowledgements}
+%\end{minipage}
+%\end{flushright}
 
-\clearpage
 
-\setcounter{page}{4}
+
+\setcounter{page}{3}
 
 }
 

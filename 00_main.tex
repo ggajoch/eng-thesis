@@ -7,7 +7,10 @@
 style=numeric,
 %bibencoding=ascii,
 %style=reading
+giveninits=true
 ]{biblatex}
+\renewbibmacro{in:}{%
+    \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
 
 \addbibresource{bibliografia.bib}
 
@@ -66,7 +69,7 @@ style=numeric,
 \author{Grzegorz Gajoch}
 \shortauthor{G. Gajoch}
 
-\course{Electronics and Telecommunications}
+\course{Elektronika i Telekomunikacja}
 
 \titlePL{Budowa sensora pochłoniętej dawki promieniowania jonizującego (TID) dla nano-satelitów typu CubeSat}
 \titleEN{Total Ionizing Dose (TID) sensor for CubeSat~nano-satellites}
@@ -100,7 +103,7 @@ style=numeric,
 \titlepages
 
 \tableofcontents
-\clearpage
+%\clearpage
 
 \include{01_conventions}
 \include{02_introduction}

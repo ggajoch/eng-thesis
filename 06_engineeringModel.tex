@@ -7,7 +7,7 @@ The model should be as close to the flight model as possible - although it was, 
 The model was developed as a flight-ready version for sensor calibration and testing alongside flight software developing and testing.
 
 \section{Background - calibration stand}
-    During development of the sensor, the previous model was developed to test and calibrate MOSFET transistors for use as radiation dosimeters. The calibration stand was developed by M. Gumiela in his engineering thesis \cite{MGThesis}. The basic goal was to develop a measurement device which can be used to determine the final operational point, calibrate the radiation response and perform temperature calibration of the flight sensor.
+    During development of the sensor, the previous model was developed to test and calibrate MOSFET transistors for use as radiation dosimeters. The calibration stand was developed by M. Gumiela in his thesis \cite{MGThesis}. The basic goal was to develop a measurement device which can be used to determine the final operational point, calibrate the radiation response and perform temperature calibration of the flight sensor.
 
     The test and calibration stand allows for the carring out of simultatenous investigations of parameters of multiple MOSFETs (i.e. 18) and diodes (i.e. 6). It is possible to obtain the transfer characteristics of the DUT (I-V) utilizing an adjustable constant current source, thermal calibration (Vth(T), Vd(T)) thanks to precise reference thermometers, Iztc investigation and finally TID on-line calibration.
 
@@ -91,8 +91,8 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.3\paperwidth]{img/06/current_source_schematic.eps}
-            \caption{Threshold voltage readout block diagram}
+            \includegraphics[width=0.25\paperwidth]{img/06/current_source_schematic.eps}
+            \caption{Current source block diagram}
             \label{current_source_schematic}
         \end{figure}
 
@@ -134,6 +134,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{itemize}
 
         \bigskip \textbf{Simulation}
+        
         Behavioral simulations were performed to find all possible problems with the circuit:
         \begin{itemize}
             \item temperature dependency,
@@ -145,32 +146,34 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/06/current_source.eps}
+            \includegraphics[width=0.6\paperwidth]{img/06/current_source.eps}
             \caption{Current source simulation}
             \label{current_source_simulation}
         \end{figure}
 
         \bigskip\textbf{Temperature dependency}
-        Output current is shown in figure \ref{current_source_simulation_result}, simulation was performed on two different loads and resistor temperature coefficients.
+        
+        Output current is shown in the figure \ref{current_source_simulation_result}, simulation was performed on two different loads and resistor temperature coefficients.
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\paperwidth]{img/06/current_source_result.eps}
+            \includegraphics[width=0.6\paperwidth]{img/06/current_source_result.eps}
             \caption{Current source simulation result - output current}
             \label{current_source_simulation_result}
         \end{figure}
 
-        In both cases, output current across temperature range does not exceed \SI{40}{\nano\ampere}.
+        Taking worst-case scenario, output current change across temperature range does not exceed \SI{50}{\nano\ampere}.
 
         \bigskip\textbf{Output resistance range}
-        \bigskip\textbf{Noise density}
-        \bigskip\textbf{Stability}
+        
+        Simulation shows that current source works reliably between \SI{1400}{\ohm} and \SI{22.5}{\kilo\ohm}. More detailed graph is shown in the figure \ref{Current_sensor_output_characteristics}.
 
     \subsection{Analog to digital converter}
         The analog to digital converter is responsible for reading $V_{DS}$ voltage across the transistor and voltage across the diode. Due to very low changes, high accuracy and resolution is required. Additionally, complex mixed signal elements like ADC should be radiation tested to prove long term reliability. To achieve at least \SI{0.1}{\milli\volt} resolution, ADC has to be at least \SI{16}{bits}.
 
         Due to constraints on the system and reliability issues, the AD7714 from Analog Devices was chosen. Radiation tests have shown that it fails between \SI{10}{\kilo\rad} and \SI{20}{\kilo\rad}, with no degradation up to \SI{10}{\kilo\rad} \cite{ADC_radiation_tests}.
 
-        Internal diagram is shown in figure \ref{AD7714}. Key specs:
+\newpage
+        Internal diagram is shown in the figure \ref{AD7714}. Key specs:
         \begin{itemize}
             \item \SI{24}{bits},
             \item \SI{0.0015}{\percent} nonlinearity,
@@ -184,29 +187,31 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\paperwidth]{img/06/AD7714.eps}
+            \includegraphics[width=0.7\paperwidth]{img/06/AD7714.eps}
             \caption{AD7714 internal block diagram. Source: \cite{AD7714_datasheet}}
             \label{AD7714}
         \end{figure}
 
-        AD7714 requires external crystal or clock oscillator in the frequency range \SI{1}{\mega\hertz} to \SI{2.54}{\mega\hertz}. Crystal oscillators for these frequencies are large and susceptible to shocks and damage because of their large, delicate internal structure. \SI{1}{\mega\hertz} ceramic oscillator ISM95-3351AH was therefore selected for operation (figure \ref{ISM95-3351AH-1.0000}). Comparison of solutions is shown in the figure \ref{crystal_oscillator_difference}.
+        AD7714 requires external crystal or clock oscillator in the frequency range \SI{1}{\mega\hertz} to \SI{2.54}{\mega\hertz}. Crystal oscillators for these frequencies are large and susceptible to shocks and damage because of their large, delicate internal structure. Instead of crystal, \SI{1}{\mega\hertz} ceramic oscillator ISM95-3351AH was therefore selected for operation. Its phase noise is comparable to crystal oscillator, therefore no degradation in ADC operation is expected. Comparison of solutions is shown in the figure \ref{crystal_oscillator_difference}.
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.35\paperwidth]{img/06/crystal.png}
                         \includegraphics[width=0.35\paperwidth]{img/06/ISM95.png}
-            \caption{Low frequency crystal oscillator internals. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof}, ISM95-3351AH-1.0000 ceramic oscillator package. Source: \cite{ISM95_series_datasheet}}
+            %\caption{Left: Low frequency crystal oscillator. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof}, \hspace{\textwidth} Right: ISM95 ceramic oscillator. Source: \cite{ISM95_series_datasheet}}
+              \caption[Left: Low frequency crystal oscillator. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof}; Right: ISM95 ceramic oscillator. Source: \cite{ISM95_series_datasheet}]
+            {\tabular[t]{@{}l@{}}Left: Low frequency crystal oscillator. Source: \cite{Opening_a_Quartz_Crystal_Can_Effects_Thereof} \\ Right: ISM95 ceramic oscillator. Source: \cite{ISM95_series_datasheet}\endtabular}
             \label{crystal_oscillator_difference}
         \end{figure}
 
     \subsection{Multiplexer}
         The multiplexer has two purposes: to multiplex current and voltage lines (3-wire readout).
 
-        As an analog multiplexer, ADG709 was chosen. Its radiation tests can be found in \cite{IEEE_radiation_tests_1992_2009}. It is a double 1:4 mux, allowing for simultaneous current and voltage multiplexing. It's internal block diagram is shown in figure \ref{ADG709_block}
+        As an analog multiplexer, ADG709 was chosen. Its radiation tests can be found in \cite{IEEE_radiation_tests_1992_2009}. It is a double 1:4 mux, allowing for simultaneous current and voltage multiplexing. Its internal block diagram is shown in the figure \ref{ADG709_block}
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.3\paperwidth]{img/06/ADG709.eps}
+            \includegraphics[width=0.2\paperwidth]{img/06/ADG709.eps}
             \caption{ADG709 internal block diagram. Source: \cite{ADG709_datasheet}}
             \label{ADG709_block}
         \end{figure}
@@ -272,7 +277,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{itemize}
 
     \subsection{On-Board Computer interface}
-        The interface to OBC is $I^2C$ bus. Because the sensor can be turned off by cutting its voltage, proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and the in-sensor microcontroller. Its functional diagram can be seen in figure \ref{PCA9517}. From it's datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." \cite{PCA9517_datasheet}. Thanks to this, OBC can completely disable the sensor by simply cutting off power.
+        The interface to OBC is $I^2C$ bus. Because the sensor can be turned off by cutting its voltage, proper buffering had to be implemented. For this purpose $I^2C$ repeater PCA9517 was placed between OBC and the in-sensor microcontroller. Its functional diagram can be seen in the figure \ref{PCA9517}. From its datasheet: "The SDA and SCL pins are over voltage tolerant and are high-impedance when the PCA9517 is unpowered." \cite{PCA9517_datasheet}. Thanks to this, OBC can completely disable the sensor by simply cutting off power.
 
         \begin{figure}[H]
             \centering
@@ -281,9 +286,21 @@ The model was developed as a flight-ready version for sensor calibration and tes
             \label{PCA9517}
         \end{figure}
 
+    \subsection{Watchdog}
+        Because of possibility of Single Event Effects (described in section \ref{Single_Event_Effects}), mitigation of SEFI and SEU was implemented. It consist of a window watchdog, which reboots sensor in case of software being stuck in non-recoverable state. In case of failure, it will re-initialize sensor, which can recover in case any SEU in volatile (RAM) memory. In addition, in case of SEL it will pull down reset line, allowing for microcontroller internal circuitry to reset after power restore.
+        
+        For this purpose, TPS3813-Q1 Processor Supervisor with window-watchdog was added to design. It is qualified to automotive operation, as well as it is recommended in Texas Instruments Defense Guide \cite{TI_defense_guide}. Internal block diagram is shown in the figure \ref{TPS3813}.
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\paperwidth]{img/06/tps3813.eps}
+            \caption{TPS3813 internal block diagram. Source: \cite{TPS3813_datasheet}}
+            \label{TPS3813}
+        \end{figure}
+
+\newpage
 \section{Final schematic}
-    The top level schematic file can be seen in figure \ref{top_level_schematic}. Ports represent physical connectors - to satellite bus and debug socket.
+    The top level schematic file can be seen in the figure \ref{top_level_schematic}. Ports represent physical connectors - to satellite bus and debug socket.
 
     \begin{figure}[H]
         \centering
@@ -292,7 +309,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \label{top_level_schematic}
     \end{figure}
 
-    "RadFET" makes up the analog part of the design. Its block diagram can be seen in figure \ref{analog_schematic}.
+    "RadFET" makes up the analog part of the design. Its block diagram can be seen in the figure \ref{analog_schematic}.
 
     \begin{figure}[H]
         \centering
@@ -322,7 +339,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \subsection{PCB stack}
         Because outgassing of devices can be dangerous for turbomolecular pumps, it must be limited as much as possible. Therefore soldermask and overlay layers are not present in the design, and packages of used components have known outgassing coefficients.
 
-        Although this prototype board has 4 layers, the flight model board will be 6-layered. The PCB stack generated from Altium Designer is shown in figure \ref{PCB_Altium_stack}.
+        Although this prototype board has 4 layers, the flight model board will be 6-layered. The PCB stack generated from Altium Designer is shown in the figure \ref{PCB_Altium_stack}.
 
         \begin{figure}[H]
             \centering
@@ -336,7 +353,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \bigskip \textbf{Top \& bottom layers}
 
-        Components should be placed only on top and bottom layers, every net should be connected on internal layers. Because the model is built on a 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in figure \ref{top_bottom_layer_layout}.
+        Components should be placed only on top and bottom layers, every net should be connected on internal layers. Because the model is built on a 4-layer board this design recommendation is not fulfilled - this will be forced on Flight Model. Final layout is shown in the figure \ref{top_bottom_layer_layout}.
 
         \begin{figure}[H]
             \centering
@@ -347,7 +364,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
 
         \bigskip \textbf{Internal layers}
 
-        One layer of the board was designed to serve completely as a ground plane. More specifically, two ground planes - an analog and a digital one, connected under ADC. The second internal layer provides routing space, but also has ground planes on it (due to PCB temperature bending, the PCB cannot have only one ground plane). Layout is shown in figure \ref{internal_layers_layout}.
+        One layer of the board was designed to serve completely as a ground plane. More specifically, two ground planes - an analog and a digital one, connected under ADC. The second internal layer provides routing space, but also has ground planes on it (due to PCB temperature bending, the PCB cannot have only one ground plane). Layout is shown in the figure \ref{internal_layers_layout}.
 
         \begin{figure}[H]
             \centering
@@ -357,7 +374,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \end{figure}
 
     \subsection{3D model}
-        Using the Altium designer and proper self-made libraries, a 3D model of board can be easily generated. In figure \ref{pcb_3d_model} a 3D model with and without EMI shielding is shown.
+        Using the Altium designer and proper self-made libraries, a 3D model of board can be easily generated. In the figure \ref{pcb_3d_model} a 3D model with and without EMI shielding is shown.
 
         \begin{figure}[H]
             \centering
@@ -376,7 +393,7 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \item \SI{1}{\mega\hertz} clock frequency.
     \end{itemize}
 
-    Software for the sensor was written in C++14, using the AVR-HAL library developed by the PW-Sat2 team. A schematic of software building blocks is shown in figure \ref{Sensor_software_diagram}.
+    Software for the sensor was written in C++14, using the AVR-HAL library developed by the PW-Sat2 team. A schematic of software building blocks is shown in the figure \ref{Sensor_software_diagram}.
 
     \begin{figure}[H]
         \centering
@@ -411,25 +428,25 @@ The model was developed as a flight-ready version for sensor calibration and tes
     \end{itemize}
 
     \begin{table}[H]
+        \caption{Start measurement command}
+        \label{Start_measurement_command}
         \begin{center}
             \begin{tabular}{|c|c|c|c|}
                 \hline
                 START & 0x20+W & 0x80 & STOP \\ \hline
             \end{tabular}
         \end{center}
-        \caption{Start measurement command}
-        \label{Start_measurement_command}
     \end{table}
 
     \begin{table}[H]
+        \caption{Data readout command}
+        \label{Data_readout_command}
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|c|}
                 \hline
                 START & 0x20+W & 0x00 & REP-START & 0x20+R & (...data...) & STOP \\ \hline
             \end{tabular}
         \end{center}
-        \caption{Data readout command}
-        \label{Data_readout_command}
     \end{table}
 
     \subsection{Measurement algorithm}
@@ -473,12 +490,20 @@ The model was developed as a flight-ready version for sensor calibration and tes
         \item ESD-protected workstation and tools.
     \end{itemize}
 
+\newpage
 \section{Finished sensor}
-    Photo of sensor after integration can be seen in the figure \ref{Integrated_sensor}.
+    Photo of sensor after integration can be seen in the figures \ref{Integrated_sensor} and \ref{Integrated_sensor_bottom}.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\paperwidth]{img/06/finishiedSensorPhoto.jpg}
         \caption{Integrated sensor without and with EMI shield}
         \label{Integrated_sensor}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\paperwidth]{img/06/finishiedSensorPhotoBottom.jpg}
+        \caption{Integrated sensor - bottom}
+        \label{Integrated_sensor_bottom}
     \end{figure}

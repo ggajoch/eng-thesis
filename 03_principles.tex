@@ -7,7 +7,7 @@ This chapter describes basic informations about radiation environment, failure m
 
     \bigskip \textbf{Trapped particles}
 
-    Electrons and protons are trapped in Earth's magnetic field, following magnetic field lines. They are a serious concern on Low Earth Orbit along polar regions and inside the South Atlantic Anomaly. In figure the \ref{Polar_SAA} radiation pattern along Earth is shown.
+    Electrons and protons are trapped in Earth's magnetic field, following magnetic field lines. They are a serious concern on Low Earth Orbit along polar regions and inside the South Atlantic Anomaly. In the figure the \ref{Polar_SAA} radiation pattern along Earth is shown.
 
     \begin{figure}[H]
         \centering
@@ -16,13 +16,14 @@ This chapter describes basic informations about radiation environment, failure m
          \label{Polar_SAA}
     \end{figure}
 
+    \newpage
     \bigskip \textbf{Solar flares}
 
-    During solar flares large fluxes of protons are produced, and some of these reach Earth. Earth's magnetic field provides some shielding from them, but they may become trapped inside, easily reaching polar regions and South Atlantic Anomaly. Solar flares are unpredictable, and represent a threat to spacecraft operations.
+    During solar flares large fluxes of protons are produced, and some of these reach Earth. Earth's magnetic field provides some shielding from them, but they may become trapped inside, easily reaching polar regions and South Atlantic Anomaly. Solar flares are unpredictable and represent a threat to spacecraft operations.
 
     \bigskip \textbf{Cosmic rays}
 
-    Cosmic rays originate from outside the solar system. They are very high energy particles, making effective shielding very difficult. Flux of this kind of particle is low, therefore they mostly contribute to single-event processes.
+    Cosmic rays originate from outside the Solar System. They are very high energy particles, making effective shielding very difficult. Flux of this kind of particle is low, therefore they mostly contribute to single-event processes.
 
 \section{Radiation effects on electronic devices}
     There are two basic effects of radiation on silicon components:
@@ -36,10 +37,12 @@ This chapter describes basic informations about radiation environment, failure m
     In space electronics during analysis and design two major problems are considered - Single Event Effects (SEE) and Total Ionizing Dose (TID). Every silicon and silica device is susceptible to both of those - and both have to be considered during product design, development and testing.
 
     \subsection{Single Event Effects}
-        Single Event Effects are connected with the generation of electron-hole pairs in semiconductor material when exposed to ionizing radiation. The number of pairs generated is proportional to the energy deposited. For semiconductor devices, the parameter $LET_{th}$ (Linear Energy Transfer Threshold) is defined, being a measure of how susceptible the device is. For particles with Linear Energy Transfer (LET - normalized particle energy per mass of the absorbing material), below this threshold no effect will be observed.
+    \label{Single_Event_Effects}
+        Single Event Effects are connected with the generation of electron-hole pairs in semiconductor material when exposed to ionizing radiation. The number of pairs generated is proportional to the energy deposited. For semiconductor devices, the parameter $LET_{th}$ (Linear Energy Transfer Threshold) is defined, being a measure of how susceptible the device is. For particles with Linear Energy Transfer (LET - normalized particle energy per mass of the absorbing material) below this threshold no effect will be observed.
 
         Single Event Effects are divided into two groups - non-destructive (fully recoverable, possibly after power cycle) and destructive (permanent damage) effects. These are described below, defined as in \cite{ECSS_Q_ST_60_15C}.
 
+\newpage
         \bigskip\textbf{Non-destructive effects}
         \begin{itemize}
             \item \textbf{Single Event Upset} - especially vulnerable are memory-based devices (like microprocessors, memories, Field Programmable Gate Array - FPGA etc). This phenomenon may alter the state of cells in memory - causing memory corruption. This can lead to complete device failure if not corrected.
@@ -107,11 +110,11 @@ This chapter describes basic informations about radiation environment, failure m
 
     \subsection{Radiation effects on MOS transistors}
     \label{Radiation_effects_on_MOS_transistors}
-        Irradiation of MOSFET transistor results in threshold voltage shift. This is caused by trapping of holes (generated during particle strike) and creation of interface states on gate/bulk boundary. Those effects are shown in the figure \ref{MOS_irradiation} \cite{pMOS_dosimeters_radfets}.
+        Irradiation of MOSFET transistor results in threshold voltage shift. This is caused by trapping of holes (generated during particle strike) and creation of interface states on gate/bulk boundary. Those effects are shown in the figure \ref{MOS_irradiation}.
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.4\paperwidth]{img/03/MOS_irradiation_schematic.eps}
+            \includegraphics[width=0.65\paperwidth]{img/03/MOS_irradiation_schematic.eps}
             \caption{pMOS irradiation schematic. Source: \cite{pMOS_dosimeters_radfets}}
             \label{MOS_irradiation}
         \end{figure}
@@ -130,18 +133,17 @@ This chapter describes basic informations about radiation environment, failure m
         \end{tabular}
         \bigskip
 
-
-
     \subsection{Threshold voltage measurement}
         The simplest method to measure threshold voltage shift is to use diode configuration of MOS transistor, current source and measure voltage across, as shown in the figure \ref{MOS_measurement_setup}.
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.3\paperwidth]{img/03/Vth-measurement-setup.eps}
+            \includegraphics[width=0.5\paperwidth]{img/03/Vth-measurement-setup.eps}
             \caption{Measurement setup. Source: \cite{pMOS_dosimeters_radfets}}
             \label{MOS_measurement_setup}
         \end{figure}
 
+   \newpage
     \subsection{Temperature dependencies}
         Threshold voltage of transistor strongly depends on die temperature \cite{managing_temperature_effects_in_nanoscale_adaptive_systems}.
 
@@ -158,4 +160,6 @@ This chapter describes basic informations about radiation environment, failure m
         \end{tabular}
         \bigskip
 
-        Constant coefficient depends on particular MOSFET, technology and (very weakly) irradiation. Usually this coefficient is in the range $-0.1$ to \SI{-1}{\milli\volt/\kelvin}.
+        Constant coefficient depends on particular MOSFET, technology and (very weakly) irradiation. Usually this coefficient is in the range $-0.1$ to \SI{-1}{\milli\volt/\kelvin}. 
+        
+        In fact, nature of this dependency is non-linear \cite{managing_temperature_effects_in_nanoscale_adaptive_systems}, and higher-order approximation could be needed especially when better accuracy is necessary.
