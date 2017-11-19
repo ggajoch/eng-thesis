@@ -1,0 +1,12 @@
+Budowa sensora pochłoniętej dawki promieniowania jonizującego (TID) dla pico-satelitów typu CubeSat.
+
+Celem projektu jest zaprojektowanie oraz zbudowanie sensora pochłoniętej dawki promieniowania kosmicznego. Sensor ma być przystosowany do pico-satelitów typu CubeSat. Elementem pomiarowym będzie tranzystor typu p-MOS, gdzie wykorzystana będzie jego zależność napięcia progowego od promieniowania. Czujnik zostanie oparty o mikrokontroler AVR, precyzyjny przetwornik analogowo-cyfrowy i stabilne źródła prądowe pracujące w szerokim zakresie temperatur. Sensor powinien być odporny na warunki panujące na satelitach na niskiej orbicie okołoziemskiej (LEO), a projekt być zgodny z normami ECSS.
+
+
+
+Total Ionising Dose (TID) sensor for CubeSat pico-satellites.
+
+The aim of the project is to build a sensor which can measure absorbed dose of ionising radiation. Sensor will be prepared for CubeSat pico-satellites applications. The p-MOS transistor will be used as transducer because of its efect of shifting threshold voltage with dose. The sensor will be based on AVR microcontroller, high-resolution precision analog to digital converter and current sources stable among wide range of temperatures. It should be immune to environmental conditions found in Low Earth Orbit (LEO), and the design should comply with ECSS standards.
+
+
+
